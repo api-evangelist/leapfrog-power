@@ -1,0 +1,375 @@
+aid: leapfrog-power
+name: Leap
+review:
+  question: >-
+    Does Leap (Leapfrog Power, Inc.) operate under an energy consumer-data mandate,
+    and does it publish a real, downloadable public API surface?
+  answer: 'Mandate: no. Public API surface: yes — open documentation, closed door.'
+  date: '2026-07-27'
+  reviewer: API Evangelist
+  homeMarket: United States
+  sector: Energy & Utilities
+  tier: storage-flexibility
+
+identity:
+  legalName: Leapfrog Power, Inc.
+  tradingName: Leap
+  primaryDomain: leap.ac
+  primaryDomainStatus: >-
+    HTTP 301 from https://leap.ac (server: CloudFront) to https://www.leap.energy/ which
+    returns 200. leap.ac is a redirect-only brand domain; leap.energy is the operating
+    web property. leap.ac is still live as an email domain — the developer docs direct
+    prospective partners to partners@leap.ac.
+  operatingDomain: leap.energy
+  headquarters: San Francisco, California, United States
+  positionInValueChain: >-
+    Private, unmandated middle layer. Leap is not a utility, not a retailer, not an
+    ISO/RTO and not a data holder. It is a distributed-energy-resource aggregator and
+    virtual-power-plant enablement platform that sits between DER technology brands
+    (battery storage, thermostats, heat pumps, HVAC, EV charging) and the wholesale
+    markets and utility demand-response programs (CAISO, NYISO, PJM per its own docs).
+    It is a downstream CONSUMER of utility customer data, not a publisher of it.
+
+mandate:
+  regime: none
+  status: not-applicable
+  verbatimFinding: >-
+    No energy consumer-data mandate applies to Leap. Leap is not an obligated entity
+    under any data-sharing regime found: it is not an Australian CDR designated data
+    holder (it does not operate in Australia), it is not covered by Ontario's Green
+    Button regulation (it does not operate in Ontario), and in its home market of the
+    United States there is no federal or state obligation compelling a private DER
+    aggregator to publish customer energy data. Leap sits on the RECEIVING side of a
+    mandate that binds someone else: the California Public Utilities Commission
+    requires the California investor-owned utilities to run a customer-authorised
+    third-party data-sharing portal, and Leap integrates that portal as an authorised
+    recipient. The mandate is real; it is not Leap's mandate.
+  mandateLeapConsumesNotPublishes: >-
+    Leap's own documentation calls this integration "ShareMyData" and "Direct to
+    Utility (CAISO)". Two documented onboarding paths exist for utility data
+    authorisation: (1) Leap Connect, a hosted web flow covering CA, NY and PJM which
+    also collects demand-response and generator agreements where required; and (2) a
+    Direct to Utility URL of the form
+    https://www.addleap.com/<org-name>/<utility-id>/getting-started?refId=<refId> which
+    sends a California residential customer straight to their utility's ShareMyData
+    page. The documented utility IDs are exactly three, all CAISO: pge (Pacific Gas &
+    Electric), sce (Southern California Edison), sdge (San Diego Gas & Electric).
+  standardsNamingCaveat: >-
+    IMPORTANT AND DELIBERATE: Leap's documentation NEVER uses the words "Green Button",
+    "ESPI", "NAESB", "OpenADR", "IEEE 2030.5", "OCPP", "OCPI" or "CIM". Case-insensitive
+    grep across the fetched developer docs (home, getting-started, api-key-authentication,
+    leap-connect, collect-data-authorization, legacy-sharemydata-flow, test-utilities,
+    utility-meters-vs-devices, bidding-introduction), the full developer llms.txt index,
+    and the www.leap.energy homepage returned zero hits for all of those terms. The only
+    hits were for "ShareMyData". Share My Data is the trade name the California IOUs use
+    for their customer-authorised data-sharing service; any equation of that service with
+    the Green Button Connect My Data profile would be an inference this review did not
+    verify from Leap's own sources, so it is not recorded as a fact here.
+  whatWouldChangeThis: >-
+    Evidence that would move status off not-applicable: a CDR register entry, a published
+    conformant base URI, an ESPI/Green Button endpoint on a Leap host, or a regulator
+    listing Leapfrog Power as an obligated party. None was found.
+
+dataStandard:
+  implemented: no standard reference found
+  detail: >-
+    Leap publishes a proprietary REST shape of its own design. Eight OpenAPI documents
+    (3.0.1 / 3.0.2 / 3.0.3 / 3.1.0 — the versions are inconsistent across services) with
+    Leap-specific resource models: meters, jobs, enrollments, idle periods, nominations,
+    dispatches, webhooks, revenue reports, interval uploads. No sector data standard is
+    referenced, claimed or conformed to anywhere in the documentation.
+
+consumerVsMarketSplit:
+  consumer_data_api: true
+  consumer_data_detail: >-
+    TRUE but heavily qualified. A third party CAN obtain an individual customer's
+    interval usage and settlement data through documented Leap APIs — the Meter Details
+    API returns customer, utility, site and device information; the Revenue & Analytics
+    API returns event performance, meter-level and aggregated intervals and revenue by
+    meter/customer/utility; the Interval Data Upload API round-trips partner-supplied
+    interval data. But the third party must be a contracted Leap partner, and the data
+    is scoped to that partner's own consented, enrolled meters. Customer consent is
+    obtained upstream through Leap Connect or the utility's ShareMyData flow. This is
+    consent-plus-commercial-contract access, not open access, and it is not a
+    regulator-supervised consumer data right.
+  market_data_open: false
+  market_data_detail: >-
+    FALSE. Leap operates in CAISO, NYISO and PJM but republishes nothing from them
+    anonymously. There is no open grid, market, price, load or emissions feed on any
+    Leap host. Every documented API requires a bearer token. The split for this
+    organisation is therefore: consumer/asset data reachable but gated behind a
+    commercial partnership, and market data entirely absent — the inverse of a system
+    operator, which is exactly what you would expect from a private aggregator whose
+    market access IS the product it sells.
+
+accessGate:
+  gate: partner-only
+  gated: true
+  documentationIsOpen: true
+  exactStepsToGetIn: >-
+    (1) Read everything for free — developer.leap.energy returns 200 anonymously, the
+    full guide set and API reference are public, llms.txt is public, and all eight
+    OpenAPI documents download anonymously with no key. (2) To actually call the API you
+    need a Leap partner account, and you cannot create one. The Getting Started guide
+    says verbatim: "Once Leap has created your partner account on the Leap platform, the
+    initial admin users are invited to create their credentials" and "Reach out to your
+    Leap account manager or partners@leap.ac if you don't yet have an account and need
+    one created." The public website's only call to action is "Book a demo". (3) Once
+    Leap provisions the account, an admin creates API keys in the Partner Portal at
+    https://partner.leap.energy/account?settings=apiKeys (production) or
+    https://partner.staging.leap.energy/account?settings=apiKeys (staging), selecting
+    per-key permissions. (4) Existing admins can invite further users with Manager or
+    User roles. There is no self-serve signup, no free tier, no published pricing and no
+    sandbox that opens without a provisioned account.
+
+authModel:
+  scheme: HTTP Bearer token (opaque API key; JWT bearerFormat declared on four of eight specs)
+  header: 'Authorization: Bearer <API_KEY>'
+  environments:
+    - name: production
+      baseURL: https://api.leap.energy
+    - name: staging
+      baseURL: https://api.staging.leap.energy
+  keyScoping: >-
+    Keys are scoped to a single environment. A staging key used against production (or
+    vice versa) returns 403. Keys carry selectable per-key permissions set at creation
+    time; the example JWT payload in the Getting Started guide shows a permissions array
+    (RegisterMeter, GetMeter, DeleteMeter, PlaceBid, GetBid) and an expiration_date.
+  oauth2: >-
+    None documented. No OAuth2 flows, no scopes and no OpenID Connect discovery.
+    https://www.leap.energy/.well-known/openid-configuration returned 404 and
+    https://api.leap.energy/.well-known/openid-configuration returned 404 when fetched
+    anonymously. The developer portal does offer SSO into the Partner Portal to
+    auto-populate a temporary browser bearer token in the "Try It" console, but that is
+    a docs convenience, not a documented OAuth API surface.
+  mTLS: not documented
+  accreditation: none required — commercial partnership only
+
+probes:
+  fetchDate: '2026-07-27'
+  identityAndPortal:
+    - url: https://leap.ac
+      status: 301
+      note: 'Location: https://www.leap.energy/ — CloudFront function-generated redirect.'
+    - url: https://www.leap.energy/
+      status: 200
+      note: Operating marketing site. Sole CTA is "Book a demo".
+    - url: https://developer.leap.energy/
+      status: 200
+      note: Public ReadMe-hosted developer portal. No login wall.
+    - url: https://developer.leap.energy/docs/home
+      status: 200
+    - url: https://developer.leap.energy/reference/
+      status: 200
+      note: Full API reference; source HTML carries the eight OpenAPI source URLs.
+    - url: https://developer.leap.energy/changelog
+      status: 200
+    - url: https://developer.leap.energy/llms.txt
+      status: 200
+      note: 24,192 bytes, 118 lines indexing every guide and reference page.
+    - url: https://partner.leap.energy/
+      status: 200
+      note: '"Leap Partner Dashboard" — a customer login SPA, not a self-serve signup.'
+    - url: https://api.staging.leap.energy
+      status: 200
+    - url: https://status.leap.energy/
+      status: 200
+    - url: https://support.leap.energy/support/solutions
+      status: 302
+      note: Knowledge Center; portal credentials required per the Getting Started guide.
+  negativeProbes:
+    - url: https://docs.leap.ac
+      status: 000
+      note: DNS does not resolve.
+    - url: https://developer.leap.ac
+      status: 000
+      note: DNS does not resolve.
+    - url: https://developers.leap.ac
+      status: 000
+      note: DNS does not resolve.
+    - url: https://api.leap.ac
+      status: 000
+      note: DNS does not resolve.
+    - url: https://data.leap.ac
+      status: 000
+      note: DNS does not resolve. No open-data surface exists on the primary domain.
+    - url: https://api.leap.energy/openapi.json
+      status: 404
+    - url: https://developer.leap.energy/openapi.json
+      status: 404
+    - url: https://www.leap.energy/.well-known/openid-configuration
+      status: 404
+    - url: https://api.leap.energy/.well-known/openid-configuration
+      status: 404
+    - url: https://www.leap.energy/llms.txt
+      status: 404
+    - url: https://www.leap.energy/favicon.ico
+      status: 404
+      note: >-
+        No brand icon trivially retrievable, so the shared placeholder icon URL was used
+        for image: in apis.yml rather than inventing one.
+    - url: https://github.com/leap-energy
+      status: 200
+      note: >-
+        Org page exists but carries no description or other evidence tying it to
+        Leapfrog Power, Inc. NOT recorded in apis.yml — unverified.
+
+harvest:
+  method: >-
+    The eight spec URLs were extracted from the anonymously-served HTML of
+    https://developer.leap.energy/reference/ and each was fetched directly and
+    anonymously with curl. Every one returned HTTP 200 with no credentials. Files are
+    saved byte-for-byte as served.
+  specs:
+    - file: openapi/leapfrog-power-create-meters-openapi.yml
+      sourceURL: https://api.leap.energy/v1.1/openapi-docs/create-meters.yaml
+      httpStatus: 200
+      fetchDate: '2026-07-27'
+      bytes: 98750
+      openapi: 3.0.2
+      title: Create Meters
+      version: 1.1.0
+      operations: 7
+      parses: true
+    - file: openapi/leapfrog-power-meter-enrollment-openapi.yml
+      sourceURL: https://api.leap.energy/v2/openapi-docs/enrollments.yaml
+      httpStatus: 200
+      fetchDate: '2026-07-27'
+      bytes: 71088
+      openapi: 3.0.2
+      title: Meter Information API
+      version: 2.0.0
+      operations: 2
+      parses: true
+    - file: openapi/leapfrog-power-meter-details-openapi.yml
+      sourceURL: https://api.leap.energy/v2/openapi-docs/meters.yaml
+      httpStatus: 200
+      fetchDate: '2026-07-27'
+      bytes: 70605
+      openapi: 3.0.2
+      title: Get meter detail
+      version: '2'
+      operations: 2
+      parses: true
+    - file: openapi/leapfrog-power-nominations-openapi.yml
+      sourceURL: https://api.leap.energy/v2/openapi-docs/meter_nominations_suggestions.yaml
+      httpStatus: 200
+      fetchDate: '2026-07-27'
+      bytes: 54671
+      openapi: 3.1.0
+      title: Meter Nomination API
+      version: 2.0.0
+      operations: 6
+      parses: true
+    - file: openapi/leapfrog-power-dispatch-openapi.yml
+      sourceURL: https://api.leap.energy/dispatching-service-outlets/openapi-dispatching-v2.yaml
+      httpStatus: 200
+      fetchDate: '2026-07-27'
+      bytes: 70027
+      openapi: 3.0.3
+      title: Dispatch
+      version: '2'
+      operations: 11
+      parses: true
+      note: Only spec with a contact email (apiteam@leap.energy) and externalDocs.
+    - file: openapi/leapfrog-power-webhooks-openapi.yml
+      sourceURL: https://api.leap.energy/webhook-service/schema/webhooks-full-openapi.yaml
+      httpStatus: 200
+      fetchDate: '2026-07-27'
+      bytes: 36047
+      openapi: 3.0.1
+      title: Webhook Subscription API
+      version: '1.1'
+      operations: 5
+      parses: true
+    - file: openapi/leapfrog-power-revenue-analytics-openapi.yml
+      sourceURL: https://api.leap.energy/settlement-service/openapi
+      httpStatus: 200
+      fetchDate: '2026-07-27'
+      bytes: 135389
+      openapi: 3.0.3
+      title: Revenue & Analytics
+      version: '1.1'
+      operations: 9
+      parses: true
+      note: Served without a file extension; content is YAML.
+    - file: openapi/leapfrog-power-interval-data-upload-openapi.json
+      sourceURL: https://api.leap.energy/partner-interval-data-service/docs/openapi.json
+      httpStatus: 200
+      fetchDate: '2026-07-27'
+      bytes: 28454
+      openapi: 3.0.1
+      title: Interval Data Upload
+      version: '1.1'
+      operations: 6
+      parses: true
+      note: >-
+        The only JSON document, and the only one with no top-level security requirement
+        declared even though it defines a bearer securityScheme — a governance gap.
+  totalSpecs: 8
+  totalOperations: 48
+
+apiFamilySegmentation:
+  note: >-
+    Leap's docs segment the API by the meter lifecycle, not by data domain. Recorded
+    faithfully as the docs present it.
+  segments:
+    - name: Onboard
+      surface: Leap Connect / Direct to Utility URLs, Connect API, Create Meters API
+    - name: Manage meters
+      surface: Meter Details API, Meter Enrollment API (idle periods, disenrollment, participation, tags)
+    - name: Bid / nominate
+      surface: Meter Nomination API (suggestions reviewed and approved by Leap, not auto-accepted)
+    - name: Dispatch
+      surface: Dispatch API V2, webhook push notifications and dispatch event polling
+    - name: Settle
+      surface: Revenue & Analytics API, event performance and interval data, SFTP interval upload
+
+findings:
+  summary: |
+    Leap is a clean example of the private, unmandated layer of the US energy stack, and
+    a clean example of why "mandate" and "implementation" must be recorded separately.
+    There is a real mandate in this story — California compels its investor-owned
+    utilities to operate a customer-authorised third-party data-sharing portal — but the
+    mandate binds PG&E, SCE and SDG&E, not Leap. Leap is the beneficiary. It plugs into
+    that compelled portal, plus its own hosted Leap Connect flow for CA/NY/PJM, and
+    turns the resulting consented meter data into market participation revenue.
+
+    Leap's documentation posture is genuinely good and genuinely open: a public ReadMe
+    portal, a public llms.txt, a changelog, a status page, staging and production hosts,
+    and eight OpenAPI documents that download anonymously with no key. That is more
+    machine-readable contract than most utilities in this sector publish. But nobody can
+    self-serve into it — the API is a partner integration surface for a B2B contract,
+    and the only public front door is "Book a demo".
+
+    The split is stark and it is the finding: consumer/asset data is reachable through
+    documented APIs but only for a contracted partner's own consented meters, while open
+    market data is entirely absent even though Leap operates in three of the seven
+    US ISOs/RTOs. Leap consumes market access; it does not redistribute it.
+  standardsPosture: >-
+    Zero sector-standard adoption. No Green Button, ESPI, OpenADR, IEEE 2030.5, OCPP,
+    OCPI or CIM reference anywhere in Leap's public surface. The universal-API pitch —
+    "integrate once, scale to all markets & programs" — is explicitly Leap's proprietary
+    shape substituting for the absence of a standard, which is the commercial logic of
+    this whole layer of the US market.
+  governanceObservations:
+    - Four different OpenAPI patch versions (3.0.1, 3.0.2, 3.0.3, 3.1.0) across eight documents.
+    - Two different securityScheme names for the same bearer scheme (Bearer and http).
+    - Interval Data Upload declares a securityScheme but no top-level security requirement.
+    - Only the Dispatch spec carries info.contact; the other seven have none.
+    - Service-specific spec paths (/v1.1/openapi-docs/, /v2/openapi-docs/, /settlement-service/openapi, /webhook-service/schema/) indicate per-team publication with no central spec index.
+
+duplicateWarning:
+  isDuplicate: true
+  survivorCandidate: undetermined — flag for the duplicate-provider-retirement process
+  otherRepo: /Users/kinlane/GitHub/all/leap
+  detail: >-
+    An existing api-evangelist repo all/leap profiles THIS SAME COMPANY under aid "leap"
+    at domain leap.energy, already enriched (10 apis[] entries, 7 harvested _original
+    OpenAPIs, authentication/changelog/conformance/data-model/mcp/skills/llms artifacts
+    and four kin score files). leap.ac and leap.energy are the same legal entity,
+    Leapfrog Power, Inc. This repo (leapfrog-power) was created from the energy sector
+    sweep against the leap.ac domain. These two should be merged rather than both
+    published. Note that this bootstrap harvested EIGHT specs — all/leap is missing the
+    Interval Data Upload spec (partner-interval-data-service) — so this repo's openapi/
+    is the more complete harvest even though all/leap is the more enriched repo.

@@ -1,0 +1,200 @@
+aid: leapfrog-power
+url: https://raw.githubusercontent.com/api-evangelist/leapfrog-power/refs/heads/main/apis.yml
+name: Leap
+kind: company
+description: Leap (Leapfrog Power, Inc.) is a San Francisco based energy software company whose
+  primary domain leap.ac 301-redirects to www.leap.energy. Leap sits in the private, unmandated
+  layer of the United States energy stack — between distributed energy resources and the wholesale
+  markets — letting technology brands build and scale virtual power plants without owning market
+  access. Its software-only platform aggregates residential and commercial battery storage, smart
+  thermostats, heat pumps, HVAC and EV charging, registers those assets into CAISO, NYISO, PJM and
+  utility demand response programs, and settles the revenue back to the partner. Leap publishes a
+  genuinely open developer portal at developer.leap.energy with eight anonymously downloadable
+  OpenAPI definitions covering meter creation, enrollment and idle periods, meter details, market
+  nominations, dispatch, webhooks, interval data upload and revenue and analytics. Its API posture
+  is open documentation over a closed door — every specification and guide can be read without an
+  account, but no key can be self-issued — keys are created only inside a Leap-provisioned partner
+  account and prospective partners are told to contact an account manager or partners@leap.ac. No
+  data-sharing mandate applies to Leap. It is not a utility, not a retailer and not a designated data
+  holder anywhere; it is a downstream recipient of consumer data that California's investor-owned
+  utilities are compelled to share, integrating PG&E, SCE and SDG&E through their Share My Data
+  authorization flow. Leap's documentation never names Green Button, ESPI, OpenADR, IEEE 2030.5,
+  OCPP or CIM. Consumer usage and settlement data are reachable through the API but only for a
+  partner's own consented, enrolled meters, and Leap publishes no open grid or market data at all.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/groq.png
+tags:
+- Energy
+- United States
+- Electricity
+- Grid
+- Demand Response
+- DER
+- Virtual Power Plant
+- Energy Markets
+- Storage Flexibility
+- EV Charging
+- Smart Metering
+created: '2026-07-27'
+modified: '2026-07-27'
+specificationVersion: '0.19'
+apis:
+- aid: leapfrog-power:leapfrog-power-create-meters-api
+  name: Leap Create Meters API
+  description: Create or update meters on the Leap platform individually or in bulk, accepting
+    CSV or JSON input and returning a job ID, plus endpoints to list meter upload jobs, check job
+    status and manage provisional assets. OpenAPI 3.0.2, 7 operations.
+  humanURL: https://developer.leap.energy/reference/createmeterbatchjob
+  baseURL: https://api.leap.energy
+  tags:
+  - Create Meters
+  - Provisional Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/leapfrog-power-create-meters-openapi.yml
+  - type: Documentation
+    url: https://developer.leap.energy/docs/partner-created-meters
+  - type: APIReference
+    url: https://developer.leap.energy/reference/createmeterbatchjob
+- aid: leapfrog-power:leapfrog-power-meter-enrollment-api
+  name: Leap Meter Enrollment API
+  description: Retrieve and search enrollment information for meters, including current enrollment
+    status, participation preferences, associated programs and required actions, alongside idle
+    period, disenrollment and market participation management. OpenAPI 3.0.2.
+  humanURL: https://developer.leap.energy/reference/getmeterenrollment
+  baseURL: https://api.leap.energy
+  tags:
+  - Meter Enrollment
+  properties:
+  - type: OpenAPI
+    url: openapi/leapfrog-power-meter-enrollment-openapi.yml
+  - type: Documentation
+    url: https://developer.leap.energy/docs/sync-meter-inventory-v2
+  - type: APIReference
+    url: https://developer.leap.energy/reference/getmeterenrollment
+- aid: leapfrog-power:leapfrog-power-meter-details-api
+  name: Leap Meter Details API
+  description: Get and search meter details such as customer, utility, site and device information
+    across a partner's meter inventory, with optional filtering by request parameters. OpenAPI 3.0.2.
+  humanURL: https://developer.leap.energy/reference/getmeterdetails
+  baseURL: https://api.leap.energy
+  tags:
+  - Meter Details
+  properties:
+  - type: OpenAPI
+    url: openapi/leapfrog-power-meter-details-openapi.yml
+  - type: Documentation
+    url: https://developer.leap.energy/docs/utility-meters-vs-devices
+  - type: APIReference
+    url: https://developer.leap.energy/reference/getmeterdetails
+- aid: leapfrog-power:leapfrog-power-nominations-api
+  name: Leap Meter Nomination API
+  description: Suggest, retrieve and delete nomination suggestions for individual meters or in bulk
+    for each applicable program and time period. Suggestions are reviewed by Leap before becoming
+    actual market nominations. OpenAPI 3.1.0.
+  humanURL: https://developer.leap.energy/reference/getmeternominationsuggestions
+  baseURL: https://api.leap.energy
+  tags:
+  - Nominations
+  properties:
+  - type: OpenAPI
+    url: openapi/leapfrog-power-nominations-openapi.yml
+  - type: Documentation
+    url: https://developer.leap.energy/docs/bidding-introduction
+  - type: APIReference
+    url: https://developer.leap.energy/reference/getmeternominationsuggestions
+- aid: leapfrog-power:leapfrog-power-dispatch-api
+  name: Leap Dispatch API
+  description: Receive and search grid dispatch instructions at meter and group level through Leap
+    Dispatch API V2, including webhook URL management for meter and group dispatches. OpenAPI 3.0.3,
+    served from the /v2 path.
+  humanURL: https://developer.leap.energy/reference/dispatch-event
+  baseURL: https://api.leap.energy/v2
+  tags:
+  - Meter Dispatches
+  - Group Dispatches
+  properties:
+  - type: OpenAPI
+    url: openapi/leapfrog-power-dispatch-openapi.yml
+  - type: Documentation
+    url: https://developer.leap.energy/docs/dispatch-automation-v2
+  - type: APIReference
+    url: https://developer.leap.energy/reference/dispatch-event
+- aid: leapfrog-power:leapfrog-power-webhooks-api
+  name: Leap Webhook Subscription API
+  description: List, create, update, delete and test webhooks that deliver Leap event notifications
+    such as meter, connect and dispatch events to a partner receiver URL. OpenAPI 3.0.1.
+  humanURL: https://developer.leap.energy/reference/listwebhooks-2
+  baseURL: https://api.leap.energy
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/leapfrog-power-webhooks-openapi.yml
+  - type: Documentation
+    url: https://developer.leap.energy/docs/webhook-setup
+  - type: APIReference
+    url: https://developer.leap.energy/reference/listwebhooks-2
+- aid: leapfrog-power:leapfrog-power-revenue-analytics-api
+  name: Leap Revenue and Analytics API
+  description: Retrieve settlement and performance data — monthly revenue reports, annual revenue
+    data, revenue report versions, event performance and unresponsive meter reporting — for a
+    partner's enrolled fleet. OpenAPI 3.0.3.
+  humanURL: https://developer.leap.energy/reference/getperiodicreports
+  baseURL: https://api.leap.energy
+  tags:
+  - Revenue
+  properties:
+  - type: OpenAPI
+    url: openapi/leapfrog-power-revenue-analytics-openapi.yml
+  - type: Documentation
+    url: https://developer.leap.energy/docs/revenue-settlement-data
+  - type: APIReference
+    url: https://developer.leap.energy/reference/getperiodicreports
+- aid: leapfrog-power:leapfrog-power-interval-data-upload-api
+  name: Leap Interval Data Upload API
+  description: Submit and monitor partner-supplied interval meter data — upload statuses, data
+    validation errors, aggregated intervals and meter-level intervals — for meters where Leap does
+    not receive utility data directly. OpenAPI 3.0.1, published as JSON.
+  humanURL: https://developer.leap.energy/reference/listintervaldatauploads
+  baseURL: https://api.leap.energy
+  tags:
+  - Interval Data Upload
+  properties:
+  - type: OpenAPI
+    url: openapi/leapfrog-power-interval-data-upload-openapi.json
+  - type: Documentation
+    url: https://developer.leap.energy/docs/event-performance-interval-data
+  - type: Documentation
+    url: https://developer.leap.energy/docs/upload-interval-data-sftp
+common:
+- type: Website
+  url: https://www.leap.energy/
+- type: DeveloperPortal
+  url: https://developer.leap.energy/
+- type: Documentation
+  url: https://developer.leap.energy/docs/home
+- type: APIReference
+  url: https://developer.leap.energy/reference/
+- type: GettingStarted
+  url: https://developer.leap.energy/docs/getting-started
+- type: Authentication
+  url: https://developer.leap.energy/docs/api-key-authentication
+- type: ChangeLog
+  url: https://developer.leap.energy/changelog
+- type: LLMsTxt
+  url: https://developer.leap.energy/llms.txt
+- type: SignUp
+  url: https://partner.leap.energy/
+- type: Support
+  url: https://support.leap.energy/support/solutions
+- type: StatusPage
+  url: https://status.leap.energy/
+- type: Blog
+  url: https://www.leap.energy/blog
+- type: TermsOfService
+  url: https://www.leap.energy/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.leap.energy/privacy-policy
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
