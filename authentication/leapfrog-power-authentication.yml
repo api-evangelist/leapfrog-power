@@ -1,0 +1,96 @@
+generated: '2026-07-27'
+method: searched
+docs: https://developer.leap.energy/docs/api-key-authentication
+source: https://developer.leap.energy/docs/api-key-authentication, https://developer.leap.energy/docs/getting-started,
+  openapi/leapfrog-power-create-meters-openapi.yml, openapi/leapfrog-power-dispatch-openapi.yml,
+  openapi/leapfrog-power-interval-data-upload-openapi.json, openapi/leapfrog-power-meter-details-openapi.yml,
+  openapi/leapfrog-power-meter-enrollment-openapi.yml, openapi/leapfrog-power-nominations-openapi.yml,
+  openapi/leapfrog-power-revenue-analytics-openapi.yml, openapi/leapfrog-power-webhooks-openapi.yml
+summary:
+  types:
+  - http
+  schemes:
+  - bearer
+  api_key_in:
+  - header
+  oauth2: false
+  oidc: false
+  mtls: false
+model: >-
+  A single authentication model across all eight services: an opaque, long-lived API key presented
+  as an HTTP bearer token. Keys are created by a partner admin inside the Leap Partner Portal with
+  per-key permissions selected at creation time; they cannot be self-issued, because the partner
+  account itself is provisioned by Leap. Keys are scoped to exactly one environment — a staging key
+  used against production (or the reverse) returns 403.
+header: 'Authorization: Bearer <API_KEY>'
+schemes:
+- name: Bearer
+  type: http
+  scheme: bearer
+  sources:
+  - openapi/leapfrog-power-create-meters-openapi.yml
+  - openapi/leapfrog-power-meter-details-openapi.yml
+  - openapi/leapfrog-power-meter-enrollment-openapi.yml
+  - openapi/leapfrog-power-nominations-openapi.yml
+  - openapi/leapfrog-power-revenue-analytics-openapi.yml
+- name: http
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/leapfrog-power-dispatch-openapi.yml
+  - openapi/leapfrog-power-webhooks-openapi.yml
+  - openapi/leapfrog-power-interval-data-upload-openapi.json
+  note: >-
+    The same credential declared under a second scheme name. Four definitions declare bearerFormat
+    JWT (dispatch, webhooks, interval data, revenue) and four declare no format — a naming
+    inconsistency across teams, not two credentials.
+key_issuance:
+  self_serve: false
+  provisioning: >-
+    Leap creates the partner account; initial admin users are then invited to create their
+    credentials. Prospective partners are directed to their Leap account manager or partners@leap.ac.
+  portal_urls:
+  - environment: production
+    url: https://partner.leap.energy/account?settings=apiKeys
+  - environment: staging
+    url: https://partner.staging.leap.energy/account?settings=apiKeys
+  roles:
+  - name: Manager
+    capability: full admin access, including inviting/deleting users and creating/revoking API keys
+  - name: User
+    capability: cannot manage account settings
+  user_note: A user invited in the production Partner Account page automatically gains staging access.
+permissions:
+  model: per-key permission selection at creation time
+  evidence: >-
+    The Getting Started guide shows a decoded example JWT payload carrying user_id, account_id, an
+    expiration_date and a permissions array. The example permissions are RegisterMeter, GetMeter,
+    DeleteMeter, PlaceBid and GetBid.
+  documented_values: [RegisterMeter, GetMeter, DeleteMeter, PlaceBid, GetBid]
+  caveat: >-
+    Those five come from a single illustrative example payload, not from a published permissions
+    reference. Leap publishes no scope or permission catalog on its anonymous surface, and no
+    OpenAPI operation declares a required permission, so a complete permission list cannot be
+    recorded. No scopes/ artifact is emitted — this is key-based auth, not OAuth.
+environments:
+- name: production
+  base_url: https://api.leap.energy
+- name: staging
+  base_url: https://api.staging.leap.energy
+environment_mismatch: 403
+browser_auth:
+  sso: >-
+    The developer portal has SSO integration with the Partner Portal. Logging in auto-populates a
+    temporary bearer token in the CREDENTIALS box of the API reference pages so calls can be made
+    from the browser against staging or production. This is a documentation convenience, not a
+    documented OAuth surface.
+gaps:
+- No OAuth 2.0, OpenID Connect or mTLS option; no /.well-known/openid-configuration and no
+  /.well-known/oauth-authorization-server (404 on all four Leap hosts).
+- No documented key rotation policy, key expiry policy or WWW-Authenticate challenge.
+- The Interval Data Upload definition declares the bearer securityScheme but sets no top-level
+  security requirement, so the spec never states that its operations are protected — a governance
+  gap in the specification, not in the service.
+- Webhook deliveries are authenticated only by a partner-supplied static header; Leap publishes no
+  signature scheme (see conventions/leapfrog-power-conventions.yml).

@@ -1,0 +1,146 @@
+generated: '2026-07-27'
+method: derived
+source: openapi/leapfrog-power-create-meters-openapi.yml, openapi/leapfrog-power-dispatch-openapi.yml,
+  openapi/leapfrog-power-interval-data-upload-openapi.json, openapi/leapfrog-power-meter-details-openapi.yml,
+  openapi/leapfrog-power-meter-enrollment-openapi.yml, openapi/leapfrog-power-nominations-openapi.yml,
+  openapi/leapfrog-power-revenue-analytics-openapi.yml, openapi/leapfrog-power-webhooks-openapi.yml
+format: proprietary-json
+rfc9457: false
+summary: >-
+  Leap serves no application/problem+json and no `type` URI, so this is not an RFC 9457 surface.
+  It does, however, reuse the RFC 7807 field names `title` and `status` in its dominant envelope,
+  which is what makes it close to interoperable. Three distinct error envelopes are in use across
+  the eight definitions — a governance inconsistency worth noting to the provider.
+envelopes:
+- id: title-status-details
+  media_type: application/json
+  fields:
+    title: Summary of what went wrong (string, 1-2000 chars)
+    status: An error code indicating what went wrong, usually the same as the HTTP status code (integer)
+    details: Extra information about the error
+  details_shape: >-
+    object in Create Meters, Meter Details, Meter Enrollment and Nominations (e.g.
+    {"error": "Meter id is not a UUID"}); array of {message, description} objects in Revenue &
+    Analytics.
+  used_by:
+  - openapi/leapfrog-power-create-meters-openapi.yml
+  - openapi/leapfrog-power-meter-details-openapi.yml
+  - openapi/leapfrog-power-meter-enrollment-openapi.yml
+  - openapi/leapfrog-power-nominations-openapi.yml
+  - openapi/leapfrog-power-revenue-analytics-openapi.yml
+  example:
+    title: Bad Request
+    status: 400
+    details:
+      error: Meter id is not a UUID
+- id: code-message-error_code
+  media_type: application/json
+  fields:
+    code: Coarse enumerated class (BAD_REQUEST, UNAUTHORIZED, FORBIDDEN, NOT_FOUND, METHOD_NOT_ALLOWED,
+      UNSUPPORTED_MEDIA_TYPE, SERVICE_UNAVAILABLE, INTERNAL_SERVER_ERROR)
+    message: Human-readable message
+    error_code: Service-specific code (see errors/leapfrog-power-error-codes.yml)
+  used_by:
+  - openapi/leapfrog-power-dispatch-openapi.yml
+  example:
+    code: BAD_REQUEST
+    message: message
+    error_code: DISPATCH_INVALID_INPUT
+- id: error-message
+  media_type: application/json
+  fields:
+    error: Error type
+    message: Detailed error message
+  used_by:
+  - openapi/leapfrog-power-webhooks-openapi.yml
+- id: untyped
+  media_type: application/json
+  note: >-
+    The Interval Data Upload definition declares ErrorResponseBadRequest / Unauthorized /
+    Forbidden / InternalServerError as bare `{"type": "object"}` schemas with no properties, so
+    the 4xx/5xx bodies are undocumented there. Its row-level ingestion errors ARE documented and
+    are captured in errors/leapfrog-power-error-codes.yml.
+  used_by:
+  - openapi/leapfrog-power-interval-data-upload-openapi.json
+problems:
+- status: 400
+  title: Bad Request
+  envelope: title-status-details
+  meaning: Malformed request body, invalid UUID, missing required parameter, or a request exceeding
+    the 1,000,000 data-point ceiling on the interval endpoints.
+  source_operations:
+  - openapi/leapfrog-power-create-meters-openapi.yml#createMeterBatchJob
+  - openapi/leapfrog-power-meter-details-openapi.yml#getMeterDetails
+  - openapi/leapfrog-power-meter-enrollment-openapi.yml#searchMeterEnrollments
+  - openapi/leapfrog-power-nominations-openapi.yml#postNominationSuggestions
+  - openapi/leapfrog-power-revenue-analytics-openapi.yml#getPeriodicReports
+- status: 400
+  title: Create-meter validation failure
+  envelope: create-meter-errors
+  schema: CreateMeterErrorResponse / CreateMeterError / ValidationError
+  meaning: >-
+    Meter creation returns a field-level validation structure instead of the common envelope —
+    errors[] of {field, description, suggestions[]} for the batch job, and ValidationError of
+    {message, csv_row, json_index, problem_field} identifying the offending CSV row or JSON array
+    index.
+  source_operations:
+  - openapi/leapfrog-power-create-meters-openapi.yml#createMeterBatchJob
+  - openapi/leapfrog-power-create-meters-openapi.yml#createSingleMeter
+- status: 401
+  title: Unauthorized
+  envelope: title-status-details
+  meaning: Missing or malformed Authorization Bearer header.
+  remediation: >-
+    Send `Authorization: Bearer <API_KEY>` with a key issued from the Partner Portal.
+  source_operations:
+  - openapi/leapfrog-power-dispatch-openapi.yml#searchMeterDispatches
+  - openapi/leapfrog-power-meter-details-openapi.yml#searchMeterDetails
+  - openapi/leapfrog-power-revenue-analytics-openapi.yml#getYearlyOverview
+- status: 403
+  title: Forbidden
+  envelope: title-status-details
+  meaning: >-
+    Invalid key, key lacking the required per-key permission, or — the most common cause per the
+    Getting Started guide — a staging key used against production or vice versa. Keys are scoped
+    to a single environment.
+  remediation: Create the key in the environment you are calling; check the permissions selected on
+    the key in the Partner Account page.
+  source_operations:
+  - openapi/leapfrog-power-create-meters-openapi.yml#createMeterBatchJob
+  - openapi/leapfrog-power-webhooks-openapi.yml#listWebhooks
+- status: 404
+  title: Not Found
+  envelope: title-status-details
+  meaning: Unknown meter_id, job_id, webhook_id or nomination_suggestion_id; also returned when an
+    idle-period delete request names a period that does not match exactly.
+  source_operations:
+  - openapi/leapfrog-power-meter-details-openapi.yml#getMeterDetails
+  - openapi/leapfrog-power-nominations-openapi.yml#deleteMeterNominationSuggestion
+  - openapi/leapfrog-power-webhooks-openapi.yml#deleteWebhook
+- status: 415
+  title: Unsupported Media Type
+  envelope: title-status-details
+  meaning: Invalid value in the Accept header. Supported types are application/json and text/csv.
+  source_operations:
+  - openapi/leapfrog-power-revenue-analytics-openapi.yml#postMeterSearchPeriodicAggregationSearch
+  - openapi/leapfrog-power-revenue-analytics-openapi.yml#getPeriodicReports
+- status: 500
+  title: Server Error
+  envelope: title-status-details
+  meaning: A technical error has occurred.
+  source_operations:
+  - openapi/leapfrog-power-revenue-analytics-openapi.yml#getPeriodicReports
+  - openapi/leapfrog-power-interval-data-upload-openapi.json#uploadIntervalData
+- status: 5XX
+  title: Server error range
+  envelope: code-message-error_code
+  meaning: The Dispatch API declares a single 5XX range response rather than discrete 500/503 codes.
+  source_operations:
+  - openapi/leapfrog-power-dispatch-openapi.yml#searchMeterDispatches
+  - openapi/leapfrog-power-dispatch-openapi.yml#createOrUpdateMeterDispatchWebhook
+gaps:
+- No `type` URI, no application/problem+json, no error documentation page on the developer portal
+  outside the OpenAPI definitions.
+- Three envelopes across eight services; a partner integrating more than one Leap product must
+  parse all three.
+- No documented Retry-After, RateLimit-* or request-correlation header in any definition.

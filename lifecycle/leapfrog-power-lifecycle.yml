@@ -1,0 +1,97 @@
+generated: '2026-07-27'
+method: searched
+source: https://developer.leap.energy/changelog, https://developer.leap.energy/changelog/meters-api-v1-deprecation-date-set,
+  https://status.leap.energy/, https://developer.leap.energy/docs/getting-started, openapi/*
+summary: >-
+  Leap versions in the URI path, at a per-service rather than platform-wide cadence: /v1.1 for
+  create-meters, webhooks, revenue and interval data, /v2 for meters, enrollments, nominations and
+  dispatch. Deprecation is announced on the developer-portal changelog with a named calendar date
+  and a documented migration path; there is no Sunset or Deprecation response header, no published
+  SLA and no formal deprecation-policy page — the changelog post IS the policy artifact.
+versioning:
+  scheme: uri-path
+  per_service: true
+  current:
+  - service: Create Meters
+    version: v1.1
+    spec_version: 1.1.0
+    openapi: 3.0.2
+  - service: Meter Details
+    version: v2
+    spec_version: '2'
+    openapi: 3.0.2
+  - service: Meter Enrollment
+    version: v2
+    spec_version: 2.0.0
+    openapi: 3.0.2
+  - service: Meter Nomination
+    version: v2
+    spec_version: 2.0.0
+    openapi: 3.1.0
+  - service: Dispatch
+    version: v2
+    spec_version: '2'
+    openapi: 3.0.3
+  - service: Webhook Subscription
+    version: v1.1
+    spec_version: '1.1'
+    openapi: 3.0.1
+  - service: Revenue & Analytics
+    version: v1.1
+    spec_version: '1.1'
+    openapi: 3.0.3
+  - service: Interval Data Upload
+    version: v1.1
+    spec_version: '1.1'
+    openapi: 3.0.1
+  docs: https://developer.leap.energy/changelog
+  observations:
+  - Four OpenAPI patch versions (3.0.1, 3.0.2, 3.0.3, 3.1.0) across eight documents.
+  - Path moves are announced as version bumps, e.g. the webhook platform moved from /beta to /v1.1
+    at GA and the Revenue API moved from /beta to /v1 at GA.
+  - 'Field additions are stated by Leap to be non-breaking: "Field additions like this are
+    considered non-breaking changes for existing integrations" (nomination_kw changelog post).'
+deprecation:
+  policy_url: https://developer.leap.energy/changelog/meters-api-v1-deprecation-date-set
+  policy_style: changelog-announced with a named date and migration options
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  announcements:
+  - subject: Meters API V1 (Get Meter, Search Meters)
+    announced: '2026-04-22'
+    sunset_date: '2026-10-31'
+    notice_period_days: 192
+    migration:
+    - Meter webhook events (recommended) — https://developer.leap.energy/reference/meter-events
+    - Meters API v2 endpoints — https://developer.leap.energy/docs/sync-meter-inventory-v2
+    note: >-
+      The v1 endpoints are not present in any of the eight currently-published OpenAPI definitions,
+      so this repo's harvested specs already reflect the post-v1 surface.
+  deprecated_operations: []
+  deprecated_operations_note: >-
+    No operation in any of the eight harvested definitions carries deprecated: true.
+status_page:
+  url: https://status.leap.energy/
+  http_status: 200
+  probe_date: '2026-07-27'
+sla:
+  published: false
+  note: No uptime target, credit schedule or support-response SLA is published on any anonymous
+    Leap surface. Commercial terms are set in the partner contract.
+support:
+  knowledge_center: https://support.leap.energy/support/solutions
+  note: Knowledge Center articles require Partner Portal credentials.
+  contact: partners@leap.ac (new partner accounts), apiteam@leap.energy (contact on the Dispatch spec)
+environments:
+- name: production
+  base_url: https://api.leap.energy
+  portal: https://partner.leap.energy/
+- name: staging
+  base_url: https://api.staging.leap.energy
+  portal: https://partner.staging.leap.energy/
+beta_practice:
+  note: >-
+    Leap ships features under an explicit beta label and announces GA on the changelog — the
+    webhook platform ran beta from March 2025 to November 2025, the Revenue API ran beta into
+    July 2025, and the unresponsive-meters endpoint left beta in July 2026.

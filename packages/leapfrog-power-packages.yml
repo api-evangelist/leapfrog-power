@@ -1,0 +1,41 @@
+generated: '2026-07-27'
+method: searched
+source: npm registry search API, PyPI JSON API, GitHub organization API, https://developer.leap.energy/reference/, https://developer.leap.energy/llms.txt
+summary: >-
+  Leap publishes no first-party client libraries in any public package registry. The documented
+  integration surface is raw HTTPS/JSON — a Partner-Portal-issued bearer API key against
+  api.leap.energy — plus an SFTP drop for interval data. Registry searches returned only
+  unrelated projects ("leap" hits belong to Leap Wallet / Cosmos, Magic Leap, LEAP energy-system
+  modelling and Leapfrog Technology lint configs). No GitHub organization for Leapfrog Power,
+  Inc. could be verified: github.com/leapfrogpower, /leapfrog-power, /leapenergy and /addleap all
+  return 404, and github.com/leap-energy exists but carries no description, no website and zero
+  public repositories, so it is not recorded as first-party.
+packages: []
+registries_probed:
+- registry: npm
+  query: 'search: "leap energy", "leapfrog power vpp"'
+  result: no first-party package — all hits unrelated
+- registry: pypi
+  query: leap-energy
+  result: 404
+- registry: pypi
+  query: leapenergy
+  result: 404
+- registry: github
+  query: 'orgs: leapfrogpower, leapfrog-power, leapenergy, addleap'
+  result: 404 — no organization
+- registry: github
+  query: 'org: leap-energy'
+  result: 200 but empty (0 public repos, no name/blog) — not verifiable as first-party, not recorded
+integration_surface:
+  style: direct REST over HTTPS with an Authorization Bearer API key
+  code_samples: >-
+    The ReadMe-hosted API reference renders per-language request samples and supports in-browser
+    "Try It" calls once a partner logs in through Partner Portal SSO, which auto-populates a
+    temporary bearer token. Those are generated snippets, not a maintained SDK.
+  bulk_transfer: >-
+    Interval data can also be delivered by SFTP file drop instead of the API —
+    https://developer.leap.energy/docs/upload-interval-data-sftp
+  csv: >-
+    Several endpoints accept or emit text/csv (meter creation, nomination search, revenue search)
+    via the Accept header, which is the closest thing Leap offers to a bulk client.

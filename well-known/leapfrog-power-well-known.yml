@@ -1,0 +1,70 @@
+generated: '2026-07-27'
+method: searched
+source: live anonymous probes of every Leap host in apis.yml and every OpenAPI servers[] host
+summary: >-
+  No /.well-known/ discovery document is published on any Leap host. Twenty probes — five
+  well-known paths against the four hosts that appear in apis.yml and the OpenAPI servers[]
+  arrays — all returned 404. Recorded as an honest negative result. Leap issues partner API
+  keys from the Partner Portal rather than through OAuth or OpenID Connect, so there is no
+  authorization-server metadata to publish, and it ships no security.txt, no api-catalog and
+  no ai-plugin manifest.
+probe_date: '2026-07-27'
+hosts:
+- host: https://api.leap.energy
+  role: production API host (apis[].baseURL and OpenAPI servers[])
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://api.staging.leap.energy
+  role: staging API host (OpenAPI servers[])
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://developer.leap.energy
+  role: developer portal / docs host
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://www.leap.energy
+  role: corporate website
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+agent_discovery_note: >-
+  The one machine-readable agent-facing index Leap does publish is
+  https://developer.leap.energy/llms.txt (HTTP 200, 23,475 bytes, 116 lines), captured verbatim
+  in llms/leapfrog-power-llms.txt. The eight OpenAPI definitions are also served anonymously
+  from api.leap.energy, but there is no index document that enumerates them — the URLs are only
+  discoverable from the rendered API reference HTML.

@@ -1,0 +1,257 @@
+generated: '2026-07-27'
+method: derived
+source: openapi/leapfrog-power-create-meters-openapi.yml, openapi/leapfrog-power-dispatch-openapi.yml,
+  openapi/leapfrog-power-interval-data-upload-openapi.json, openapi/leapfrog-power-meter-details-openapi.yml,
+  openapi/leapfrog-power-meter-enrollment-openapi.yml, openapi/leapfrog-power-nominations-openapi.yml,
+  openapi/leapfrog-power-revenue-analytics-openapi.yml, openapi/leapfrog-power-webhooks-openapi.yml
+summary: >-
+  Everything in Leap's model hangs off the meter. A meter belongs to a partner account, is
+  identified to a utility and a transmission region, carries a customer, a site and one or more
+  devices, is enrolled into programs, is nominated into market periods, is dispatched (directly or
+  as part of a market group), produces interval data, and settles into revenue. Identifiers are
+  bare UUIDs with no type prefixes; partner_reference is the partner's own key carried alongside
+  meter_id through every surface, which is what makes the graph joinable to an external system.
+identifier_convention:
+  format: UUID v4, no prefixes
+  ids: [meter_id, job_id, webhook_id, webhook_event_id, market_group_id, meter_event_id,
+    market_group_event_id, nomination_suggestion_id, provisional_asset_id]
+  partner_key: partner_reference (also partner_meter_ref) — partner-supplied, not unique-enforced by
+    Leap, carried on meters, Connect sessions, webhook events and dispatch notifications
+entities:
+- name: Meter
+  schemas: [CommonMeter, ReadMeter, MeterDetailsResponse, MeterIdentifiers, ExtendedMeterIdentifiers]
+  domain: inventory
+  description: The unit of everything — either a utility revenue meter (UTILITY_METER) or a device
+    (DEVICE). Carries transmission_region, customer_classification, load_types, dispatch options and
+    audit info.
+  source: openapi/leapfrog-power-meter-details-openapi.yml
+- name: Customer
+  schemas: [Customer, Customer_billing]
+  domain: inventory
+  description: The end customer behind a meter, with billing details and classification
+    (RESIDENTIAL / COMMERCIAL).
+- name: Site
+  schemas: [Site]
+  domain: inventory
+  description: The physical premise a meter serves.
+- name: Device
+  schemas: [Device, DeviceInfo, DeviceType]
+  domain: inventory
+  description: The controllable DER behind the meter — battery, thermostat, heat pump, HVAC, EV
+    charger — with capacity attributes.
+- name: Utility
+  schemas: [CommonUtility, ReadUtility, CreateMeterUtility, utility]
+  domain: inventory
+  description: The utility serving the meter, plus region-specific identifier blocks (Caiso, Nyiso,
+    Isone).
+- name: ProvisionalAsset
+  schemas: [ProvisionalAsset, CreateAssetRequest, ListProvisionalAssetsResponse]
+  domain: onboarding
+  description: An asset submitted but not yet promoted to a meter.
+- name: MeterUploadJob
+  schemas: [Job, PagedJobs, JobAndAssets, JobStatus, AssetUploadStatus]
+  domain: onboarding
+  description: Asynchronous batch job created by a meter upload (CSV or JSON), carrying per-asset
+    status and validation errors.
+- name: ConnectSession
+  schemas: [ConnectSessionUpdatedEventV1, ConnectSessionAuthorizationUpdatedEventV1]
+  domain: onboarding
+  description: A customer's Leap Connect authorization session, observable only through webhook
+    events and the Connect API; keyed by partner_reference, not by meter_id, until a meter exists.
+- name: Enrollment
+  schemas: [MeterEnrollmentResponse, MeterEnrollmentFields, ProgramEnrollment, EnrollmentStatus]
+  domain: enrollment
+  description: A meter's enrollment state per program, with global enrollment status, deadlines and
+    required actions.
+- name: Program
+  schemas: [PublicProgram, program_identifier, DeliveryPeriod]
+  domain: enrollment
+  description: A market or utility demand-response program (CCA, ELRP, DSGS, CSRP, DLRP, DRAM,
+    PSE-RPO, SRP-RPO) with delivery periods.
+- name: RequiredAction
+  schemas: [RequiredActions, PartnerRequiredActions, RequiredAction, LeapRequiredActions, action_type]
+  domain: enrollment
+  description: A blocking item on an enrollment, owned by the partner or by Leap, with an
+    action_code, a description and an enrollment deadline.
+- name: ParticipationPreference
+  schemas: [ParticipationPreference, ParticipationPreferenceResponse]
+  domain: enrollment
+  description: PARTICIPATE / IDLE / DISENROLL state on a meter over a date range.
+- name: MarketGroup
+  schemas: [SearchMarketGroupDispatchEvent, WebhookMarketGroupDispatchEvent, PeriodicMarketGroupAggregation]
+  domain: dispatch
+  description: A VPP group of meters dispatched as a unit; membership and window change over time and
+    are announced on meter.enrollment.group.updated.
+- name: NominationSuggestion
+  schemas: [postNominationSuggestions_request_inner, getMeterNominationSuggestions_200_response,
+    searchNominationSuggestions_200_response]
+  domain: market
+  description: A partner-proposed capacity commitment (kW) for a meter, program and period. Reviewed
+    by Leap — statuses seen in published examples include RECEIVED and MODIFIED — before it becomes
+    a nomination. Deletable only while RECEIVED.
+- name: Nomination
+  schemas: [searchNominations_200_response, searchNominations_200_response_allOf_nominations_inner]
+  domain: market
+  description: The accepted kW commitment used for program enrollment, with a source of PARTNER or
+    LEAP.
+- name: DispatchEvent
+  schemas: [SearchMeterDispatchEvent, WebhookMeterDispatchEvent, MeterDispatchEventTimeslot,
+    GroupDispatchEventTimeslot, BaseDispatchEventTimeslot]
+  domain: dispatch
+  description: A grid instruction for a meter or market group over one or more timeslots, with
+    energy_kw awarded, nomination_kw committed, priority, is_voluntary, performance_compensation_cap
+    and dispatch_event_types.
+- name: DispatchWebhook
+  schemas: [Webhook, HeaderDescription]
+  domain: dispatch
+  description: The single meter-level and single group-level receiver URL (plus custom headers)
+    registered per partner account for dispatch notifications.
+- name: WebhookSubscription
+  schemas: [WebhookRequest, Webhook, WebhookListResponse, WebhookEventType, Header]
+  domain: events
+  description: A general-platform webhook subscription — receiver URL, headers and the selected
+    event types.
+- name: WebhookEvent
+  schemas: [BaseEvent, WebhookPayload, WebhookEventId, WebhookEventTypeDiscriminator]
+  domain: events
+  description: The delivered event envelope {webhook_event_id, payload{webhook_event_type, ...}}.
+- name: IntervalDataUpload
+  schemas: [IntervalDataUpload, GetUploadsResponse, IngestionResponse, GetUploadIngestionErrorsResponse]
+  domain: telemetry
+  description: A partner-supplied interval data file or payload, ingested asynchronously with
+    row-level error reporting; also reachable by SFTP.
+- name: MissingInterval
+  schemas: [MissingInterval, SearchMissingIntervalDataResponse, MissingIntervalStatus]
+  domain: telemetry
+  description: A gap in a meter's interval series that the partner is expected to fill.
+- name: PeriodicReport
+  schemas: [PeriodicReportResponse, PeriodicReportVersionResponse, SettlementPeriod, PeriodicReportStatus]
+  domain: settlement
+  description: A monthly revenue report for the partner's fleet, versioned — later versions supersede
+    earlier ones for the same period.
+- name: RevenueAggregation
+  schemas: [PeriodicMeterAggregation, PeriodicCustomerAggregation, PeriodicUtilityAggregation,
+    PeriodicLoadTypeAggregation, PeriodicMarketGroupAggregation]
+  domain: settlement
+  description: Revenue for a period rolled up by meter, customer, utility, load type or market group.
+- name: YearlyOverview
+  schemas: [YearlyOverview, YearlySummary, RevenueMetrics, RevenueSources, RegionalEconomics]
+  domain: settlement
+  description: Annual revenue overview, optionally filtered by transmission region.
+- name: PerformanceRecord
+  schemas: [CapacityMetrics, EnergyMetrics, CapacityPerformancePeriod, UtilityCapacityMetric,
+    UtilityEnergyMetric]
+  domain: settlement
+  description: Baseline, dispatch and performance metrics per meter and event, the basis for
+    settlement and for unresponsive-meter diagnosis.
+relationships:
+- from: Meter
+  to: Customer
+  type: has_one
+  via: customer
+- from: Meter
+  to: Site
+  type: has_one
+  via: site
+- from: Meter
+  to: Device
+  type: has_many
+  via: devices / device_info
+- from: Meter
+  to: Utility
+  type: belongs_to
+  via: utility
+- from: Meter
+  to: Enrollment
+  type: has_many
+  via: meter_id (GET /v2/meters/{meter_id}/enrollments)
+- from: Enrollment
+  to: Program
+  type: has_many
+  via: program_identifier / program_enrollments
+- from: Enrollment
+  to: RequiredAction
+  type: has_many
+  via: required_actions.partner[] / required_actions.leap[]
+- from: Enrollment
+  to: ParticipationPreference
+  type: has_many
+  via: participation_preferences (date-ranged)
+- from: Meter
+  to: NominationSuggestion
+  type: has_many
+  via: meter_id (POST /v2/meters/{meter_id}/nominations/suggestions)
+- from: NominationSuggestion
+  to: Nomination
+  type: becomes
+  via: Leap review (approve / modify / deny)
+- from: Nomination
+  to: Program
+  type: belongs_to
+  via: program_identifier
+- from: MarketGroup
+  to: Meter
+  type: has_many
+  via: meter_ids
+- from: DispatchEvent
+  to: Meter
+  type: belongs_to
+  via: meter_id (meter-level dispatch)
+- from: DispatchEvent
+  to: MarketGroup
+  type: belongs_to
+  via: market_group_id (group-level dispatch)
+- from: DispatchEvent
+  to: Nomination
+  type: references
+  via: nomination_kw on the timeslot
+- from: MeterUploadJob
+  to: Meter
+  type: has_many
+  via: job_id → created meter ids (getMeterBatchJob)
+- from: ProvisionalAsset
+  to: Meter
+  type: becomes
+  via: successful validation and market registration
+- from: IntervalDataUpload
+  to: Meter
+  type: has_many
+  via: meter_id column in the uploaded file
+- from: MissingInterval
+  to: Meter
+  type: belongs_to
+  via: meter_id
+- from: PeriodicReport
+  to: RevenueAggregation
+  type: has_many
+  via: settlement period + report version
+- from: RevenueAggregation
+  to: Meter
+  type: belongs_to
+  via: meter_id (meter aggregation)
+- from: PerformanceRecord
+  to: DispatchEvent
+  type: belongs_to
+  via: meter_event_id / event window
+- from: WebhookSubscription
+  to: WebhookEvent
+  type: has_many
+  via: subscribed webhook_event_type values
+- from: ConnectSession
+  to: Meter
+  type: produces
+  via: partner_reference (refId) once utility authorization completes
+enumerations:
+  transmission_region: [CAISO, NYISO, PJM, ERCOT, WECC_PC, WECC_SW, ISONE]
+  meter_type: [UTILITY_METER, DEVICE]
+  customer_classification: [RESIDENTIAL, COMMERCIAL]
+  participation_preference: [PARTICIPATE, IDLE, DISENROLL]
+  global_enrollment_status: [ELIGIBLE, INELIGIBLE]
+  performance_compensation_cap: [up-to-site-load, grid-exports-allowed]
+  dispatch_event_types: [day-ahead, hour-ahead, standard, capacity-test]
+  connect_session_status: [CREATED, UPDATED, CLOSED, COMPLETED]
+  connect_authorization_status: [INITIATED, COMPLETED, FAILED]
+  enumeration_note: >-
+    Values transcribed from the published specs and example payloads; each enum is defined per spec
+    and the lists above are the union observed, not a Leap-published master list.
+render: none — no subway/ or diagram artifact in this repo yet

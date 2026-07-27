@@ -1,0 +1,44 @@
+# API Evangelist enrichment overlay
+# generated: 2026-07-27
+# method: generated
+# source: openapi/leapfrog-power-meter-details-openapi.yml
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Leap Meter Details
+  version: 1.0.0
+extends: openapi/leapfrog-power-meter-details-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: leapfrog-power
+    x-apievangelist-company: Leap (Leapfrog Power, Inc.)
+    x-apievangelist-harvested-from: https://api.leap.energy/v2/openapi-docs/meters.yaml
+    x-apievangelist-harvest-date: '2026-07-27'
+    x-apievangelist-operations: 2
+    x-apievangelist-summary: Meter, customer, site, device and utility detail reads.
+    x-apievangelist-artifacts:
+      authentication: authentication/leapfrog-power-authentication.yml
+      conventions: conventions/leapfrog-power-conventions.yml
+      errors: errors/leapfrog-power-problem-types.yml
+      error_codes: errors/leapfrog-power-error-codes.yml
+      lifecycle: lifecycle/leapfrog-power-lifecycle.yml
+      sandbox: sandbox/leapfrog-power-sandbox.yml
+      events: asyncapi/leapfrog-power-events-asyncapi.yml
+      data_model: data-model/leapfrog-power-data-model.yml
+    x-apievangelist-access:
+      documentation: open — every guide, reference page and OpenAPI downloads anonymously
+      api: partner-only — keys are issued inside a Leap-provisioned partner account
+      signup: https://partner.leap.energy/
+- target: $.info
+  update:
+    x-apievangelist-governance-notes:
+    - 'No Idempotency-Key: writes are not idempotent — see conventions/leapfrog-power-conventions.yml.'
+    - No rate-limit headers and no 429 declared; volume is bounded by explicit payload caps.
+    - No request-correlation header declared.
+    - Errors are not RFC 9457 — three envelopes are in use across the eight Leap definitions.
+- target: $.servers
+  update:
+  - url: https://api.staging.leap.energy
+    description: Leap staging API — keys are environment-scoped; a mismatch returns 403
+  - url: https://api.leap.energy
+    description: Leap production API

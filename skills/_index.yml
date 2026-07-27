@@ -1,0 +1,54 @@
+generated: '2026-07-27'
+method: generated
+source: openapi/* (all operationIds verified against the harvested definitions), https://developer.leap.energy/docs/home
+search_note: >-
+  Leap publishes no AGENTS.md, skill files or agent operating instructions — the developer portal
+  index (llms.txt) lists guides, reference pages, recipes and changelog entries only. These skills
+  are API Evangelist generated, one per marquee flow in Leap's own meter-lifecycle segmentation
+  (onboard → manage → nominate → dispatch → settle), and every operationId cited exists verbatim in
+  the referenced definition.
+skills:
+- file: leapfrog-power-onboard-meters.md
+  name: Onboard meters into the Leap platform
+  api: openapi/leapfrog-power-create-meters-openapi.yml
+  stage: onboard
+  operations: [createMeterBatchJob, getMeterBatchJob, listMeterBatchJobs, listMeterBatchJobsFilters,
+    createSingleMeter, listProvisionalAssets, listProvisionalAssetsFilters]
+- file: leapfrog-power-monitor-enrollment.md
+  name: Monitor Leap meter enrollment and clear required actions
+  api: openapi/leapfrog-power-meter-enrollment-openapi.yml
+  stage: manage
+  operations: [getMeterEnrollment, searchMeterEnrollments, getMeterDetails, searchMeterDetails]
+- file: leapfrog-power-manage-nominations.md
+  name: Suggest and manage Leap market nominations
+  api: openapi/leapfrog-power-nominations-openapi.yml
+  stage: nominate
+  operations: [getMeterNominationSuggestions, postMeterNominationSuggestions, postNominationSuggestions,
+    deleteMeterNominationSuggestion, searchNominationSuggestions, searchNominations]
+- file: leapfrog-power-process-dispatch.md
+  name: Receive and process Leap grid dispatch events
+  api: openapi/leapfrog-power-dispatch-openapi.yml
+  stage: dispatch
+  operations: [createOrUpdateMeterDispatchWebhook, getMeterDispatchWebhook, deleteMeterDispatchWebhook,
+    triggerTestMeterDispatchNotification, triggerCommunicationTestMeterDispatch,
+    createOrUpdateGroupDispatchWebhook, getGroupDispatchWebhook, deleteGroupDispatchWebhook,
+    triggerTestGroupDispatchNotification, searchMeterDispatches, searchGroupDispatches]
+- file: leapfrog-power-subscribe-webhooks.md
+  name: Subscribe to Leap webhook platform events
+  api: openapi/leapfrog-power-webhooks-openapi.yml
+  stage: events
+  operations: [listWebhooks, createWebhook, updateWebhook, deleteWebhook, testWebhook]
+- file: leapfrog-power-revenue-reporting.md
+  name: Pull Leap revenue, settlement and performance data
+  api: openapi/leapfrog-power-revenue-analytics-openapi.yml
+  stage: settle
+  operations: [getPeriodicReports, getPeriodicReportVersions, getYearlyOverview,
+    postMeterSearchPeriodicAggregationSearch, postCustomerSearchPeriodicAggregationSearch,
+    postUtilitySearchPeriodicAggregationSearch, postLoadTypeSearchPeriodicAggregationSearch,
+    postMarketGroupSearchPeriodicAggregationSearch, postMonthlyUnresponsiveMetersPerformance]
+- file: leapfrog-power-upload-interval-data.md
+  name: Upload partner interval data to Leap
+  api: openapi/leapfrog-power-interval-data-upload-openapi.json
+  stage: settle
+  operations: [uploadIntervalData, listIntervalDataUploads, listIntervalDataUploadErrors,
+    intervalDataFilePreview, intervalDataPresignedUrl, searchMissingIntervalData]

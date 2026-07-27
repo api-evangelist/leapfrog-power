@@ -1,0 +1,283 @@
+generated: '2026-07-27'
+method: derived
+status: candidate
+source: openapi/leapfrog-power-create-meters-openapi.yml, openapi/leapfrog-power-dispatch-openapi.yml,
+  openapi/leapfrog-power-interval-data-upload-openapi.json, openapi/leapfrog-power-meter-details-openapi.yml,
+  openapi/leapfrog-power-meter-enrollment-openapi.yml, openapi/leapfrog-power-nominations-openapi.yml,
+  openapi/leapfrog-power-revenue-analytics-openapi.yml, openapi/leapfrog-power-webhooks-openapi.yml
+search_note: >-
+  No official or third-party Leap MCP server exists. Searched the official MCP registry
+  (registry.modelcontextprotocol.io, query "leap"), npm (query "mcp leap energy"), the Leap
+  developer portal and its llms.txt index — no hits. The only agent-facing surface Leap
+  publishes today is https://developer.leap.energy/llms.txt. The tool list below is DERIVED
+  one-to-one from the 48 operations in the eight published OpenAPI definitions and is a
+  candidate design, not a Leap product.
+server:
+  name: leapfrog-power
+  transport: http
+  url: null
+  base_url: https://api.leap.energy
+  staging_base_url: https://api.staging.leap.energy
+  auth:
+    type: bearer
+    header: Authorization
+    note: >-
+      Partner-Portal-issued API key, scoped to a single environment and carrying per-key
+      permissions. A staging key used against production returns 403. See
+      authentication/leapfrog-power-authentication.yml.
+safety_notes:
+- Read tools (get_*, list_*, search_*) return partner-scoped consented meter, enrollment, dispatch
+  and settlement data and are the safe default surface.
+- 'Write tools carry real grid and revenue consequences and should require explicit confirmation:
+  create_meter_batch_job / create_single_meter add billable inventory; post_*_nomination_suggestions
+  offers capacity into a wholesale market; create_or_update_meter_dispatch_webhook and
+  create_or_update_group_dispatch_webhook redirect live grid dispatch traffic away from the
+  partner''s existing receiver.'
+- Leap documents no idempotency key. A retried write is a second write — see
+  conventions/leapfrog-power-conventions.yml.
+- Test-notification tools (trigger_test_meter_dispatch_notification, trigger_test_group_dispatch_notification,
+  trigger_communication_test_meter_dispatch, test_webhook) run on the same infrastructure as real
+  dispatch events and are flagged only by integration_test_notification=true in the payload.
+tool_count: 48
+tools:
+- name: list_meter_batch_jobs
+  description: List meter jobs
+  method: GET
+  path: /v1.1/jobs/meters
+  source_operation: openapi/leapfrog-power-create-meters-openapi.yml#listMeterBatchJobs
+- name: create_meter_batch_job
+  description: Create meters
+  method: POST
+  path: /v1.1/jobs/meters
+  source_operation: openapi/leapfrog-power-create-meters-openapi.yml#createMeterBatchJob
+- name: list_meter_batch_jobs_filters
+  description: List meter upload filters
+  method: GET
+  path: /v1.1/jobs/meter-job-filters
+  source_operation: openapi/leapfrog-power-create-meters-openapi.yml#listMeterBatchJobsFilters
+- name: get_meter_batch_job
+  description: Get meters job status
+  method: GET
+  path: /v1.1/jobs/meters/{job_id}
+  source_operation: openapi/leapfrog-power-create-meters-openapi.yml#getMeterBatchJob
+- name: create_single_meter
+  description: Create a single meter
+  method: POST
+  path: /v1.1/meters
+  source_operation: openapi/leapfrog-power-create-meters-openapi.yml#createSingleMeter
+- name: list_provisional_assets
+  description: List provisional assets
+  method: GET
+  path: /v1.1/provisional-assets
+  source_operation: openapi/leapfrog-power-create-meters-openapi.yml#listProvisionalAssets
+- name: list_provisional_assets_filters
+  description: List provisional assets filters
+  method: GET
+  path: /v1.1/provisional-assets-filters
+  source_operation: openapi/leapfrog-power-create-meters-openapi.yml#listProvisionalAssetsFilters
+- name: search_meter_dispatches
+  description: Search meter dispatches
+  method: POST
+  path: /v2/dispatch/meter/search
+  source_operation: openapi/leapfrog-power-dispatch-openapi.yml#searchMeterDispatches
+- name: search_group_dispatches
+  description: Search group dispatches
+  method: POST
+  path: /v2/dispatch/group/search
+  source_operation: openapi/leapfrog-power-dispatch-openapi.yml#searchGroupDispatches
+- name: trigger_communication_test_meter_dispatch
+  description: Trigger meter communication test
+  method: POST
+  path: /v2/dispatch/meter/communication_test
+  source_operation: openapi/leapfrog-power-dispatch-openapi.yml#triggerCommunicationTestMeterDispatch
+- name: delete_meter_dispatch_webhook
+  description: Delete meter dispatch webhook URL
+  method: DELETE
+  path: /v2/dispatch/meter/webhook
+  source_operation: openapi/leapfrog-power-dispatch-openapi.yml#deleteMeterDispatchWebhook
+- name: get_meter_dispatch_webhook
+  description: Get meter webhook URL
+  method: GET
+  path: /v2/dispatch/meter/webhook
+  source_operation: openapi/leapfrog-power-dispatch-openapi.yml#getMeterDispatchWebhook
+- name: create_or_update_meter_dispatch_webhook
+  description: Set meter webhook URL
+  method: PUT
+  path: /v2/dispatch/meter/webhook
+  source_operation: openapi/leapfrog-power-dispatch-openapi.yml#createOrUpdateMeterDispatchWebhook
+- name: trigger_test_meter_dispatch_notification
+  description: Trigger test meter notification
+  method: POST
+  path: /v2/dispatch/meter/webhook/integration_test
+  source_operation: openapi/leapfrog-power-dispatch-openapi.yml#triggerTestMeterDispatchNotification
+- name: delete_group_dispatch_webhook
+  description: Delete group webhook URL
+  method: DELETE
+  path: /v2/dispatch/group/webhook
+  source_operation: openapi/leapfrog-power-dispatch-openapi.yml#deleteGroupDispatchWebhook
+- name: get_group_dispatch_webhook
+  description: Get group webhook URL
+  method: GET
+  path: /v2/dispatch/group/webhook
+  source_operation: openapi/leapfrog-power-dispatch-openapi.yml#getGroupDispatchWebhook
+- name: create_or_update_group_dispatch_webhook
+  description: Set group webhook URL
+  method: PUT
+  path: /v2/dispatch/group/webhook
+  source_operation: openapi/leapfrog-power-dispatch-openapi.yml#createOrUpdateGroupDispatchWebhook
+- name: trigger_test_group_dispatch_notification
+  description: Trigger test group notification
+  method: POST
+  path: /v2/dispatch/group/webhook/integration_test
+  source_operation: openapi/leapfrog-power-dispatch-openapi.yml#triggerTestGroupDispatchNotification
+- name: list_interval_data_uploads
+  description: List interval data upload statuses
+  method: GET
+  path: /v1.1/jobs/interval-data-uploads
+  source_operation: openapi/leapfrog-power-interval-data-upload-openapi.json#listIntervalDataUploads
+- name: list_interval_data_upload_errors
+  description: List data validation errors
+  method: GET
+  path: /v1.1/jobs/interval-data-uploads/{job_id}
+  source_operation: openapi/leapfrog-power-interval-data-upload-openapi.json#listIntervalDataUploadErrors
+- name: interval_data_presigned_url
+  description: Returns a presigned S3 URL to download the file that was uploaded previously. Can be filtered for
+    lines which caused errors
+  method: GET
+  path: /v1.1/jobs/interval-data-uploads/presigned-url/{job_id}
+  source_operation: openapi/leapfrog-power-interval-data-upload-openapi.json#intervalDataPresignedUrl
+- name: interval_data_file_preview
+  description: Provides a preview of interval data uploaded during the specified job.
+  method: GET
+  path: /v1.1/jobs/interval-data-uploads/file-preview/{job_id}
+  source_operation: openapi/leapfrog-power-interval-data-upload-openapi.json#intervalDataFilePreview
+- name: search_missing_interval_data
+  description: Search for missing interval data
+  method: POST
+  path: /v1.1/missing-interval-data/search
+  source_operation: openapi/leapfrog-power-interval-data-upload-openapi.json#searchMissingIntervalData
+- name: upload_interval_data
+  description: Upload load interval data
+  method: POST
+  path: /v1.1/interval-data
+  source_operation: openapi/leapfrog-power-interval-data-upload-openapi.json#uploadIntervalData
+- name: get_meter_details
+  description: Get meter details
+  method: GET
+  path: /v2/meters/{meter_id}
+  source_operation: openapi/leapfrog-power-meter-details-openapi.yml#getMeterDetails
+- name: search_meter_details
+  description: Search meter details
+  method: POST
+  path: /v2/meters/search
+  source_operation: openapi/leapfrog-power-meter-details-openapi.yml#searchMeterDetails
+- name: get_meter_enrollment
+  description: Get meter enrollment
+  method: GET
+  path: /v2/meters/{meter_id}/enrollments
+  source_operation: openapi/leapfrog-power-meter-enrollment-openapi.yml#getMeterEnrollment
+- name: search_meter_enrollments
+  description: Search meter enrollments
+  method: POST
+  path: /v2/meters/enrollments/search
+  source_operation: openapi/leapfrog-power-meter-enrollment-openapi.yml#searchMeterEnrollments
+- name: get_meter_nomination_suggestions
+  description: Get suggested nominations
+  method: GET
+  path: /v2/meters/{meter_id}/nominations/suggestions
+  source_operation: openapi/leapfrog-power-nominations-openapi.yml#getMeterNominationSuggestions
+- name: post_meter_nomination_suggestions
+  description: Suggest meter nominations
+  method: POST
+  path: /v2/meters/{meter_id}/nominations/suggestions
+  source_operation: openapi/leapfrog-power-nominations-openapi.yml#postMeterNominationSuggestions
+- name: delete_meter_nomination_suggestion
+  description: Delete suggested nominations
+  method: DELETE
+  path: /v2/meters/{meter_id}/nominations/suggestions/{nomination_suggestion_id}
+  source_operation: openapi/leapfrog-power-nominations-openapi.yml#deleteMeterNominationSuggestion
+- name: post_nomination_suggestions
+  description: Suggest bulk nominations
+  method: POST
+  path: /v2/meters/nominations/suggestions
+  source_operation: openapi/leapfrog-power-nominations-openapi.yml#postNominationSuggestions
+- name: search_nomination_suggestions
+  description: Search suggested nominations
+  method: POST
+  path: /v2/meters/nominations/suggestions/search
+  source_operation: openapi/leapfrog-power-nominations-openapi.yml#searchNominationSuggestions
+- name: search_nominations
+  description: Search nominations
+  method: POST
+  path: /v2/meters/nominations/search
+  source_operation: openapi/leapfrog-power-nominations-openapi.yml#searchNominations
+- name: post_customer_search_periodic_aggregation_search
+  description: Revenue by customer
+  method: POST
+  path: /v1.1/revenue/periodic/aggregation/customer/search
+  source_operation: openapi/leapfrog-power-revenue-analytics-openapi.yml#postCustomerSearchPeriodicAggregationSearch
+- name: post_load_type_search_periodic_aggregation_search
+  description: Revenue by load type
+  method: POST
+  path: /v1.1/revenue/periodic/aggregation/load-type/search
+  source_operation: openapi/leapfrog-power-revenue-analytics-openapi.yml#postLoadTypeSearchPeriodicAggregationSearch
+- name: post_market_group_search_periodic_aggregation_search
+  description: Revenue by market group
+  method: POST
+  path: /v1.1/revenue/periodic/aggregation/market-group/search
+  source_operation: openapi/leapfrog-power-revenue-analytics-openapi.yml#postMarketGroupSearchPeriodicAggregationSearch
+- name: post_meter_search_periodic_aggregation_search
+  description: Revenue by meter
+  method: POST
+  path: /v1.1/revenue/periodic/aggregation/meter/search
+  source_operation: openapi/leapfrog-power-revenue-analytics-openapi.yml#postMeterSearchPeriodicAggregationSearch
+- name: post_utility_search_periodic_aggregation_search
+  description: Revenue by utility
+  method: POST
+  path: /v1.1/revenue/periodic/aggregation/utility/search
+  source_operation: openapi/leapfrog-power-revenue-analytics-openapi.yml#postUtilitySearchPeriodicAggregationSearch
+- name: get_periodic_reports
+  description: Get monthly revenue reports
+  method: GET
+  path: /v1.1/revenue/periodic/reports
+  source_operation: openapi/leapfrog-power-revenue-analytics-openapi.yml#getPeriodicReports
+- name: get_periodic_report_versions
+  description: Get revenue report versions
+  method: GET
+  path: /v1.1/revenue/periodic/versions
+  source_operation: openapi/leapfrog-power-revenue-analytics-openapi.yml#getPeriodicReportVersions
+- name: get_yearly_overview
+  description: Get annual revenue data
+  method: GET
+  path: /v1.1/revenue/yearly/{year}
+  source_operation: openapi/leapfrog-power-revenue-analytics-openapi.yml#getYearlyOverview
+- name: post_monthly_unresponsive_meters_performance
+  description: Monthly unresponsive meters
+  method: POST
+  path: /v1.1/performance/diagnosis/monthly/unresponsive/meters
+  source_operation: openapi/leapfrog-power-revenue-analytics-openapi.yml#postMonthlyUnresponsiveMetersPerformance
+- name: list_webhooks
+  description: List webhooks
+  method: GET
+  path: /v1.1/webhooks
+  source_operation: openapi/leapfrog-power-webhooks-openapi.yml#listWebhooks
+- name: create_webhook
+  description: Create a webhook
+  method: POST
+  path: /v1.1/webhooks
+  source_operation: openapi/leapfrog-power-webhooks-openapi.yml#createWebhook
+- name: delete_webhook
+  description: Delete a webhook
+  method: DELETE
+  path: /v1.1/webhooks/{webhook_id}
+  source_operation: openapi/leapfrog-power-webhooks-openapi.yml#deleteWebhook
+- name: update_webhook
+  description: Update a webhook
+  method: PUT
+  path: /v1.1/webhooks/{webhook_id}
+  source_operation: openapi/leapfrog-power-webhooks-openapi.yml#updateWebhook
+- name: test_webhook
+  description: Test a webhook
+  method: POST
+  path: /v1.1/webhooks/{webhook_id}/test
+  source_operation: openapi/leapfrog-power-webhooks-openapi.yml#testWebhook

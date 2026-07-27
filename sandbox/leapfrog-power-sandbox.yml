@@ -1,0 +1,106 @@
+generated: '2026-07-27'
+method: searched
+source: https://developer.leap.energy/docs/test-utilities, https://developer.leap.energy/docs/getting-started,
+  https://developer.leap.energy/docs/webhook-setup, https://developer.leap.energy/docs/webhook-push-notifications-v2,
+  https://developer.leap.energy/docs/event-processing-test-cases
+docs: https://developer.leap.energy/docs/test-utilities
+summary: >-
+  Leap runs a full staging environment that mirrors production, with its own API host, its own
+  Partner Portal and separately-issued keys. Because electric utilities generally provide neither
+  test environments nor test credentials, Leap fills the gap with "Staging Demo Utilities" —
+  synthetic CAISO and NYISO utilities that let a partner drive a Leap Connect authorization flow
+  end to end, create test meters in staging, and simulate Connect and meter status scenarios. The
+  sandbox is real but not self-serve: it opens only after Leap provisions a partner account.
+environments:
+- name: production
+  api_base_url: https://api.leap.energy
+  portal: https://partner.leap.energy/actions
+  api_keys: https://partner.leap.energy/account?settings=apiKeys
+- name: staging
+  api_base_url: https://api.staging.leap.energy
+  portal: https://partner.staging.leap.energy/actions
+  api_keys: https://partner.staging.leap.energy/account?settings=apiKeys
+key_model:
+  environment_scoped: true
+  prefixes: >-
+    none published — Leap API keys carry no documented test/live prefix. Environment is determined
+    by which portal issued the key and which host it is sent to; a mismatch returns 403.
+  credentials_note: The same portal user credentials work in both production and staging; inviting a
+    user in the production Partner Account page automatically grants staging access.
+  browser_token: >-
+    Logging into the developer portal (SSO against the Partner Portal) auto-populates a temporary
+    bearer token in the CREDENTIALS box on API reference pages so calls can be made from the
+    browser "Try It" console against either environment.
+demo_utilities:
+  description: >-
+    Synthetic utilities available only in staging, used to validate the customer experience of a
+    Leap Connect flow, complete a flow and check the final redirect URL, create test meters in the
+    CA or NY regions, and simulate Connect API and Meters API scenarios.
+  supported_regions: [CAISO, NYISO]
+  url_templates:
+  - region: CAISO
+    url: https://staging.addleap.com/<org-name>/staging-test-utility-caiso/getting-started?refId=<refId>
+  - region: NYISO
+    url: https://staging.addleap.com/<org-name>/staging-test-utility-nyiso/getting-started?refId=<refId>
+  url_variables:
+  - name: org-name
+    description: The partner name for the Leap tenant, shown top-left on the Partner Account page.
+  - name: refId
+    description: Optional but recommended — the partner's own identifier for the customer or site,
+      required for the resulting connections to be visible in the Connect API and UI.
+  discovery: Also available in the Partner Portal under the Connections tab via the "+ Connect link"
+    button.
+  usage: Opening the utility presents a menu of test cases; clicking Send executes the selected
+    scenario against the partner's staging account.
+  limitations:
+  - PJM has a demo utility for validating the customer experience, but no test credentials exist to
+    complete the flow through to the final redirect URL.
+  - ERCOT is tested through the Leap Connect form flow — any valid Texas address completes the
+    process in staging.
+  - Real utility login pages cannot be reached in staging; utilities provide no test environments,
+    so staging Connect flows redirect to an error page when a real utility is selected.
+test_values:
+  published: false
+  note: >-
+    Leap publishes no fixed magic identifiers, test meter IDs, test card equivalents or fixture
+    values. Test meters are generated per partner through the staging demo utility, so there are no
+    verbatim test values to record. Example UUIDs in the docs (11111111-1111-1111-1111-111111111111)
+    are documentation placeholders, not working fixtures.
+production_testing:
+  note: >-
+    Testing connect and meter statuses in production requires a real meter (an employee or
+    friendly-customer meter). Otherwise testing must be done in staging.
+webhook_testing:
+  external_receiver: >-
+    Leap's documentation recommends https://webhook.site (and Mockbin for dispatch) to stand up a
+    throwaway receiver URL before exposing a real endpoint.
+  endpoints:
+  - POST /v1.1/webhooks/{webhook_id}/test — testWebhook, sends a test event to the configured
+    receiver_url
+  - POST /v2/dispatch/meter/webhook/integration_test — triggerTestMeterDispatchNotification
+  - POST /v2/dispatch/group/webhook/integration_test — triggerTestGroupDispatchNotification
+  - POST /v2/dispatch/meter/communication_test — triggerCommunicationTestMeterDispatch
+  receiver_requirements: HTTPS on port 443, 8443 or 8843, TLS 1.2 or 1.3, any 2xx within 10 seconds.
+  test_flag: >-
+    Test notifications travel over the same service and source IPs as real market events; the only
+    difference is integration_test_notification=true in the posted body.
+  parameterization: >-
+    The trigger endpoints let the partner define the meter/group IDs and the full timeslots array,
+    so multi-timeslot and multi-meter events can be simulated exactly as a real market event would
+    arrive.
+dispatch_test_cases:
+  url: https://developer.leap.energy/docs/event-processing-test-cases
+  purpose: A published set of scenarios for validating a partner's dispatch event processing logic.
+  reference_values: >-
+    The priority, performance_compensation_cap and is_voluntary values to use per program are
+    published in the Dispatch Event & Program Prioritization guide in the Knowledge Center, which
+    requires Partner Portal credentials.
+time_simulation:
+  supported: false
+  note: No test clock or time-travel facility is documented.
+access:
+  self_serve: false
+  note: >-
+    Neither environment can be entered without a Leap-provisioned partner account — contact an
+    account manager or partners@leap.ac. All documentation, including this testing guide and all
+    eight OpenAPI definitions, is readable anonymously.

@@ -1,0 +1,102 @@
+generated: '2026-07-27'
+method: searched
+source: https://developer.leap.energy/changelog
+docs: https://developer.leap.energy/changelog
+summary: >-
+  Leap runs a dated developer-portal changelog (ReadMe-hosted). Entries are feature announcements
+  rather than semantic version releases — there is no version number on a post — but every entry
+  carries a publication date, names the affected endpoints, and links the migration guide when a
+  path or shape changes. The ten most recent entries are captured below, newest first, with dates
+  taken from the created_at values embedded in the changelog page.
+scheme: dated-feature-entries
+version_numbering: none per entry — services are versioned in the URI path (see lifecycle/leapfrog-power-lifecycle.yml)
+window: 2025-03-13 to 2026-07-15 (10 most recent entries)
+entries:
+- date: '2026-07-15'
+  title: Unresponsive Meters API Released
+  slug: unresponsive-meters-api-released
+  type: ga
+  breaking: false
+  highlights:
+  - The unresponsive meters endpoint (postMonthlyUnresponsiveMetersPerformance) left beta and is
+    supported for automating alerting on non-responsive meters.
+- date: '2026-04-22'
+  title: Meters API V1 Deprecation Date Set
+  slug: meters-api-v1-deprecation-date-set
+  type: deprecation
+  breaking: true
+  sunset_date: '2026-10-31'
+  highlights:
+  - Meters API v1 Get Meter and Search Meters endpoints will be deprecated on October 31, 2026.
+  - 'Migration options published: meter webhook events (recommended) or Meters API v2 endpoints.'
+- date: '2026-03-12'
+  title: Webhook Platform Released
+  slug: webhook-platform-released
+  type: feature
+  breaking: false
+  highlights:
+  - Event catalog expanded beyond dispatch notifications to Connect session start/update, meter
+    creation, enrollment status, participation status, VPP group membership and required partner
+    actions.
+- date: '2025-12-10'
+  title: Partner Reference ID Added to Dispatch Notifications
+  slug: partner-reference-id-added-to-dispatch-notifications
+  type: addition
+  breaking: false
+  highlights:
+  - partner_reference is now included in all dispatch notifications — webhook and Dispatch API,
+    meter and group level.
+- date: '2025-12-08'
+  title: Connect Webhooks Released
+  slug: connect-webhooks-released
+  type: feature
+  breaking: false
+  highlights:
+  - connect_session.updated and connect_session.authorization_updated released.
+  - Leap recommends these events instead of polling the Connect API.
+- date: '2025-11-21'
+  title: New Webhook Platform Released
+  slug: new-webhook-platform-released
+  type: ga
+  breaking: true
+  highlights:
+  - Webhook platform left beta; the subscription management endpoints moved from /beta to /v1.1.
+- date: '2025-10-24'
+  title: Leap Connect Updates
+  slug: leap-connect-updates
+  type: feature
+  breaking: false
+  highlights:
+  - New Leap Connect URL structure at https://connect.leap.energy?transmissionRegion=&variant=&account=&refId=;
+    existing onboarding.leap.energy flows continue unchanged.
+  - Partners can now self-service their own Leap Connect URLs.
+- date: '2025-07-15'
+  title: Revenue API Released
+  slug: revenue-api-released
+  type: ga
+  breaking: true
+  highlights:
+  - Revenue API and Revenue tab reached general availability.
+  - Revenue API path moved from /beta to /v1; additional endpoints added.
+  - Missed Revenue metrics added; reporting expanded to ELRP and DSGS in California and preliminary
+    CSRP/DLRP in New York.
+- date: '2025-04-10'
+  title: Nomination value added to dispatch API & webhook events
+  slug: nomination-value-added-to-dispatch-api-webhook-events
+  type: addition
+  breaking: false
+  highlights:
+  - nomination_kw added to the timeslots array in both the Dispatch API and dispatch webhook events,
+    alongside the awarded energy_kw.
+  - 'Leap states verbatim that field additions like this are non-breaking for existing integrations.'
+- date: '2025-03-13'
+  title: Webhook Platform now in Beta
+  slug: webhook-platform-now-in-beta
+  type: beta
+  breaking: false
+  highlights:
+  - Initial meter.created event supported under the /beta path.
+older_entries_note: >-
+  The changelog carries entries older than this window (for example "Meters API V2 Now Released",
+  referenced from the deprecation post). Only the ten entries currently listed on the changelog
+  index were captured; the live changelog remains the source of truth.

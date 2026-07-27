@@ -1,0 +1,103 @@
+generated: '2026-07-27'
+method: derived
+source: openapi/leapfrog-power-interval-data-upload-openapi.json, openapi/leapfrog-power-dispatch-openapi.yml,
+  https://developer.leap.energy/reference/meter-events
+summary: >-
+  Leap publishes no central error-code registry page, but two of its services carry enumerated
+  code sets inside their OpenAPI definitions, and the enrollment webhook events carry a third
+  set of partner action codes. All three are transcribed verbatim below. This is the non-payments
+  sibling of a decline-code catalog: the codes tell a partner exactly which column of an interval
+  file failed, which dispatch call was rejected, and what configuration a meter is missing before
+  it can be enrolled in a program.
+registries:
+- id: interval-data-ingestion
+  scope: Row- and column-level validation errors on partner-supplied interval data files (CSV or
+    API upload), returned by listIntervalDataUploadErrors and summarized per column.
+  envelope_fields: [line, column, code, message]
+  summary_fields: [column, code, count]
+  source: openapi/leapfrog-power-interval-data-upload-openapi.json#/components/schemas/IntervalDataUploadIngestionError
+  codes:
+  - code: UNCATEGORISED
+    meaning: The error is not categorised (basically never happens).
+  - code: LIN_0001
+    meaning: Line is too short for the amount of columns.
+  - code: MTR_0001
+    meaning: meter_id column is not present.
+  - code: MTR_0002
+    meaning: meter_id value is not parsable.
+  - code: MTR_0003
+    meaning: meter_id does not point to a known meter.
+  - code: STM_0001
+    meaning: interval_start_time_utc is not present.
+  - code: STM_0002
+    meaning: interval_start_time_utc is not parsable.
+  - code: STM_0003
+    meaning: interval_start_time_utc is not correct — it either does not align to the right 15-minute
+      start or is in the future.
+  - code: ETM_0001
+    meaning: interval_end_time_utc is not present.
+  - code: ETM_0002
+    meaning: interval_end_time_utc is not parsable.
+  - code: ETM_0003
+    meaning: interval_end_time_utc is not correct — it either does not align to the right 15-minute
+      end or is in the future.
+  - code: DTR_0003
+    meaning: Date range is not correct — it is not 15 minutes in length, as depicted by the
+      interval_start_time_utc and interval_end_time_utc columns.
+  - code: GEN_0002
+    meaning: energy_generated_kwh is not a number.
+  - code: GEN_0003
+    meaning: energy_generated_kwh is not correct — it is probably negative.
+  - code: NET_0002
+    meaning: energy_net_kwh is not a number.
+  - code: CON_0002
+    meaning: energy_consumed_kwh is not a number.
+  - code: CON_0003
+    meaning: energy_consumed_kwh is not correct — it is probably negative.
+  - code: NRG_0001
+    meaning: No correct set of energy columns present. Supply energy_net_kwh, a combination of
+      energy_generated_kwh and energy_consumed_kwh, or all energy columns.
+  - code: NRG_0003
+    meaning: The energy columns are providing conflicting information.
+  - code: REG_0002
+    meaning: region is not parsable.
+  - code: REG_0003
+    meaning: region is not a valid state.
+  - code: FNL_0002
+    meaning: final is not parsable.
+- id: dispatch-service
+  scope: Dispatch API V2 error responses.
+  envelope_fields: [code, message, error_code]
+  source: openapi/leapfrog-power-dispatch-openapi.yml#/components/schemas/ErrorResponse
+  classes: [BAD_REQUEST, UNAUTHORIZED, FORBIDDEN, NOT_FOUND, METHOD_NOT_ALLOWED, UNSUPPORTED_MEDIA_TYPE,
+    SERVICE_UNAVAILABLE, INTERNAL_SERVER_ERROR]
+  codes:
+  - code: DISPATCH_INVALID_INPUT
+    meaning: The dispatch request body or filters failed validation.
+  - code: DISPATCH_NO_ACCESS_TO_RESOURCE
+    meaning: The key's partner account does not own the requested meter or market group.
+  - code: DISPATCH_UNAUTHORIZED
+    meaning: Missing, invalid or wrong-environment bearer token.
+  - code: DISPATCH_UNEXPECTED_ERROR
+    meaning: Unclassified dispatch-service failure.
+  - code: LEAP_DISPATCH_INTERNAL_ERROR_001
+    meaning: Internal dispatch-service error (class 001).
+  - code: LEAP_DISPATCH_INTERNAL_ERROR_002
+    meaning: Internal dispatch-service error (class 002).
+- id: enrollment-required-actions
+  scope: >-
+    Not HTTP errors — the action codes carried on the meter.enrollment.required-actions.updated
+    webhook event and on enrollment responses, telling the partner what must be fixed before a
+    meter can be enrolled in a program.
+  envelope_fields: [enrollment_deadline_date_time, action_type, action_description, action_code,
+    program_identifier, delivery_period]
+  source: https://developer.leap.energy/reference/meter-events
+  codes:
+  - code: SERV_0005
+    action_type: NO_MISSING_FIELDS
+    meaning: >-
+      Partner needs configuration for named fields — the published example cites Battery Energy
+      Capacity, Battery Power Capacity and Number Of Devices.
+  note: >-
+    Leap publishes only this one example code on the public event page; the full action-code list
+    lives behind Partner Portal credentials in the Knowledge Center and is NOT reproduced here.
