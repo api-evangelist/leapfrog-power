@@ -35,7 +35,7 @@ tags:
 - Smart Metering
 created: '2026-07-27'
 modified: '2026-07-27'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: leapfrog-power:leapfrog-power-create-meters-api
   name: Leap Create Meters API
