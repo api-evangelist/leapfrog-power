@@ -1,0 +1,182 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Interval Data Upload",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "interval_data_upload",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List interval data upload statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.staging.leap.energy/v1.1/jobs/interval-data-uploads",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Filter uploads with an uploaded_at_date_time on or after this timestamp (UTC, RFC 3339)."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Filter uploads with an uploaded_at_date_time on or before this timestamp (UTC, RFC 3339)."
+              },
+              {
+                "name": "file_path",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the original upload path on the Leap SFTP server (must start with `/interval-data/`)."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter uploads by ingestion status."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of uploads to return per page (1-500)."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token for pagination returned by a previous request."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Lists the uploaded interval files, regardless of whether they were uploaded through Leap's SFTP server or the Partner Portal."
+        },
+        {
+          "info": {
+            "name": "List data validation errors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.staging.leap.energy/v1.1/jobs/interval-data-uploads/:job_id",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path",
+                "description": "Ingestion job ID (UUID)."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Lists the validation errors produced while processing the file associated with the specified ingestion job ID. You can find these ingestion job IDs in the 'List all interval data uploads' endpoint or in the Partner Portal."
+        },
+        {
+          "info": {
+            "name": "Returns a presigned S3 URL to download the file that was uploaded previously. Can be filtered for lines which caused errors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.staging.leap.energy/v1.1/jobs/interval-data-uploads/presigned-url/:job_id",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path",
+                "description": "Ingestion job ID (UUID)."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a presigned S3 URL to download the file originally uploaded for the specified ingestion job. You can find the ingestion job IDs in the 'List all interval data uploads' endpoint or in the Partner Portal."
+        },
+        {
+          "info": {
+            "name": "Provides a preview of interval data uploaded during the specified job.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.staging.leap.energy/v1.1/jobs/interval-data-uploads/file-preview/:job_id",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path",
+                "description": "Ingestion job ID (UUID)."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "The interval data processed during the file upload. You can find these ingestion job IDs in the 'List all interval data uploads' endpoint or in the Partner Portal."
+        },
+        {
+          "info": {
+            "name": "Search for missing interval data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.staging.leap.energy/v1.1/missing-interval-data/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns the intervals for which interval data is missing for the requested meters within the given time window. Results are paginated; when more results are available the response includes a `next_page_token`, which you pass back as `page_token` to fetch the next page."
+        },
+        {
+          "info": {
+            "name": "Upload load interval data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.staging.leap.energy/v1.1/interval-data",
+            "params": [
+              {
+                "name": "schema",
+                "value": "load",
+                "type": "query",
+                "description": "The schema this upload should adhere to."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Uploads a file of load interval data and starts its ingestion. The file format is determined by the request `Content-Type` header (e.g. `text/csv`). Returns the ingestion ID used to track progress."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

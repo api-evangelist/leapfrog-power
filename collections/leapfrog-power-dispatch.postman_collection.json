@@ -1,0 +1,3576 @@
+{
+  "item": [
+    {
+      "id": "2c11bb04-1b00-446f-a284-b1e0fbcc30df",
+      "name": "meter-dispatches",
+      "description": {
+        "content": "Endpoints for meter dispatches",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "12b2e29a-d151-410e-88da-4864515ddf70",
+          "name": "Search meter dispatches",
+          "request": {
+            "name": "Search meter dispatches",
+            "description": {
+              "content": "Search meter dispatches that match the input filters",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dispatch",
+                "meter",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"end_date\": \"<dateTime>\",\n  \"start_date\": \"<dateTime>\",\n  \"meter_event_ids\": [\n    \"<uuid>\"\n  ],\n  \"meter_ids\": [\n    \"<uuid>\"\n  ],\n  \"exclude_real_time_events\": true,\n  \"exclude_voluntary_events\": false,\n  \"page_token\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8d40636f-95af-4944-bc54-c6485205db7b",
+              "name": "A list of meter dispatches that match the search input",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_date\": \"<dateTime>\",\n  \"start_date\": \"<dateTime>\",\n  \"meter_event_ids\": [\n    \"<uuid>\"\n  ],\n  \"meter_ids\": [\n    \"<uuid>\"\n  ],\n  \"exclude_real_time_events\": true,\n  \"exclude_voluntary_events\": false,\n  \"page_token\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"meter_id\": \"874900d5-61ec-3829-6005-96c4b8399548\",\n      \"timeslots\": [\n        {\n          \"cancelled\": \"<boolean>\",\n          \"dispatch_event_types\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"end_time\": \"2021-09-14T23:00:00Z\",\n          \"is_voluntary\": \"<boolean>\",\n          \"meter_event_id\": \"c150eb32-1bf8-98ad-31bb-3a986f6013c1\",\n          \"performance_compensation_cap\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"priority\": \"<integer>\",\n          \"programs\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"start_time\": \"2021-09-14T22:00:00Z\",\n          \"communication_test\": false,\n          \"energy_kw\": 115,\n          \"nomination_kw\": 115\n        }\n      ],\n      \"partner_reference\": \"string\"\n    },\n    {\n      \"meter_id\": \"9ad18bd3-9318-a014-ca09-4a9f9ce6f405\",\n      \"timeslots\": [\n        {\n          \"cancelled\": \"<boolean>\",\n          \"dispatch_event_types\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"end_time\": \"2021-09-14T23:00:00Z\",\n          \"is_voluntary\": \"<boolean>\",\n          \"meter_event_id\": \"a4217d27-ca38-5190-872d-6fb2b32395c8\",\n          \"performance_compensation_cap\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"priority\": \"<integer>\",\n          \"programs\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"start_time\": \"2021-09-14T22:00:00Z\",\n          \"communication_test\": false,\n          \"energy_kw\": 115,\n          \"nomination_kw\": 115\n        }\n      ],\n      \"partner_reference\": \"string\"\n    }\n  ],\n  \"next_page_token\": \"ffba84d4-f675-bb52-16f0-6043e9b86b30\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "969ac8f0-90c0-4eb5-8370-7f83ceed0ae5",
+              "name": "Request could not be parsed or is invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_date\": \"<dateTime>\",\n  \"start_date\": \"<dateTime>\",\n  \"meter_event_ids\": [\n    \"<uuid>\"\n  ],\n  \"meter_ids\": [\n    \"<uuid>\"\n  ],\n  \"exclude_real_time_events\": true,\n  \"exclude_voluntary_events\": false,\n  \"page_token\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab9db0aa-665b-49b1-8447-b06dab33f7e9",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_date\": \"<dateTime>\",\n  \"start_date\": \"<dateTime>\",\n  \"meter_event_ids\": [\n    \"<uuid>\"\n  ],\n  \"meter_ids\": [\n    \"<uuid>\"\n  ],\n  \"exclude_real_time_events\": true,\n  \"exclude_voluntary_events\": false,\n  \"page_token\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f69685c7-64fc-4b4c-a850-e33c1a96f52a",
+              "name": "No access to this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_date\": \"<dateTime>\",\n  \"start_date\": \"<dateTime>\",\n  \"meter_event_ids\": [\n    \"<uuid>\"\n  ],\n  \"meter_ids\": [\n    \"<uuid>\"\n  ],\n  \"exclude_real_time_events\": true,\n  \"exclude_voluntary_events\": false,\n  \"page_token\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d79dfd71-37d1-45ce-aef8-5d141843afc4",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_date\": \"<dateTime>\",\n  \"start_date\": \"<dateTime>\",\n  \"meter_event_ids\": [\n    \"<uuid>\"\n  ],\n  \"meter_ids\": [\n    \"<uuid>\"\n  ],\n  \"exclude_real_time_events\": true,\n  \"exclude_voluntary_events\": false,\n  \"page_token\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92c8695c-9469-4d19-9236-49327f3bb198",
+              "name": "Unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_date\": \"<dateTime>\",\n  \"start_date\": \"<dateTime>\",\n  \"meter_event_ids\": [\n    \"<uuid>\"\n  ],\n  \"meter_ids\": [\n    \"<uuid>\"\n  ],\n  \"exclude_real_time_events\": true,\n  \"exclude_voluntary_events\": false,\n  \"page_token\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18d40569-6637-4eff-837d-f91ccdca0e5e",
+          "name": "Trigger meter communication test",
+          "request": {
+            "name": "Trigger meter communication test",
+            "description": {
+              "content": "Create communication test that will trigger a webhook call with the corresponding dispatch notification data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dispatch",
+                "meter",
+                "communication_test"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"end_time\": \"<dateTime>\",\n  \"meter_uuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"program\": \"<string>\",\n  \"start_time\": \"<dateTime>\",\n  \"test_event\": \"<boolean>\",\n  \"dispatch_quantity_kw\": \"<double>\",\n  \"approved\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3d86be5e-1307-4fdc-a166-dbc8ecdc6b87",
+              "name": "Successfully triggered a communication test meter notification",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "communication_test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_time\": \"2023-02-21T23:59:00Z\",\n  \"meter_uuids\": [\n    \"dd21c76c-7126-4ef7-b0a6-f190fad300b2\"\n  ],\n  \"program\": \"CEC-DSGS\",\n  \"start_time\": \"2023-02-21T00:00:00Z\",\n  \"test_event\": false,\n  \"dispatch_quantity_kw\": 1000,\n  \"approved\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dispatch_status\": \"dispatch_status\",\n  \"start_time\": \"2021-09-14T22:00:00Z\",\n  \"end_time\": \"2021-09-14T23:00:00Z\",\n  \"test_event\": true,\n  \"program\": \"CEC-DSGS\",\n  \"approved\": false,\n  \"transmission_region\": \"CAISO\",\n  \"market_type\": \"hour-ahead\",\n  \"meter_count\": 1034\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9f29b4b-946a-4fee-80a9-59d4297210f4",
+              "name": "Request could not be parsed or is invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "communication_test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_time\": \"2023-02-21T23:59:00Z\",\n  \"meter_uuids\": [\n    \"dd21c76c-7126-4ef7-b0a6-f190fad300b2\"\n  ],\n  \"program\": \"CEC-DSGS\",\n  \"start_time\": \"2023-02-21T00:00:00Z\",\n  \"test_event\": false,\n  \"dispatch_quantity_kw\": 1000,\n  \"approved\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0c3b9d5-ece4-45b0-a63d-0b488e174f0c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "communication_test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_time\": \"2023-02-21T23:59:00Z\",\n  \"meter_uuids\": [\n    \"dd21c76c-7126-4ef7-b0a6-f190fad300b2\"\n  ],\n  \"program\": \"CEC-DSGS\",\n  \"start_time\": \"2023-02-21T00:00:00Z\",\n  \"test_event\": false,\n  \"dispatch_quantity_kw\": 1000,\n  \"approved\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d768f7b4-f2d7-42ed-a175-8edcd1d84849",
+              "name": "No access to this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "communication_test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_time\": \"2023-02-21T23:59:00Z\",\n  \"meter_uuids\": [\n    \"dd21c76c-7126-4ef7-b0a6-f190fad300b2\"\n  ],\n  \"program\": \"CEC-DSGS\",\n  \"start_time\": \"2023-02-21T00:00:00Z\",\n  \"test_event\": false,\n  \"dispatch_quantity_kw\": 1000,\n  \"approved\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8a56d5e-8ab5-4d13-b96f-a3e496143c40",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "communication_test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_time\": \"2023-02-21T23:59:00Z\",\n  \"meter_uuids\": [\n    \"dd21c76c-7126-4ef7-b0a6-f190fad300b2\"\n  ],\n  \"program\": \"CEC-DSGS\",\n  \"start_time\": \"2023-02-21T00:00:00Z\",\n  \"test_event\": false,\n  \"dispatch_quantity_kw\": 1000,\n  \"approved\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "905cdaac-a3ab-4a21-9563-7a503c0e2221",
+              "name": "Unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "communication_test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_time\": \"2023-02-21T23:59:00Z\",\n  \"meter_uuids\": [\n    \"dd21c76c-7126-4ef7-b0a6-f190fad300b2\"\n  ],\n  \"program\": \"CEC-DSGS\",\n  \"start_time\": \"2023-02-21T00:00:00Z\",\n  \"test_event\": false,\n  \"dispatch_quantity_kw\": 1000,\n  \"approved\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22a37261-e627-4c87-9b51-d46d52fd50d8",
+          "name": "Delete meter dispatch webhook URL",
+          "request": {
+            "name": "Delete meter dispatch webhook URL",
+            "description": {
+              "content": "Remove an existing webhook URL for meter dispatches",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dispatch",
+                "meter",
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "42d4cf1c-2b9a-43be-99ef-f6279bed5138",
+              "name": "Webhook URL has been removed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5f086df3-1eed-4154-af19-a64e28b01b33",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db6210ec-33f6-444a-88ab-fa8596851348",
+              "name": "No access to this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a252b08d-23d9-4c0a-9af7-b5abdaf5b202",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a2e2128-83b8-4ef8-bcba-ad9ce3298ed1",
+              "name": "Unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "563454ed-f854-4f94-bf85-bebd73de4a20",
+          "name": "Get meter webhook URL",
+          "request": {
+            "name": "Get meter webhook URL",
+            "description": {
+              "content": "Retrieve the registered webhook URL for meter dispatches",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dispatch",
+                "meter",
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c402e0d3-36bf-41be-b1f6-463bfe55e949",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"<uri>\",\n  \"headers\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d66313c-d556-47d4-b672-f4c84cfa2fd1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2b6ea0c-1a85-4747-97a6-e06ef0e1d87b",
+              "name": "No access to this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "505eed76-1397-49bf-8231-1797e75dfe80",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7f78618-b73f-4f3f-9670-c32dd84f8893",
+              "name": "Unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6f00f27-c575-45b2-8bf7-adad1a295899",
+          "name": "Set meter webhook URL",
+          "request": {
+            "name": "Set meter webhook URL",
+            "description": {
+              "content": "Create or update an existing webhook URL for meter dispatches",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dispatch",
+                "meter",
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<uri>\",\n  \"headers\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "14ee03f4-0e75-4f3a-96b3-6ce6067d4f3f",
+              "name": "Webhook URL updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"headers\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"<uri>\",\n  \"headers\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9a6f4f0-6dbb-49bd-b509-9cade88a6534",
+              "name": "Request could not be parsed or is invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"headers\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13c45fec-ddfc-4a58-b246-47b36bb38f63",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"headers\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "328433f8-379b-4b07-9e0a-48480ff543be",
+              "name": "No access to this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"headers\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62b239f4-6a94-420e-b3f7-c8a207882cf2",
+              "name": "Unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"headers\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d24f8cf3-975f-4585-b752-c8153e6cc069",
+          "name": "Trigger test meter notification",
+          "request": {
+            "name": "Trigger test meter notification",
+            "description": {
+              "content": "Create test notification that will trigger a webhook call with the corresponding dispatch notification data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dispatch",
+                "meter",
+                "webhook",
+                "integration_test"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"meter_dispatches\": [\n    {\n      \"meter_id\": \"<uuid>\",\n      \"timeslots\": [\n        {\n          \"cancelled\": \"<boolean>\",\n          \"dispatch_event_types\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"end_time\": \"<dateTime>\",\n          \"is_voluntary\": \"<boolean>\",\n          \"meter_event_id\": \"<uuid>\",\n          \"performance_compensation_cap\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"priority\": \"<integer>\",\n          \"programs\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"start_time\": \"<dateTime>\",\n          \"energy_kw\": \"<double>\",\n          \"nomination_kw\": \"<double>\"\n        }\n      ],\n      \"partner_reference\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1d7ee2d9-4aac-476f-af93-8796b39f57e0",
+              "name": "Successfully triggered a test meter notification to be sent to the registered meter webhook url\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook",
+                    "integration_test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_dispatches\": [\n    {\n      \"meter_id\": \"dd21c76c-7126-4ef7-b0a6-f190fad300b2\",\n      \"timeslots\": [\n        {\n          \"meter_event_id\": \"1acfced0-16f4-4fb7-b72e-5ff939ae541e\",\n          \"start_time\": \"2023-07-21T00:00:00.000Z\",\n          \"end_time\": \"2023-07-21T01:00:00.000Z\",\n          \"energy_kw\": 10,\n          \"nomination_kw\": 10,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        },\n        {\n          \"meter_event_id\": \"2ad4bbde-36ee-401f-92b8-c58aa17aa71d\",\n          \"start_time\": \"2023-07-21T01:00:00.000Z\",\n          \"end_time\": \"2023-07-21T02:00:00.000Z\",\n          \"energy_kw\": 10,\n          \"nomination_kw\": 10,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sent_time\": \"2023-01-23T04:56:07.000Z\",\n  \"headers\": {\n    \"key\": [\n      \"x-api-key\",\n      \"your-key\"\n    ]\n  },\n  \"http_status\": 200,\n  \"received_time\": \"2023-01-23T04:56:17.000Z\",\n  \"body\": \"body that is echoed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82ae336c-a7e2-4d4a-afbd-a56231662082",
+              "name": "Request could not be parsed or is invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook",
+                    "integration_test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_dispatches\": [\n    {\n      \"meter_id\": \"dd21c76c-7126-4ef7-b0a6-f190fad300b2\",\n      \"timeslots\": [\n        {\n          \"meter_event_id\": \"1acfced0-16f4-4fb7-b72e-5ff939ae541e\",\n          \"start_time\": \"2023-07-21T00:00:00.000Z\",\n          \"end_time\": \"2023-07-21T01:00:00.000Z\",\n          \"energy_kw\": 10,\n          \"nomination_kw\": 10,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        },\n        {\n          \"meter_event_id\": \"2ad4bbde-36ee-401f-92b8-c58aa17aa71d\",\n          \"start_time\": \"2023-07-21T01:00:00.000Z\",\n          \"end_time\": \"2023-07-21T02:00:00.000Z\",\n          \"energy_kw\": 10,\n          \"nomination_kw\": 10,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3dca8184-eb1c-4bde-bf45-bd87900f651e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook",
+                    "integration_test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_dispatches\": [\n    {\n      \"meter_id\": \"dd21c76c-7126-4ef7-b0a6-f190fad300b2\",\n      \"timeslots\": [\n        {\n          \"meter_event_id\": \"1acfced0-16f4-4fb7-b72e-5ff939ae541e\",\n          \"start_time\": \"2023-07-21T00:00:00.000Z\",\n          \"end_time\": \"2023-07-21T01:00:00.000Z\",\n          \"energy_kw\": 10,\n          \"nomination_kw\": 10,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        },\n        {\n          \"meter_event_id\": \"2ad4bbde-36ee-401f-92b8-c58aa17aa71d\",\n          \"start_time\": \"2023-07-21T01:00:00.000Z\",\n          \"end_time\": \"2023-07-21T02:00:00.000Z\",\n          \"energy_kw\": 10,\n          \"nomination_kw\": 10,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ad83180-2062-4037-85ac-9fbb30cc314a",
+              "name": "No access to this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook",
+                    "integration_test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_dispatches\": [\n    {\n      \"meter_id\": \"dd21c76c-7126-4ef7-b0a6-f190fad300b2\",\n      \"timeslots\": [\n        {\n          \"meter_event_id\": \"1acfced0-16f4-4fb7-b72e-5ff939ae541e\",\n          \"start_time\": \"2023-07-21T00:00:00.000Z\",\n          \"end_time\": \"2023-07-21T01:00:00.000Z\",\n          \"energy_kw\": 10,\n          \"nomination_kw\": 10,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        },\n        {\n          \"meter_event_id\": \"2ad4bbde-36ee-401f-92b8-c58aa17aa71d\",\n          \"start_time\": \"2023-07-21T01:00:00.000Z\",\n          \"end_time\": \"2023-07-21T02:00:00.000Z\",\n          \"energy_kw\": 10,\n          \"nomination_kw\": 10,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7797aa0-8145-44c2-90e3-3395565b245b",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook",
+                    "integration_test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_dispatches\": [\n    {\n      \"meter_id\": \"dd21c76c-7126-4ef7-b0a6-f190fad300b2\",\n      \"timeslots\": [\n        {\n          \"meter_event_id\": \"1acfced0-16f4-4fb7-b72e-5ff939ae541e\",\n          \"start_time\": \"2023-07-21T00:00:00.000Z\",\n          \"end_time\": \"2023-07-21T01:00:00.000Z\",\n          \"energy_kw\": 10,\n          \"nomination_kw\": 10,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        },\n        {\n          \"meter_event_id\": \"2ad4bbde-36ee-401f-92b8-c58aa17aa71d\",\n          \"start_time\": \"2023-07-21T01:00:00.000Z\",\n          \"end_time\": \"2023-07-21T02:00:00.000Z\",\n          \"energy_kw\": 10,\n          \"nomination_kw\": 10,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31a40fe5-22a8-4c89-a203-375e77572407",
+              "name": "Unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "meter",
+                    "webhook",
+                    "integration_test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_dispatches\": [\n    {\n      \"meter_id\": \"dd21c76c-7126-4ef7-b0a6-f190fad300b2\",\n      \"timeslots\": [\n        {\n          \"meter_event_id\": \"1acfced0-16f4-4fb7-b72e-5ff939ae541e\",\n          \"start_time\": \"2023-07-21T00:00:00.000Z\",\n          \"end_time\": \"2023-07-21T01:00:00.000Z\",\n          \"energy_kw\": 10,\n          \"nomination_kw\": 10,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        },\n        {\n          \"meter_event_id\": \"2ad4bbde-36ee-401f-92b8-c58aa17aa71d\",\n          \"start_time\": \"2023-07-21T01:00:00.000Z\",\n          \"end_time\": \"2023-07-21T02:00:00.000Z\",\n          \"energy_kw\": 10,\n          \"nomination_kw\": 10,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "002c0a61-35d1-4207-82bf-84e3777a9fb7",
+      "name": "group-dispatches",
+      "description": {
+        "content": "Endpoints for group dispatches",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bb04c79d-969c-47c7-aabb-57959329b529",
+          "name": "Search group dispatches",
+          "request": {
+            "name": "Search group dispatches",
+            "description": {
+              "content": "Search group dispatches that match the input filters",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dispatch",
+                "group",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"end_date\": \"<dateTime>\",\n  \"start_date\": \"<dateTime>\",\n  \"market_group_ids\": [\n    \"<uuid>\"\n  ],\n  \"market_group_event_ids\": [\n    \"<uuid>\"\n  ],\n  \"exclude_real_time_events\": true,\n  \"exclude_voluntary_events\": false,\n  \"page_token\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dd85f5a3-9d69-41dd-8a29-9f9b5f4531bb",
+              "name": "The group dispatches that match the search input",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_date\": \"<dateTime>\",\n  \"start_date\": \"<dateTime>\",\n  \"market_group_ids\": [\n    \"<uuid>\"\n  ],\n  \"market_group_event_ids\": [\n    \"<uuid>\"\n  ],\n  \"exclude_real_time_events\": true,\n  \"exclude_voluntary_events\": false,\n  \"page_token\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"market_group_id\": \"6ea57a9a-a3c9-db83-c882-1cbac3043abf\",\n      \"meter_ids\": [\n        \"0e91dea8-6aec-7996-2e5c-15d0fc668a45\",\n        \"aaf5b577-7284-8eea-a218-71ae23d81ab5\"\n      ],\n      \"timeslots\": [\n        {\n          \"market_group_event_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"communication_test\": false\n        }\n      ],\n      \"partner_references\": [\n        \"string\"\n      ]\n    },\n    {\n      \"market_group_id\": \"2b99ac7b-d23a-e84e-41d3-1214923db4e0\",\n      \"meter_ids\": [\n        \"4047f1e7-8a52-ad94-378c-d1a181865e50\",\n        \"9a6d8bbb-cbf9-d450-5c45-e7d9ea61093d\"\n      ],\n      \"timeslots\": [\n        {\n          \"market_group_event_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"communication_test\": false\n        }\n      ],\n      \"partner_references\": [\n        \"string\"\n      ]\n    }\n  ],\n  \"next_page_token\": \"9c43421f-4bc5-555c-b544-74d399600ceb\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c01fca5-856c-49fe-97e6-4139f4a444d5",
+              "name": "Request could not be parsed or is invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_date\": \"<dateTime>\",\n  \"start_date\": \"<dateTime>\",\n  \"market_group_ids\": [\n    \"<uuid>\"\n  ],\n  \"market_group_event_ids\": [\n    \"<uuid>\"\n  ],\n  \"exclude_real_time_events\": true,\n  \"exclude_voluntary_events\": false,\n  \"page_token\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4507cf6a-c8e1-4403-a642-2040521e0f0f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_date\": \"<dateTime>\",\n  \"start_date\": \"<dateTime>\",\n  \"market_group_ids\": [\n    \"<uuid>\"\n  ],\n  \"market_group_event_ids\": [\n    \"<uuid>\"\n  ],\n  \"exclude_real_time_events\": true,\n  \"exclude_voluntary_events\": false,\n  \"page_token\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d741523b-ffed-43f2-9ffd-f35728904026",
+              "name": "No access to this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_date\": \"<dateTime>\",\n  \"start_date\": \"<dateTime>\",\n  \"market_group_ids\": [\n    \"<uuid>\"\n  ],\n  \"market_group_event_ids\": [\n    \"<uuid>\"\n  ],\n  \"exclude_real_time_events\": true,\n  \"exclude_voluntary_events\": false,\n  \"page_token\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bde70478-9ee3-4b21-ada5-6bc51f1d7ece",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_date\": \"<dateTime>\",\n  \"start_date\": \"<dateTime>\",\n  \"market_group_ids\": [\n    \"<uuid>\"\n  ],\n  \"market_group_event_ids\": [\n    \"<uuid>\"\n  ],\n  \"exclude_real_time_events\": true,\n  \"exclude_voluntary_events\": false,\n  \"page_token\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6167018e-28f5-4e28-b9ed-f3b9cdcf1181",
+              "name": "Unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_date\": \"<dateTime>\",\n  \"start_date\": \"<dateTime>\",\n  \"market_group_ids\": [\n    \"<uuid>\"\n  ],\n  \"market_group_event_ids\": [\n    \"<uuid>\"\n  ],\n  \"exclude_real_time_events\": true,\n  \"exclude_voluntary_events\": false,\n  \"page_token\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8be9f240-7acb-4fe0-9791-ea830999c560",
+          "name": "Delete group webhook URL",
+          "request": {
+            "name": "Delete group webhook URL",
+            "description": {
+              "content": "Remove an existing webhook URL for group dispatches",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dispatch",
+                "group",
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5a2ca3e-ba85-48d8-9655-038fcbbb4775",
+              "name": "Webhook URL has been removed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7784fb05-2a8c-4767-b695-670b30bcc0e7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eee695d9-8298-4015-bba4-c4069154c17b",
+              "name": "No access to this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea19c4e4-ad05-4fb4-bc49-18db4acad9bd",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ec3f8e1-5aa6-451e-81a8-ac29a71c8480",
+              "name": "Unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5733197f-4c37-4916-8f3f-da9b74f0fb24",
+          "name": "Get group webhook URL",
+          "request": {
+            "name": "Get group webhook URL",
+            "description": {
+              "content": "Retrieve the registered webhook URL for group dispatches",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dispatch",
+                "group",
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15152457-73a9-4d87-b5d0-ea4bed6a8a3f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"headers\": [\n    {\n      \"name\": \"x-your-api-key\",\n      \"value\": \"81819286-3448-4f44-9b1b-3d742666fa5a\"\n    }\n  ],\n  \"url\": \"https://webhook.yourcompany.com\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "684a9d53-806c-450e-ae93-12660fcb17e0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae2e63f3-702e-4991-9053-7ddd3dc40792",
+              "name": "No access to this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "104e26b8-94b8-4090-bad5-24940dff656b",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "177ae200-7c64-48c2-8ddb-013ff90abf92",
+              "name": "Unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc99730c-7ee6-4841-9dfc-5a2c54a515d5",
+          "name": "Set group webhook URL",
+          "request": {
+            "name": "Set group webhook URL",
+            "description": {
+              "content": "Create or update an existing webhook URL for group dispatches",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dispatch",
+                "group",
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<uri>\",\n  \"headers\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cfa02c09-bb31-48bc-b9db-295d1c0b0883",
+              "name": "Webhook URL updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"headers\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"<uri>\",\n  \"headers\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "069c6a75-6db4-4749-bd95-97d14cb8e8a8",
+              "name": "Request could not be parsed or is invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"headers\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22dd536b-ace6-4f92-9f1b-f64fee67f42c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"headers\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b93443c-152a-4e61-969d-4a57728e4a79",
+              "name": "No access to this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"headers\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0412f9dd-c2cd-4af2-9bc3-08ae961a51fe",
+              "name": "Unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"headers\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3cf499b-4d99-49ad-8008-ba872f68b8c6",
+          "name": "Trigger test group notification",
+          "request": {
+            "name": "Trigger test group notification",
+            "description": {
+              "content": "Create test notification that will trigger a webhook call with the corresponding group dispatch notification data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dispatch",
+                "group",
+                "webhook",
+                "integration_test"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"group_dispatches\": [\n    {\n      \"market_group_id\": \"<uuid>\",\n      \"meter_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"timeslots\": [\n        {\n          \"cancelled\": \"<boolean>\",\n          \"dispatch_event_types\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"end_time\": \"<dateTime>\",\n          \"is_voluntary\": \"<boolean>\",\n          \"market_group_event_id\": \"<uuid>\",\n          \"performance_compensation_cap\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"priority\": \"<integer>\",\n          \"programs\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"start_time\": \"<dateTime>\",\n          \"energy_kw\": \"<double>\",\n          \"nomination_kw\": \"<double>\"\n        }\n      ],\n      \"partner_references\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c424d2ae-3411-451d-8dc6-d4de2ee1ee6d",
+              "name": "Successfully triggered a test group notification to be sent to the registered group webhook url\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook",
+                    "integration_test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group_dispatches\": [\n    {\n      \"market_group_id\": \"9d1a7aae-24e5-455f-91e9-e0f5f145f2ae\",\n      \"meter_ids\": [\n        \"beae2779-e392-4f00-b0cf-32e716204f78\",\n        \"dd21c76c-7126-4ef7-b0a6-f190fad300b2\"\n      ],\n      \"timeslots\": [\n        {\n          \"market_group_event_id\": \"1acfced0-16f4-4fb7-b72e-5ff939ae541e\",\n          \"start_time\": \"2023-07-21T00:00:00.000Z\",\n          \"end_time\": \"2023-07-21T01:00:00.000Z\",\n          \"energy_kw\": 100,\n          \"nomination_kw\": 100,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        },\n        {\n          \"market_group_event_id\": \"2ad4bbde-36ee-401f-92b8-c58aa17aa71d\",\n          \"start_time\": \"2023-07-21T01:00:00.000Z\",\n          \"end_time\": \"2023-07-21T02:00:00.000Z\",\n          \"energy_kw\": 100,\n          \"nomination_kw\": 100,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sent_time\": \"2023-01-23T04:56:07.000Z\",\n  \"headers\": {\n    \"key\": [\n      \"x-api-key\",\n      \"your-key\"\n    ]\n  },\n  \"http_status\": 200,\n  \"received_time\": \"2023-01-23T04:56:17.000Z\",\n  \"body\": \"body that is echoed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4164efca-b1b0-4930-a020-fcb6f4f70163",
+              "name": "Request could not be parsed or is invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook",
+                    "integration_test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group_dispatches\": [\n    {\n      \"market_group_id\": \"9d1a7aae-24e5-455f-91e9-e0f5f145f2ae\",\n      \"meter_ids\": [\n        \"beae2779-e392-4f00-b0cf-32e716204f78\",\n        \"dd21c76c-7126-4ef7-b0a6-f190fad300b2\"\n      ],\n      \"timeslots\": [\n        {\n          \"market_group_event_id\": \"1acfced0-16f4-4fb7-b72e-5ff939ae541e\",\n          \"start_time\": \"2023-07-21T00:00:00.000Z\",\n          \"end_time\": \"2023-07-21T01:00:00.000Z\",\n          \"energy_kw\": 100,\n          \"nomination_kw\": 100,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        },\n        {\n          \"market_group_event_id\": \"2ad4bbde-36ee-401f-92b8-c58aa17aa71d\",\n          \"start_time\": \"2023-07-21T01:00:00.000Z\",\n          \"end_time\": \"2023-07-21T02:00:00.000Z\",\n          \"energy_kw\": 100,\n          \"nomination_kw\": 100,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5bd8eb8e-a031-4d6b-946b-8f64e32180c4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook",
+                    "integration_test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group_dispatches\": [\n    {\n      \"market_group_id\": \"9d1a7aae-24e5-455f-91e9-e0f5f145f2ae\",\n      \"meter_ids\": [\n        \"beae2779-e392-4f00-b0cf-32e716204f78\",\n        \"dd21c76c-7126-4ef7-b0a6-f190fad300b2\"\n      ],\n      \"timeslots\": [\n        {\n          \"market_group_event_id\": \"1acfced0-16f4-4fb7-b72e-5ff939ae541e\",\n          \"start_time\": \"2023-07-21T00:00:00.000Z\",\n          \"end_time\": \"2023-07-21T01:00:00.000Z\",\n          \"energy_kw\": 100,\n          \"nomination_kw\": 100,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        },\n        {\n          \"market_group_event_id\": \"2ad4bbde-36ee-401f-92b8-c58aa17aa71d\",\n          \"start_time\": \"2023-07-21T01:00:00.000Z\",\n          \"end_time\": \"2023-07-21T02:00:00.000Z\",\n          \"energy_kw\": 100,\n          \"nomination_kw\": 100,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95e7f20e-3103-451f-9b99-662016f5d0b6",
+              "name": "No access to this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook",
+                    "integration_test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group_dispatches\": [\n    {\n      \"market_group_id\": \"9d1a7aae-24e5-455f-91e9-e0f5f145f2ae\",\n      \"meter_ids\": [\n        \"beae2779-e392-4f00-b0cf-32e716204f78\",\n        \"dd21c76c-7126-4ef7-b0a6-f190fad300b2\"\n      ],\n      \"timeslots\": [\n        {\n          \"market_group_event_id\": \"1acfced0-16f4-4fb7-b72e-5ff939ae541e\",\n          \"start_time\": \"2023-07-21T00:00:00.000Z\",\n          \"end_time\": \"2023-07-21T01:00:00.000Z\",\n          \"energy_kw\": 100,\n          \"nomination_kw\": 100,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        },\n        {\n          \"market_group_event_id\": \"2ad4bbde-36ee-401f-92b8-c58aa17aa71d\",\n          \"start_time\": \"2023-07-21T01:00:00.000Z\",\n          \"end_time\": \"2023-07-21T02:00:00.000Z\",\n          \"energy_kw\": 100,\n          \"nomination_kw\": 100,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b571c6bd-b817-4683-b43c-af8f53503d18",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook",
+                    "integration_test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group_dispatches\": [\n    {\n      \"market_group_id\": \"9d1a7aae-24e5-455f-91e9-e0f5f145f2ae\",\n      \"meter_ids\": [\n        \"beae2779-e392-4f00-b0cf-32e716204f78\",\n        \"dd21c76c-7126-4ef7-b0a6-f190fad300b2\"\n      ],\n      \"timeslots\": [\n        {\n          \"market_group_event_id\": \"1acfced0-16f4-4fb7-b72e-5ff939ae541e\",\n          \"start_time\": \"2023-07-21T00:00:00.000Z\",\n          \"end_time\": \"2023-07-21T01:00:00.000Z\",\n          \"energy_kw\": 100,\n          \"nomination_kw\": 100,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        },\n        {\n          \"market_group_event_id\": \"2ad4bbde-36ee-401f-92b8-c58aa17aa71d\",\n          \"start_time\": \"2023-07-21T01:00:00.000Z\",\n          \"end_time\": \"2023-07-21T02:00:00.000Z\",\n          \"energy_kw\": 100,\n          \"nomination_kw\": 100,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b14aa3b1-7162-4cd9-9da6-2a1b4ebcc157",
+              "name": "Unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dispatch",
+                    "group",
+                    "webhook",
+                    "integration_test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group_dispatches\": [\n    {\n      \"market_group_id\": \"9d1a7aae-24e5-455f-91e9-e0f5f145f2ae\",\n      \"meter_ids\": [\n        \"beae2779-e392-4f00-b0cf-32e716204f78\",\n        \"dd21c76c-7126-4ef7-b0a6-f190fad300b2\"\n      ],\n      \"timeslots\": [\n        {\n          \"market_group_event_id\": \"1acfced0-16f4-4fb7-b72e-5ff939ae541e\",\n          \"start_time\": \"2023-07-21T00:00:00.000Z\",\n          \"end_time\": \"2023-07-21T01:00:00.000Z\",\n          \"energy_kw\": 100,\n          \"nomination_kw\": 100,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        },\n        {\n          \"market_group_event_id\": \"2ad4bbde-36ee-401f-92b8-c58aa17aa71d\",\n          \"start_time\": \"2023-07-21T01:00:00.000Z\",\n          \"end_time\": \"2023-07-21T02:00:00.000Z\",\n          \"energy_kw\": 100,\n          \"nomination_kw\": 100,\n          \"cancelled\": false,\n          \"programs\": [\n            \"CCA\"\n          ],\n          \"priority\": 1,\n          \"is_voluntary\": false,\n          \"performance_compensation_cap\": \"up-to-nomination\",\n          \"dispatch_event_types\": [\n            \"capacity-test\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"message\",\n  \"error_code\": \"LEAP_DISPATCH_INTERNAL_ERROR_001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.staging.leap.energy/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c259a78a-7eec-40e3-8082-ff5c26925e0b",
+    "name": "Dispatch",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Receive dispatches through Leap Dispatch API V2\n\nContact Support:\n Email: apiteam@leap.energy",
+      "type": "text/plain"
+    }
+  }
+}

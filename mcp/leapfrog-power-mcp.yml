@@ -5,13 +5,11 @@ source: openapi/leapfrog-power-create-meters-openapi.yml, openapi/leapfrog-power
   openapi/leapfrog-power-interval-data-upload-openapi.json, openapi/leapfrog-power-meter-details-openapi.yml,
   openapi/leapfrog-power-meter-enrollment-openapi.yml, openapi/leapfrog-power-nominations-openapi.yml,
   openapi/leapfrog-power-revenue-analytics-openapi.yml, openapi/leapfrog-power-webhooks-openapi.yml
-search_note: >-
-  No official or third-party Leap MCP server exists. Searched the official MCP registry
-  (registry.modelcontextprotocol.io, query "leap"), npm (query "mcp leap energy"), the Leap
-  developer portal and its llms.txt index — no hits. The only agent-facing surface Leap
-  publishes today is https://developer.leap.energy/llms.txt. The tool list below is DERIVED
-  one-to-one from the 48 operations in the eight published OpenAPI definitions and is a
-  candidate design, not a Leap product.
+search_note: No official or third-party Leap MCP server exists. Searched the official MCP registry (registry.modelcontextprotocol.io,
+  query "leap"), npm (query "mcp leap energy"), the Leap developer portal and its llms.txt index — no
+  hits. The only agent-facing surface Leap publishes today is https://developer.leap.energy/llms.txt.
+  The tool list below is DERIVED one-to-one from the 48 operations in the eight published OpenAPI definitions
+  and is a candidate design, not a Leap product.
 server:
   name: leapfrog-power
   transport: http
@@ -21,23 +19,19 @@ server:
   auth:
     type: bearer
     header: Authorization
-    note: >-
-      Partner-Portal-issued API key, scoped to a single environment and carrying per-key
-      permissions. A staging key used against production returns 403. See
-      authentication/leapfrog-power-authentication.yml.
+    note: Partner-Portal-issued API key, scoped to a single environment and carrying per-key permissions.
+      A staging key used against production returns 403. See authentication/leapfrog-power-authentication.yml.
 safety_notes:
-- Read tools (get_*, list_*, search_*) return partner-scoped consented meter, enrollment, dispatch
-  and settlement data and are the safe default surface.
-- 'Write tools carry real grid and revenue consequences and should require explicit confirmation:
-  create_meter_batch_job / create_single_meter add billable inventory; post_*_nomination_suggestions
-  offers capacity into a wholesale market; create_or_update_meter_dispatch_webhook and
-  create_or_update_group_dispatch_webhook redirect live grid dispatch traffic away from the
-  partner''s existing receiver.'
-- Leap documents no idempotency key. A retried write is a second write — see
-  conventions/leapfrog-power-conventions.yml.
+- Read tools (get_*, list_*, search_*) return partner-scoped consented meter, enrollment, dispatch and
+  settlement data and are the safe default surface.
+- 'Write tools carry real grid and revenue consequences and should require explicit confirmation: create_meter_batch_job
+  / create_single_meter add billable inventory; post_*_nomination_suggestions offers capacity into a wholesale
+  market; create_or_update_meter_dispatch_webhook and create_or_update_group_dispatch_webhook redirect
+  live grid dispatch traffic away from the partner''s existing receiver.'
+- Leap documents no idempotency key. A retried write is a second write — see conventions/leapfrog-power-conventions.yml.
 - Test-notification tools (trigger_test_meter_dispatch_notification, trigger_test_group_dispatch_notification,
-  trigger_communication_test_meter_dispatch, test_webhook) run on the same infrastructure as real
-  dispatch events and are flagged only by integration_test_notification=true in the payload.
+  trigger_communication_test_meter_dispatch, test_webhook) run on the same infrastructure as real dispatch
+  events and are flagged only by integration_test_notification=true in the payload.
 tool_count: 48
 tools:
 - name: list_meter_batch_jobs
@@ -141,8 +135,8 @@ tools:
   path: /v1.1/jobs/interval-data-uploads/{job_id}
   source_operation: openapi/leapfrog-power-interval-data-upload-openapi.json#listIntervalDataUploadErrors
 - name: interval_data_presigned_url
-  description: Returns a presigned S3 URL to download the file that was uploaded previously. Can be filtered for
-    lines which caused errors
+  description: Returns a presigned S3 URL to download the file that was uploaded previously. Can be filtered
+    for lines which caused errors
   method: GET
   path: /v1.1/jobs/interval-data-uploads/presigned-url/{job_id}
   source_operation: openapi/leapfrog-power-interval-data-upload-openapi.json#intervalDataPresignedUrl
@@ -281,3 +275,9 @@ tools:
   method: POST
   path: /v1.1/webhooks/{webhook_id}/test
   source_operation: openapi/leapfrog-power-webhooks-openapi.yml#testWebhook
+deployment:
+  mode: none
+  verified: derived
+  tools: 48
+  checked: '2026-08-12'
+  source: catalog MCP census

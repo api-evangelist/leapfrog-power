@@ -1,0 +1,2262 @@
+{
+  "item": [
+    {
+      "id": "a2592562-063e-49d5-821b-acfb22a57959",
+      "name": "interval_data_upload",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ee4ac3c4-88b6-4fa3-bad1-87e3886d7733",
+          "name": "List interval data upload statuses",
+          "request": {
+            "name": "List interval data upload statuses",
+            "description": {
+              "content": "Lists the uploaded interval files, regardless of whether they were uploaded through Leap's SFTP server or the Partner Portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1.1",
+                "jobs",
+                "interval-data-uploads"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "Filter uploads with an uploaded_at_date_time on or after this timestamp (UTC, RFC 3339)."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "Filter uploads with an uploaded_at_date_time on or before this timestamp (UTC, RFC 3339)."
+                },
+                {
+                  "disabled": false,
+                  "key": "file_path",
+                  "value": "<string>",
+                  "description": "Filter by the original upload path on the Leap SFTP server (must start with `/interval-data/`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter uploads by ingestion status."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "50",
+                  "description": "Number of uploads to return per page (1-500)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "Continuation token for pagination returned by a previous request."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8bcf74fc-e8e0-490b-9df6-aac3539ec2c0",
+              "name": "Successfully queried the uploads.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2024-05-24T00:00:00Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2024-05-24T23:59:59Z"
+                    },
+                    {
+                      "key": "file_path",
+                      "value": "/interval-data/devices-hvac-january-2024.72.csv"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uploads\": [\n    {\n      \"last_job_id\": \"34af68c0-5317-4844-b0c6-4ac4cd35b63f\",\n      \"uploaded_file_path\": \"/interval-data/devices-hvac-january-2024.72.csv\",\n      \"current_file_path\": \"/interval-data/accepted/devices-hvac-january-2024.72.csv/devices-hvac-january-2024.72.csv\",\n      \"uploaded_at_date_time\": \"2024-05-24T15:17:35Z\",\n      \"status\": \"COMPLETED\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e5c8fff-5538-4534-8958-8d0127525735",
+              "name": "Malformed or invalid query.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2024-05-24T00:00:00Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2024-05-24T23:59:59Z"
+                    },
+                    {
+                      "key": "file_path",
+                      "value": "/interval-data/devices-hvac-january-2024.72.csv"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4713a176-f6d5-4b63-a071-6344024f92ce",
+              "name": "You are not authorized to perform this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2024-05-24T00:00:00Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2024-05-24T23:59:59Z"
+                    },
+                    {
+                      "key": "file_path",
+                      "value": "/interval-data/devices-hvac-january-2024.72.csv"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c31485a-b375-4c6f-bf86-de5d53ec743b",
+              "name": "You do not have the necessary permissions for this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2024-05-24T00:00:00Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2024-05-24T23:59:59Z"
+                    },
+                    {
+                      "key": "file_path",
+                      "value": "/interval-data/devices-hvac-january-2024.72.csv"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f100a25d-735d-43e3-b423-9cf806e0c137",
+              "name": "An internal server error occurred.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2024-05-24T00:00:00Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2024-05-24T23:59:59Z"
+                    },
+                    {
+                      "key": "file_path",
+                      "value": "/interval-data/devices-hvac-january-2024.72.csv"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61569dfd-1f5c-4add-a33b-8abeffcfd3b1",
+          "name": "List data validation errors",
+          "request": {
+            "name": "List data validation errors",
+            "description": {
+              "content": "Lists the validation errors produced while processing the file associated with the specified ingestion job ID. You can find these ingestion job IDs in the 'List all interval data uploads' endpoint or in the Partner Portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1.1",
+                "jobs",
+                "interval-data-uploads",
+                ":job_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "job_id",
+                  "description": "(Required) Ingestion job ID (UUID)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3a834966-5611-4547-8444-7edcbefd5736",
+              "name": "Successfully queried the ingestion attempt.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Ingestion job ID (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"job_id\": \"c09240ce-8942-4eaf-a642-1c728e8d61a3\",\n  \"error_csv_file_path\": \"/interval-data/failed/devices-hvac-januari-2024.72.csv/c09240ce-8942-4eaf-a642-1c728e8d61a3.errors.csv\",\n  \"errors\": [\n    {\n      \"line\": 12,\n      \"column\": \"meter_id\",\n      \"errors\": [\n        \"ba82dd27-8b52-479c-8b19-0a717d88c87z is not a valid UUID.\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3781c03-199b-41ef-be96-e0b245b516e1",
+              "name": "Malformed or invalid query.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Ingestion job ID (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef91b6da-dbb4-4109-b614-755c93923ca4",
+              "name": "You are not authorized to perform this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Ingestion job ID (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b09d036-8014-4208-b527-8c5f1c8291f7",
+              "name": "Not authorized to access the requested information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Ingestion job ID (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "017e1002-593e-424a-a9ce-fd9942cc6201",
+              "name": "Information not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Ingestion job ID (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cd1d323-1a80-4a91-9687-5bacff62b2b7",
+              "name": "An internal server error occurred.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Ingestion job ID (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ae5c174-a1d7-4af4-8802-3aca1f129d7f",
+          "name": "Returns a presigned S3 URL to download the file that was uploaded previously. Can be filtered for lines which caused errors",
+          "request": {
+            "name": "Returns a presigned S3 URL to download the file that was uploaded previously. Can be filtered for lines which caused errors",
+            "description": {
+              "content": "Returns a presigned S3 URL to download the file originally uploaded for the specified ingestion job. You can find the ingestion job IDs in the 'List all interval data uploads' endpoint or in the Partner Portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1.1",
+                "jobs",
+                "interval-data-uploads",
+                "presigned-url",
+                ":job_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "job_id",
+                  "description": "(Required) Ingestion job ID (UUID)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "28ba7323-03f6-4b86-be1f-8732faaa1025",
+              "name": "Found the file to dowload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads",
+                    "presigned-url",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Ingestion job ID (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The S3 Presigned URI to redirect to temporarily",
+                  "key": "Location",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "no-cache, no-store, must-revalidate",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c8edd7f9-789d-46f3-8b47-a36a448a2603",
+              "name": "Malformed or invalid query.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads",
+                    "presigned-url",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Ingestion job ID (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4628f90c-8282-4b11-97cf-d2a7e9cac368",
+              "name": "You are not authorized to perform this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads",
+                    "presigned-url",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Ingestion job ID (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa5733a6-2648-4f64-9b5b-f93388a084f8",
+              "name": "Not authorized to access the requested information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads",
+                    "presigned-url",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Ingestion job ID (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d5c873c-9117-4493-a7ef-23be0c5fd579",
+              "name": "Information not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads",
+                    "presigned-url",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Ingestion job ID (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad458cdd-bbf1-4204-8b7c-3ad4cfcbdf60",
+              "name": "An internal server error occurred.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads",
+                    "presigned-url",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Ingestion job ID (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae2238cb-3c56-49c7-bd5f-d5288042fed7",
+          "name": "Provides a preview of interval data uploaded during the specified job.",
+          "request": {
+            "name": "Provides a preview of interval data uploaded during the specified job.",
+            "description": {
+              "content": "The interval data processed during the file upload. You can find these ingestion job IDs in the 'List all interval data uploads' endpoint or in the Partner Portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1.1",
+                "jobs",
+                "interval-data-uploads",
+                "file-preview",
+                ":job_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "job_id",
+                  "description": "(Required) Ingestion job ID (UUID)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c8e634d1-b610-4d20-84bc-b1a1b9add8fb",
+              "name": "Successfully queried the ingestion attempt.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads",
+                    "file-preview",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Ingestion job ID (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"file_data\": [\n    \"meter_id,interval_start_time_utc,interval_end_time_utc,energy_net_kwh,energy_consumed_kwh,energy_generated_kwh,final,region\",\n    \"12345678 Test,5:00,6:00,100,200,300,100,CAISO\"\n  ],\n  \"job_id\": \"638451c8-4b81-4b91-ab43-c0ba0c5a0336\",\n  \"status\": \"COMPLETED\",\n  \"created_at\": \"2024-03-21T09:43:51.186Z\",\n  \"updated_at\": \"2024-03-21T09:43:51.186Z\",\n  \"is_limited\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e75ab31b-ac2b-42fc-b605-ca22433595f4",
+              "name": "Malformed or invalid query.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads",
+                    "file-preview",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Ingestion job ID (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62c6479d-1d6b-40a0-98ff-4789e9168073",
+              "name": "You are not authorized to perform this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads",
+                    "file-preview",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Ingestion job ID (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ebdbca05-7e83-478e-9c0c-c7c15bdc99df",
+              "name": "Not authorized to access the requested information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads",
+                    "file-preview",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Ingestion job ID (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f371ee69-d25f-46de-85fa-da40ad928bcb",
+              "name": "Information not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads",
+                    "file-preview",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Ingestion job ID (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0aa7547f-5a5d-480a-a340-6443b5eeff48",
+              "name": "An internal server error occurred.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "jobs",
+                    "interval-data-uploads",
+                    "file-preview",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Ingestion job ID (UUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b2a9a5dd-0f19-414d-9c0d-7394f8b59f56",
+          "name": "Search for missing interval data",
+          "request": {
+            "name": "Search for missing interval data",
+            "description": {
+              "content": "Returns the intervals for which interval data is missing for the requested meters within the given time window. Results are paginated; when more results are available the response includes a `next_page_token`, which you pass back as `page_token` to fetch the next page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1.1",
+                "missing-interval-data",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"meter_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"state\": \"<string>\",\n  \"missing_interval_window_start_date_time_utc\": \"<dateTime>\",\n  \"missing_interval_window_end_date_time_utc\": \"<dateTime>\",\n  \"submission_deadline_window_start_date_time_utc\": \"<dateTime>\",\n  \"submission_deadline_window_end_date_time_utc\": \"<dateTime>\",\n  \"page_token\": \"<string>\",\n  \"page_size\": 500\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3dd25df4-60cf-4f9a-bf5b-5ed496396c97",
+              "name": "Successfully searched for missing interval data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "missing-interval-data",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_ids\": [\n    \"c09240ce-8942-4eaf-a642-1c728e8d61a3\"\n  ],\n  \"start_date_time_utc\": \"2026-01-01T00:00:00Z\",\n  \"end_date_time_utc\": \"2026-12-31T00:00:00Z\",\n  \"page_size\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"missing_intervals\": [\n    {\n      \"meter_id\": \"c09240ce-8942-4eaf-a642-1c728e8d61a3\",\n      \"data_type\": \"LOAD_DATA\",\n      \"start_date_time_utc\": \"2026-04-01T21:00:00Z\",\n      \"end_date_time_utc\": \"2026-04-01T23:00:00Z\",\n      \"status\": \"OPEN\"\n    },\n    {\n      \"meter_id\": \"c09240ce-8942-4eaf-a642-1c728e8d61a3\",\n      \"data_type\": \"RUNTIME_DATA\",\n      \"start_date_time_utc\": \"2026-04-02T21:00:00Z\",\n      \"end_date_time_utc\": \"2026-04-02T23:00:00Z\",\n      \"status\": \"PROCESSING\"\n    }\n  ],\n  \"next_page_token\": \"eyJvZmZzZXQiOjEwMH0=\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f391948-f130-425d-b50c-64e39668ebf9",
+              "name": "Malformed or invalid query.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "missing-interval-data",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_ids\": [\n    \"c09240ce-8942-4eaf-a642-1c728e8d61a3\"\n  ],\n  \"start_date_time_utc\": \"2026-01-01T00:00:00Z\",\n  \"end_date_time_utc\": \"2026-12-31T00:00:00Z\",\n  \"page_size\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0bba7c3-ed56-42c1-82c1-b182cbb709fe",
+              "name": "You are not authorized to perform this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "missing-interval-data",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_ids\": [\n    \"c09240ce-8942-4eaf-a642-1c728e8d61a3\"\n  ],\n  \"start_date_time_utc\": \"2026-01-01T00:00:00Z\",\n  \"end_date_time_utc\": \"2026-12-31T00:00:00Z\",\n  \"page_size\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f24608bc-b6dd-4596-aaff-9bef7d38753b",
+              "name": "You do not have the necessary permissions for this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "missing-interval-data",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_ids\": [\n    \"c09240ce-8942-4eaf-a642-1c728e8d61a3\"\n  ],\n  \"start_date_time_utc\": \"2026-01-01T00:00:00Z\",\n  \"end_date_time_utc\": \"2026-12-31T00:00:00Z\",\n  \"page_size\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e720da8c-7492-4672-8fb6-ed597e75f782",
+              "name": "An internal server error occurred.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "missing-interval-data",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_ids\": [\n    \"c09240ce-8942-4eaf-a642-1c728e8d61a3\"\n  ],\n  \"start_date_time_utc\": \"2026-01-01T00:00:00Z\",\n  \"end_date_time_utc\": \"2026-12-31T00:00:00Z\",\n  \"page_size\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4604db4-c983-4942-8072-8d8b685bc91c",
+          "name": "Upload load interval data",
+          "request": {
+            "name": "Upload load interval data",
+            "description": {
+              "content": "Uploads a file of load interval data and starts its ingestion. The file format is determined by the request `Content-Type` header (e.g. `text/csv`). Returns the ingestion ID used to track progress.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1.1",
+                "interval-data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<string>",
+                  "description": "(Required) The schema this upload should adhere to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/csv"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "2d2aa883-f15a-437b-8bb0-2869f6f5660a",
+              "name": "The file was accepted and its ingestion was started.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "interval-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "schema",
+                      "value": "load"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"job_id\": \"c09240ce-8942-4eaf-a642-1c728e8d61a3\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c9d0ae5-ee67-465c-a0f2-4043a05745d2",
+              "name": "Malformed or invalid request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "interval-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "schema",
+                      "value": "load"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fef609c-d1a9-4849-a759-41e450c2587a",
+              "name": "You are not authorized to perform this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "interval-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "schema",
+                      "value": "load"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20b963c8-ef27-41ff-87d1-bc84e85a33b5",
+              "name": "You do not have the necessary permissions for this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "interval-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "schema",
+                      "value": "load"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f544a53-82cf-4942-898a-03c33d37cf5f",
+              "name": "An internal server error occurred.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "interval-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "schema",
+                      "value": "load"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.staging.leap.energy",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3e25010c-62a5-4f41-a882-58d8e60dedd6",
+    "name": "Interval Data Upload",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Get insights into the ingestion of interval data submitted through the Leap SFTP Server or Partner Portal. Don't forget to select the right server, and to authorize with your JWT or API Key.\n\nContact Support:\n Email: apiteam@leap.energy",
+      "type": "text/plain"
+    }
+  }
+}

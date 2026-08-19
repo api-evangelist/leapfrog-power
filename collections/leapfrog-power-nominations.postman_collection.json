@@ -1,0 +1,2488 @@
+{
+  "item": [
+    {
+      "id": "2334f420-3dd8-4d7c-ada0-36469ee912ff",
+      "name": "nominations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9256b1ee-d0ba-43aa-804d-2017982fae02",
+          "name": "Get suggested nominations",
+          "request": {
+            "name": "Get suggested nominations",
+            "description": {
+              "content": "Get suggested nomination details for a meter for each applicable program and time period.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "meters",
+                ":meter_id",
+                "nominations",
+                "suggestions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "Start date of the window to look for nomination suggestions, defaults to beginning of this day. Any  suggestion that is ending after this date is included."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "End date of the window to look for nomination suggestions, defaults to null. Any suggestion that is starting at  or before this date is included."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "meter_id",
+                  "description": "(Required) Meter ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ad18d002-0a5d-4f95-b7ba-6bcf84312957",
+              "name": "Successful response returning all the affected suggestions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "nominations",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "2025-01-01"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "2025-01-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"suggestions\": [\n    {\n      \"nomination_suggestion_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n      \"meter_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n      \"program_identifier\": \"CEC-DSGS\",\n      \"start_date\": \"2025-05-01\",\n      \"end_date\": \"2025-06-01\",\n      \"nomination_kw\": 1.23,\n      \"status\": \"RECEIVED\",\n      \"created_at\": \"2025-01-01T00:00:01.000+00:00\",\n      \"created_by\": \"created_by\",\n      \"updated_at\": \"2025-06-01T08:00:00Z\"\n    },\n    {\n      \"nomination_suggestion_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n      \"meter_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n      \"program_identifier\": \"CEC-DSGS\",\n      \"start_date\": \"2025-05-01\",\n      \"end_date\": \"2025-06-01\",\n      \"nomination_kw\": 1.23,\n      \"status\": \"RECEIVED\",\n      \"created_at\": \"2025-01-01T00:00:01.000+00:00\",\n      \"created_by\": \"created_by\",\n      \"updated_at\": \"2025-06-01T08:00:00Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "15a5a82b-7d19-466f-9871-fb0ab6006009",
+              "name": "The request is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "nominations",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "2025-01-01"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "2025-01-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Meter id is not a UUID\",\n  \"status\": 400,\n  \"details\": {\n    \"meter_id\": \"abcdef\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a10ea315-c35a-46d0-9d59-79eedd98d726",
+              "name": "You are not authorized to perform this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "nominations",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "2025-01-01"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "2025-01-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Unauthorized\",\n  \"status\": 401,\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb0e5cc8-1ba3-4d1f-bc15-18d8bfcfb142",
+              "name": "You do not have the necessary permissions for this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "nominations",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "2025-01-01"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "2025-01-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"You do not have the necessary permissions for this operation\",\n  \"status\": 403,\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6432d465-9c33-48d0-9018-f67b510afb5b",
+              "name": "Meter not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "nominations",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "2025-01-01"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "2025-01-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Meter not found\",\n  \"status\": 404,\n  \"details\": {\n    \"meter_id\": \"f5c5e328-e325-4d6d-b357-5015ed5962a7\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43cabc88-5811-43bc-843f-cecd9e99ffe2",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "nominations",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "2025-01-01"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "2025-01-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"An error happened whilst processing your request\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7185112-9fd8-41eb-a3d0-8304251749ad",
+          "name": "Suggest meter nominations",
+          "request": {
+            "name": "Suggest meter nominations",
+            "description": {
+              "content": "Suggest nominations for individual meters. A suggestion is reviewed by Leap before it becomes an actual nomination. Leap can approve, modify, or deny each suggestion. Modified suggestions are adjusted by Leap before becoming a nomination and will often include communication or coordination with your operations team.  Note that when a more recent suggestion completely eclipses an earlier provided suggestion, the earlier nomination will be deleted.  However, if there are partial overlaps, Leap will not automatically adjust or deduplicate these.  Use the 'Delete suggested nominations' endpoint to remove no longer needed suggestions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "meters",
+                ":meter_id",
+                "nominations",
+                "suggestions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "meter_id",
+                  "description": "(Required) Meter ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "null",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "205352be-47e2-455d-9797-3bcac716b007",
+              "name": "Successful response returning all the affected suggestions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "nominations",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "null",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"suggestions\": [\n    {\n      \"nomination_suggestion_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n      \"meter_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n      \"program_identifier\": \"CEC-DSGS\",\n      \"start_date\": \"2025-05-01\",\n      \"end_date\": \"2025-06-01\",\n      \"nomination_kw\": 1.23,\n      \"status\": \"RECEIVED\",\n      \"created_at\": \"2025-01-01T00:00:01.000+00:00\",\n      \"created_by\": \"created_by\",\n      \"updated_at\": \"2025-06-01T08:00:00Z\"\n    },\n    {\n      \"nomination_suggestion_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n      \"meter_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n      \"program_identifier\": \"CEC-DSGS\",\n      \"start_date\": \"2025-05-01\",\n      \"end_date\": \"2025-06-01\",\n      \"nomination_kw\": 1.23,\n      \"status\": \"RECEIVED\",\n      \"created_at\": \"2025-01-01T00:00:01.000+00:00\",\n      \"created_by\": \"created_by\",\n      \"updated_at\": \"2025-06-01T08:00:00Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ead2a5a-02f8-4aba-a1fa-cd3132aaa6a4",
+              "name": "The request is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "nominations",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "null",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Meter id is not a UUID\",\n  \"status\": 400,\n  \"details\": {\n    \"meter_id\": \"abcdef\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd85b780-d6d4-4f46-ac2c-acf40d0c0104",
+              "name": "You are not authorized to perform this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "nominations",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "null",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Unauthorized\",\n  \"status\": 401,\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c30b1b8b-7cf7-4153-8968-c509a2e6f564",
+              "name": "You do not have the necessary permissions for this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "nominations",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "null",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"You do not have the necessary permissions for this operation\",\n  \"status\": 403,\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fabcd367-bdbc-43c6-9072-1d3f6dc5dc7c",
+              "name": "Meter not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "nominations",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "null",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Meter not found\",\n  \"status\": 404,\n  \"details\": {\n    \"meter_id\": \"f5c5e328-e325-4d6d-b357-5015ed5962a7\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "589f0e9d-33cc-4e86-83ce-979dd170fae3",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "nominations",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "null",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"An error happened whilst processing your request\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "afe97a12-a8df-4f9c-b991-32dc8207fcea",
+          "name": "Delete suggested nominations",
+          "request": {
+            "name": "Delete suggested nominations",
+            "description": {
+              "content": "Remove a suggestion that is no longer needed. It is recommended to clean up and delete no longer needed or relevant suggestions so Leap is able to more quickly review outstanding suggestions. Note that a suggestion can only be deleted if it is still in the RECEIVED status.  Once it has been reviewed and processed by Leap, it can no longer be deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "meters",
+                ":meter_id",
+                "nominations",
+                "suggestions",
+                ":nomination_suggestion_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "meter_id",
+                  "description": "(Required) Meter ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "nomination_suggestion_id",
+                  "description": "(Required) Nomination Suggestion ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c110876-6bd4-46ab-94a4-03a818d00625",
+              "name": "Successful response returning all the affected suggestions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "nominations",
+                    "suggestions",
+                    ":nomination_suggestion_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "nomination_suggestion_id",
+                      "description": "(Required) Nomination Suggestion ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nomination_suggestion_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n  \"meter_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n  \"program_identifier\": \"CEC-DSGS\",\n  \"start_date\": \"2025-05-01\",\n  \"end_date\": \"2025-06-01\",\n  \"nomination_kw\": 1.23,\n  \"status\": \"RECEIVED\",\n  \"created_at\": \"2025-01-01T00:00:01.000+00:00\",\n  \"created_by\": \"created_by\",\n  \"updated_at\": \"2025-06-01T08:00:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38974ad9-b3dc-44aa-add9-0369d6b55bf1",
+              "name": "The request is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "nominations",
+                    "suggestions",
+                    ":nomination_suggestion_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "nomination_suggestion_id",
+                      "description": "(Required) Nomination Suggestion ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Meter id is not a UUID\",\n  \"status\": 400,\n  \"details\": {\n    \"meter_id\": \"abcdef\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7eeee9fd-6c8f-4368-9c86-19e018480a6e",
+              "name": "You are not authorized to perform this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "nominations",
+                    "suggestions",
+                    ":nomination_suggestion_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "nomination_suggestion_id",
+                      "description": "(Required) Nomination Suggestion ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Unauthorized\",\n  \"status\": 401,\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd30aad5-2694-4d65-ab06-2bb2fc456aed",
+              "name": "You do not have the necessary permissions for this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "nominations",
+                    "suggestions",
+                    ":nomination_suggestion_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "nomination_suggestion_id",
+                      "description": "(Required) Nomination Suggestion ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"You do not have the necessary permissions for this operation\",\n  \"status\": 403,\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ca1b6a2-d6cb-4fcd-ac08-de7b35cd989a",
+              "name": "Meter not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "nominations",
+                    "suggestions",
+                    ":nomination_suggestion_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "nomination_suggestion_id",
+                      "description": "(Required) Nomination Suggestion ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Meter not found\",\n  \"status\": 404,\n  \"details\": {\n    \"meter_id\": \"f5c5e328-e325-4d6d-b357-5015ed5962a7\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f18463d8-4477-4dff-b966-22a1e001f365",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "nominations",
+                    "suggestions",
+                    ":nomination_suggestion_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "nomination_suggestion_id",
+                      "description": "(Required) Nomination Suggestion ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"An error happened whilst processing your request\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c53bfae7-d14c-4aa1-b628-689bb9a88657",
+          "name": "Suggest bulk nominations",
+          "request": {
+            "name": "Suggest bulk nominations",
+            "description": {
+              "content": "Suggest nominations for multiple meters. A suggestion is reviewed by Leap before it becomes an actual nomination. Leap can approve, modify, or deny each suggestion. Modified suggestions are adjusted by Leap before becoming a nomination and will often include communication or coordination with your operations team.  Note that when a more recent suggestion completely eclipses an earlier provided suggestion, the earlier nomination will be deleted.  However, if there are partial overlaps, Leap will not automatically adjust or deduplicate these.  Use the 'Delete suggested nominations' endpoint to remove no longer needed suggestions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "meters",
+                "nominations",
+                "suggestions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "null",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "257d0760-57e2-45fb-b49d-076f53afe849",
+              "name": "Successful response returning all the affected suggestions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "nominations",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "null",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"suggestions\": [\n    {\n      \"nomination_suggestion_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n      \"meter_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n      \"program_identifier\": \"CEC-DSGS\",\n      \"start_date\": \"2025-05-01\",\n      \"end_date\": \"2025-06-01\",\n      \"nomination_kw\": 1.23,\n      \"status\": \"RECEIVED\",\n      \"created_at\": \"2025-01-01T00:00:01.000+00:00\",\n      \"created_by\": \"created_by\",\n      \"updated_at\": \"2025-06-01T08:00:00Z\"\n    },\n    {\n      \"nomination_suggestion_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n      \"meter_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n      \"program_identifier\": \"CEC-DSGS\",\n      \"start_date\": \"2025-05-01\",\n      \"end_date\": \"2025-06-01\",\n      \"nomination_kw\": 1.23,\n      \"status\": \"RECEIVED\",\n      \"created_at\": \"2025-01-01T00:00:01.000+00:00\",\n      \"created_by\": \"created_by\",\n      \"updated_at\": \"2025-06-01T08:00:00Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93e622c6-e120-423d-a188-1cc478cc7d90",
+              "name": "The request is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "nominations",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "null",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Meter id is not a UUID\",\n  \"status\": 400,\n  \"details\": {\n    \"meter_id\": \"abcdef\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "188886e2-9037-46e9-9c70-4190a470da07",
+              "name": "You are not authorized to perform this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "nominations",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "null",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Unauthorized\",\n  \"status\": 401,\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59edb741-8048-402f-b6e6-ba6ed1c8c6c7",
+              "name": "You do not have the necessary permissions for this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "nominations",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "null",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"You do not have the necessary permissions for this operation\",\n  \"status\": 403,\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8715bbf-dada-430a-9ca9-4efeb8dbcdd5",
+              "name": "Meter not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "nominations",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "null",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Meter not found\",\n  \"status\": 404,\n  \"details\": {\n    \"meter_id\": \"f5c5e328-e325-4d6d-b357-5015ed5962a7\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "097892fb-0fc9-4d7a-aeb7-e76b04d3900c",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "nominations",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "null",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"An error happened whilst processing your request\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bbc86bd1-6f75-48d8-bb16-d2b7b2601f45",
+          "name": "Search suggested nominations",
+          "request": {
+            "name": "Search suggested nominations",
+            "description": {
+              "content": "Search suggested nominations across all meters and filter based on the request body parameters. Use the 'Accept' header to specify whether you'd like JSON or CSV as the response type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "meters",
+                "nominations",
+                "suggestions",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"meter_ids\": null,\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"status\": \"<string>\",\n  \"program_identifier\": \"<string>\",\n  \"updated_since\": \"<dateTime>\",\n  \"page_token\": \"<string>\",\n  \"page_size\": 500\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "172a0d93-77e8-4cd0-8029-4d1c85ba509f",
+              "name": "Successful response returning all the matching suggestions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "nominations",
+                    "suggestions",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_ids\": null,\n  \"start_date\": \"2025-05-01\",\n  \"end_date\": \"2025-06-01\",\n  \"status\": \"<string>\",\n  \"program_identifier\": \"CEC-DSGS\",\n  \"updated_since\": \"2025-06-01T08:00:00Z\",\n  \"page_token\": \"<string>\",\n  \"page_size\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"next_page_token\": \"next_page_token\",\n  \"suggestions\": [\n    {\n      \"nomination_suggestion_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n      \"meter_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n      \"program_identifier\": \"CEC-DSGS\",\n      \"start_date\": \"2025-05-01\",\n      \"end_date\": \"2025-06-01\",\n      \"nomination_kw\": 1.23,\n      \"status\": \"RECEIVED\",\n      \"created_at\": \"2025-01-01T00:00:01.000+00:00\",\n      \"created_by\": \"created_by\",\n      \"updated_at\": \"2025-06-01T08:00:00Z\"\n    },\n    {\n      \"nomination_suggestion_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n      \"meter_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n      \"program_identifier\": \"CEC-DSGS\",\n      \"start_date\": \"2025-05-01\",\n      \"end_date\": \"2025-06-01\",\n      \"nomination_kw\": 1.23,\n      \"status\": \"RECEIVED\",\n      \"created_at\": \"2025-01-01T00:00:01.000+00:00\",\n      \"created_by\": \"created_by\",\n      \"updated_at\": \"2025-06-01T08:00:00Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5de664e-454c-4248-86f4-7acb20bbb87f",
+              "name": "The request is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "nominations",
+                    "suggestions",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_ids\": null,\n  \"start_date\": \"2025-05-01\",\n  \"end_date\": \"2025-06-01\",\n  \"status\": \"<string>\",\n  \"program_identifier\": \"CEC-DSGS\",\n  \"updated_since\": \"2025-06-01T08:00:00Z\",\n  \"page_token\": \"<string>\",\n  \"page_size\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Meter id is not a UUID\",\n  \"status\": 400,\n  \"details\": {\n    \"meter_id\": \"abcdef\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5cc04cb-01b0-46cc-b041-eb5b8452f619",
+              "name": "You are not authorized to perform this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "nominations",
+                    "suggestions",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_ids\": null,\n  \"start_date\": \"2025-05-01\",\n  \"end_date\": \"2025-06-01\",\n  \"status\": \"<string>\",\n  \"program_identifier\": \"CEC-DSGS\",\n  \"updated_since\": \"2025-06-01T08:00:00Z\",\n  \"page_token\": \"<string>\",\n  \"page_size\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Unauthorized\",\n  \"status\": 401,\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b54929e8-eca2-424b-bc4e-51b5537db6ca",
+              "name": "You do not have the necessary permissions for this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "nominations",
+                    "suggestions",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_ids\": null,\n  \"start_date\": \"2025-05-01\",\n  \"end_date\": \"2025-06-01\",\n  \"status\": \"<string>\",\n  \"program_identifier\": \"CEC-DSGS\",\n  \"updated_since\": \"2025-06-01T08:00:00Z\",\n  \"page_token\": \"<string>\",\n  \"page_size\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"You do not have the necessary permissions for this operation\",\n  \"status\": 403,\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0246f3d7-ecf2-441b-834a-f9b2e4993078",
+              "name": "Meter not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "nominations",
+                    "suggestions",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_ids\": null,\n  \"start_date\": \"2025-05-01\",\n  \"end_date\": \"2025-06-01\",\n  \"status\": \"<string>\",\n  \"program_identifier\": \"CEC-DSGS\",\n  \"updated_since\": \"2025-06-01T08:00:00Z\",\n  \"page_token\": \"<string>\",\n  \"page_size\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Meter not found\",\n  \"status\": 404,\n  \"details\": {\n    \"meter_id\": \"f5c5e328-e325-4d6d-b357-5015ed5962a7\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "467351ea-b744-424f-a0ba-dc9920eba837",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "nominations",
+                    "suggestions",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_ids\": null,\n  \"start_date\": \"2025-05-01\",\n  \"end_date\": \"2025-06-01\",\n  \"status\": \"<string>\",\n  \"program_identifier\": \"CEC-DSGS\",\n  \"updated_since\": \"2025-06-01T08:00:00Z\",\n  \"page_token\": \"<string>\",\n  \"page_size\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"An error happened whilst processing your request\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16f1f15a-2387-4d20-9fc0-a8e802d9743a",
+          "name": "Search nominations",
+          "request": {
+            "name": "Search nominations",
+            "description": {
+              "content": "Search for nominations on all meters. You can filter on meter IDs and a date range. These are the nominations in kW that will be used for program enrollment. Use the 'Accept' header to specify whether you'd like JSON or CSV as the response type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "meters",
+                "nominations",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"meter_ids\": null,\n  \"start_time\": \"<dateTime>\",\n  \"end_time\": \"<dateTime>\",\n  \"program_identifier\": \"<string>\",\n  \"updated_since\": \"<dateTime>\",\n  \"page_token\": \"<string>\",\n  \"page_size\": 500\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8660a8e7-20a1-4190-b504-834707ec7750",
+              "name": "Successful response returning all the matching suggestions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "nominations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_ids\": null,\n  \"start_time\": \"2025-05-01T08:00:00Z\",\n  \"end_time\": \"2025-06-01T08:00:00Z\",\n  \"program_identifier\": \"CEC-DSGS\",\n  \"updated_since\": \"2025-06-01T08:00:00Z\",\n  \"page_token\": \"<string>\",\n  \"page_size\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nominations\": null,\n  \"next_page_token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2668793a-3d9f-4c42-9225-4d8c9c93ef1d",
+              "name": "The request is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "nominations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_ids\": null,\n  \"start_time\": \"2025-05-01T08:00:00Z\",\n  \"end_time\": \"2025-06-01T08:00:00Z\",\n  \"program_identifier\": \"CEC-DSGS\",\n  \"updated_since\": \"2025-06-01T08:00:00Z\",\n  \"page_token\": \"<string>\",\n  \"page_size\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Meter id is not a UUID\",\n  \"status\": 400,\n  \"details\": {\n    \"meter_id\": \"abcdef\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3adda688-37e6-46a0-b8f2-666cec9b0dc1",
+              "name": "You are not authorized to perform this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "nominations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_ids\": null,\n  \"start_time\": \"2025-05-01T08:00:00Z\",\n  \"end_time\": \"2025-06-01T08:00:00Z\",\n  \"program_identifier\": \"CEC-DSGS\",\n  \"updated_since\": \"2025-06-01T08:00:00Z\",\n  \"page_token\": \"<string>\",\n  \"page_size\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Unauthorized\",\n  \"status\": 401,\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8844294-ba03-4ee3-bf54-fd5699cdc07f",
+              "name": "You do not have the necessary permissions for this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "nominations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_ids\": null,\n  \"start_time\": \"2025-05-01T08:00:00Z\",\n  \"end_time\": \"2025-06-01T08:00:00Z\",\n  \"program_identifier\": \"CEC-DSGS\",\n  \"updated_since\": \"2025-06-01T08:00:00Z\",\n  \"page_token\": \"<string>\",\n  \"page_size\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"You do not have the necessary permissions for this operation\",\n  \"status\": 403,\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11631d03-5f4b-45ca-8eba-dfc0d434fb76",
+              "name": "Meter not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "nominations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_ids\": null,\n  \"start_time\": \"2025-05-01T08:00:00Z\",\n  \"end_time\": \"2025-06-01T08:00:00Z\",\n  \"program_identifier\": \"CEC-DSGS\",\n  \"updated_since\": \"2025-06-01T08:00:00Z\",\n  \"page_token\": \"<string>\",\n  \"page_size\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Meter not found\",\n  \"status\": 404,\n  \"details\": {\n    \"meter_id\": \"f5c5e328-e325-4d6d-b357-5015ed5962a7\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f654216e-98e6-4140-a24a-eeeb18fda024",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "nominations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meter_ids\": null,\n  \"start_time\": \"2025-05-01T08:00:00Z\",\n  \"end_time\": \"2025-06-01T08:00:00Z\",\n  \"program_identifier\": \"CEC-DSGS\",\n  \"updated_since\": \"2025-06-01T08:00:00Z\",\n  \"page_token\": \"<string>\",\n  \"page_size\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"An error happened whilst processing your request\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.staging.leap.energy",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cdef3f62-41f4-4caa-b367-5fa96d6ac96d",
+    "name": "Meter Nomination API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API to retrieve and suggest nominations.",
+      "type": "text/plain"
+    }
+  }
+}

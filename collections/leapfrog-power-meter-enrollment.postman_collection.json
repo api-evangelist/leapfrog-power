@@ -1,0 +1,786 @@
+{
+  "item": [
+    {
+      "id": "9eb0ee20-143d-40e6-903f-4dc38829e0e6",
+      "name": "meter enrollment",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d1034cda-4658-423d-b794-0c91a9072e99",
+          "name": "Get meter enrollment",
+          "request": {
+            "name": "Get meter enrollment",
+            "description": {
+              "content": "Get enrollment information about a meter including its current enrollment status, participation preferences, associated programs, and any required actions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "meters",
+                ":meter_id",
+                "enrollments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "meter_id",
+                  "description": "(Required) Meter ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8415cade-426e-4b29-aef1-ce3039dd8b17",
+              "name": "Successful response with meter information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "enrollments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meter_id\": \"1fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"partner_reference\": \"unique-reference-id-12345\",\n  \"transmission_region\": \"CAISO\",\n  \"customer_classification\": \"RESIDENTIAL\",\n  \"load_types\": [\n    \"HVAC\"\n  ],\n  \"meter_type\": \"UTILITY_METER\",\n  \"connection_references\": [\n    \"string\"\n  ],\n  \"customer_group\": \"string\",\n  \"tags\": [\n    \"tag1\",\n    \"tag2\"\n  ],\n  \"is_archived\": true,\n  \"audit\": {\n    \"created_by\": \"PARTNER\",\n    \"created_at\": \"2022-10-01T08:31:53.956Z\",\n    \"updated_at\": \"2024-10-12T08:31:53.956Z\"\n  },\n  \"global_enrollment_status\": \"ACTIVE\",\n  \"participation_preferences\": [\n    {\n      \"participation_preference\": \"PARTICIPATE\",\n      \"start_time\": \"2024-11-01T00:00:00Z\",\n      \"end_time\": \"9000-01-01T00:00:00Z\"\n    }\n  ],\n  \"program_enrollment\": [\n    {\n      \"program_identifier\": \"CEC-DSGS\",\n      \"delivery_period\": \"CEC-DSGS_2025_AUG_OCT\",\n      \"delivery_period_start_date_time\": \"2024-10-01T08:31:53.956Z\",\n      \"delivery_period_end_date_time\": \"2024-12-01T08:31:53.956Z\",\n      \"enrollment_status\": \"ACTIVE\",\n      \"enrollment_deadlines\": [\n        {\n          \"enrollment_deadline_date_time\": \"2024-09-15T00:00:00.000Z\",\n          \"activation_date_time\": \"2024-10-01T00:00:00.000Z\"\n        },\n        {\n          \"enrollment_deadline_date_time\": \"2024-10-15T00:00:00.000Z\",\n          \"activation_date_time\": \"2024-11-01T00:00:00.000Z\"\n        }\n      ],\n      \"market_group_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n      \"market_group_name\": \"GRP1_NAME\"\n    }\n  ],\n  \"required_actions\": {\n    \"partner\": [],\n    \"leap\": []\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0487091-f230-4f00-b91f-c38be0ef1b43",
+              "name": "The request is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "enrollments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Meter id is not a UUID\",\n  \"status\": 400,\n  \"details\": {\n    \"meter_id\": \"abcdef\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53a12f32-ab77-41a1-9720-a094bc9be1c5",
+              "name": "You are not authorized to perform this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "enrollments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Unauthorized\",\n  \"status\": 401,\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9606370b-9310-4932-bf4e-55d7a2fce524",
+              "name": "You do not have the necessary permissions for this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "enrollments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"You do not have the necessary permissions for this operation\",\n  \"status\": 403,\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9586f3bd-9c47-4171-836d-d3e09a490326",
+              "name": "Meter not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "enrollments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Meter not found\",\n  \"status\": 404,\n  \"details\": {\n    \"meter_id\": \"f5c5e328-e325-4d6d-b357-5015ed5962a7\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37c25b18-af03-4baa-9b84-d5a7afde4898",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    ":meter_id",
+                    "enrollments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "meter_id",
+                      "description": "(Required) Meter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"An error happened whilst processing your request\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14cdbd08-ca9e-4917-a4f6-3741c408c823",
+          "name": "Search meter enrollments",
+          "request": {
+            "name": "Search meter enrollments",
+            "description": {
+              "content": "Retrieve enrollment information including current enrollment status, participation preferences, associated programs, and any required actions for all meters. Optionally filter by one or more request parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "meters",
+                "enrollments",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page_token\": \"<string>\",\n  \"page_size\": 500,\n  \"transmission_region\": \"<string>\",\n  \"customer_classification\": \"<string>\",\n  \"meter_ids\": [\n    \"<uuid>\",\n    \"<uuid>\",\n    \"<uuid>\",\n    \"<uuid>\",\n    \"<uuid>\",\n    \"<uuid>\",\n    \"<uuid>\",\n    \"<uuid>\",\n    \"<uuid>\",\n    \"<uuid>\",\n    \"<uuid>\",\n    \"<uuid>\",\n    \"<uuid>\",\n    \"<uuid>\",\n    \"<uuid>\",\n    \"<uuid>\",\n    \"<uuid>\",\n    \"<uuid>\",\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"partner_references\": [\n    \"<string>\"\n  ],\n  \"global_enrollment_statuses\": [\n    \"<string>\"\n  ],\n  \"meter_types\": [\n    \"<string>\"\n  ],\n  \"load_types\": [\n    \"<string>\"\n  ],\n  \"customer_groups\": [\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\"\n  ],\n  \"last_modified_date_time\": \"<dateTime>\",\n  \"created_after_date_time\": \"<dateTime>\",\n  \"created_before_date_time\": \"<dateTime>\",\n  \"partner_action_required\": false,\n  \"exclude_archived\": false,\n  \"connection_reference_ids\": [\n    \"<string>\"\n  ],\n  \"action_type\": [\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a630108a-797c-4221-a50c-a0a2c95266fa",
+              "name": "Successful response with a list of meters that match the search criteria.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "enrollments",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transmission_region\": \"CAISO\",\n  \"customer_classification\": \"RESIDENTIAL\",\n  \"meter_ids\": [\n    \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\n  ],\n  \"partner_references\": [\n    \"a-partner-reference\"\n  ],\n  \"global_enrollment_statuses\": [\n    \"ACTIVE\"\n  ],\n  \"meter_types\": [\n    \"UTILITY_METER\"\n  ],\n  \"load_types\": [\n    \"HVAC\"\n  ],\n  \"customer_groups\": [\n    \"CustomerGroup1\"\n  ],\n  \"tags\": [\n    \"tag1\"\n  ],\n  \"last_modified_date_time\": \"2024-10-21T11:43:05.892Z\",\n  \"created_after_date_time\": \"2024-10-21T11:43:05.892Z\",\n  \"created_before_date_time\": \"2024-10-21T11:43:05.892Z\",\n  \"partner_action_required\": false,\n  \"exclude_archived\": false,\n  \"connection_reference_ids\": [\n    \"connectionReferenceId1\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"next_page_token\": \"PAGE_TOKEN\",\n  \"meters\": [\n    {\n      \"meter_id\": \"11111111-1111-1111-1111-111111111111\",\n      \"is_archived\": false,\n      \"customer_group\": \"\",\n      \"global_enrollment_status\": \"ELIGIBLE\",\n      \"participation_preferences\": [\n        {\n          \"participation_preference\": \"PARTICIPATE\",\n          \"start_time\": \"2024-04-24T16:03:06Z\",\n          \"end_time\": \"9000-12-31T23:59:59.999999999Z\"\n        }\n      ],\n      \"program_enrollment\": [\n        {\n          \"program_identifier\": \"PSEGLI-CSRP\",\n          \"delivery_period\": \"PSEGLI-CSRP_2025_MAY_SEP\",\n          \"delivery_period_start_date_time\": \"2025-05-01T04:00:00Z\",\n          \"delivery_period_end_date_time\": \"2025-09-30T04:00:00Z\",\n          \"enrollment_status\": \"INELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2025-03-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-05-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-04-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-06-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-06-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-07-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-07-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-08-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-08-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-09-01T04:00:00Z\"\n            }\n          ]\n        },\n        {\n          \"program_identifier\": \"CONED-CSRP\",\n          \"delivery_period\": \"CONED-CSRP_2025_MAY_SEP\",\n          \"delivery_period_start_date_time\": \"2025-05-01T04:00:00Z\",\n          \"delivery_period_end_date_time\": \"2025-09-30T04:00:00Z\",\n          \"enrollment_status\": \"ELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2025-03-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-05-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-04-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-06-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-06-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-07-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-07-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-08-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-08-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-09-01T04:00:00Z\"\n            }\n          ]\n        },\n        {\n          \"program_identifier\": \"PSEGLI-DLRP\",\n          \"delivery_period\": \"PSEGLI-DLRP_2025_MAY_SEP\",\n          \"delivery_period_start_date_time\": \"2025-05-01T04:00:00Z\",\n          \"delivery_period_end_date_time\": \"2025-09-30T04:00:00Z\",\n          \"enrollment_status\": \"INELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2025-03-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-05-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-04-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-06-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-06-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-07-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-07-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-08-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-08-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-09-01T04:00:00Z\"\n            }\n          ]\n        },\n        {\n          \"program_identifier\": \"NYISO-SCR\",\n          \"delivery_period\": \"NYISO-SCR_2024_MAY_OCT\",\n          \"delivery_period_start_date_time\": \"2024-05-01T04:00:00Z\",\n          \"delivery_period_end_date_time\": \"2024-10-31T04:00:00Z\",\n          \"enrollment_status\": \"INELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2024-04-29T04:00:00Z\",\n              \"activation_date_time\": \"2024-05-01T04:00:00Z\"\n            }\n          ]\n        },\n        {\n          \"program_identifier\": \"NYISO-SCR\",\n          \"delivery_period\": \"NYISO-SCR_2024_NOV_2025_APR\",\n          \"delivery_period_start_date_time\": \"2024-11-01T04:00:00Z\",\n          \"delivery_period_end_date_time\": \"2025-04-30T04:00:00Z\",\n          \"enrollment_status\": \"INELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2024-10-30T04:00:00Z\",\n              \"activation_date_time\": \"2024-11-01T04:00:00Z\"\n            }\n          ]\n        },\n        {\n          \"program_identifier\": \"NYISO-SCR\",\n          \"delivery_period\": \"NYISO-SCR_2025_MAY_OCT\",\n          \"delivery_period_start_date_time\": \"2025-05-01T04:00:00Z\",\n          \"delivery_period_end_date_time\": \"2025-10-31T04:00:00Z\",\n          \"enrollment_status\": \"INELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2025-03-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-05-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-04-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-06-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-06-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-07-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-07-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-08-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-08-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-09-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-09-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-10-01T04:00:00Z\"\n            }\n          ]\n        },\n        {\n          \"program_identifier\": \"CONED-DLRP\",\n          \"delivery_period\": \"CONED-DLRP_2025_MAY_SEP\",\n          \"delivery_period_start_date_time\": \"2025-05-01T04:00:00Z\",\n          \"delivery_period_end_date_time\": \"2025-09-30T04:00:00Z\",\n          \"enrollment_status\": \"ELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2025-03-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-05-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-04-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-06-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-06-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-07-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-07-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-08-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-08-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-09-01T04:00:00Z\"\n            }\n          ],\n          \"market_group_id\": \"891b8c8b-6315-4ea3-8675-5337963c5757\",\n          \"market_group_name\": \"PGSB_1_PDRP93\"\n        }\n      ],\n      \"required_actions\": {\n        \"partner\": [\n          {\n            \"program_identifier\": \"NYISO-SCR\",\n            \"delivery_period\": \"NYISO-SCR_2024_MAY_OCT\",\n            \"enrollment_deadline_date_time\": \"2024-05-01T04:00:00Z\",\n            \"action_type\": \"NO_MISSING_FIELDS\",\n            \"action_description\": \"Partner needs configuration for fields: Voltage Group, CBL Method, Load Zone.\",\n            \"action_code\": \"SERV_0005\"\n          },\n          {\n            \"program_identifier\": \"NYISO-SCR\",\n            \"delivery_period\": \"NYISO-SCR_2024_NOV_2025_APR\",\n            \"enrollment_deadline_date_time\": \"2024-11-01T04:00:00Z\",\n            \"action_type\": \"IS_AUTHORIZED\",\n            \"action_description\": \"End customer must re-authorize meter. Learn more in our partner guide\",\n            \"action_code\": \"AUTH_0001\"\n          }\n        ],\n        \"leap\": [\n          {\n            \"program_identifier\": \"NYISO-SCR\",\n            \"delivery_period\": \"NYISO-SCR_2024_MAY_OCT\",\n            \"enrollment_deadline_date_time\": \"2024-05-01T04:00:00Z\",\n            \"action_type\": \"HAS_NOMINATIONS\",\n            \"action_description\": \"This meter does not have nominations set\",\n            \"action_code\": \"LEAP_0001\"\n          }\n        ]\n      },\n      \"connection_references\": [\n        \"test_jae\"\n      ],\n      \"tags\": [],\n      \"partner_reference\": \"test_meter\",\n      \"transmission_region\": \"NYISO\",\n      \"customer_classification\": \"RESIDENTIAL\",\n      \"load_types\": [\n        \"HVAC\"\n      ],\n      \"meter_type\": \"UTILITY_METER\",\n      \"audit\": {\n        \"created_by\": \"UTILITY\",\n        \"created_at\": \"2024-04-24T16:03:06.785318Z\",\n        \"updated_at\": \"2024-10-10T12:08:13.538427Z\"\n      }\n    },\n    {\n      \"meter_id\": \"22222222-2222-2222-2222-222222222222\",\n      \"is_archived\": false,\n      \"customer_group\": \"\",\n      \"global_enrollment_status\": \"ELIGIBLE\",\n      \"participation_preferences\": [\n        {\n          \"participation_preference\": \"PARTICIPATE\",\n          \"start_time\": \"2024-04-23T19:09:58Z\",\n          \"end_time\": \"9000-12-31T23:59:59.999999999Z\"\n        }\n      ],\n      \"program_enrollment\": [\n        {\n          \"program_identifier\": \"PSEGLI-CSRP\",\n          \"delivery_period\": \"PSEGLI-CSRP_2025_MAY_SEP\",\n          \"delivery_period_start_date_time\": \"2025-05-01T04:00:00Z\",\n          \"delivery_period_end_date_time\": \"2025-09-30T04:00:00Z\",\n          \"enrollment_status\": \"INELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2025-03-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-05-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-04-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-06-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-06-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-07-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-07-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-08-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-08-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-09-01T04:00:00Z\"\n            }\n          ]\n        },\n        {\n          \"program_identifier\": \"CONED-CSRP\",\n          \"delivery_period\": \"CONED-CSRP_2025_MAY_SEP\",\n          \"delivery_period_start_date_time\": \"2025-05-01T04:00:00Z\",\n          \"delivery_period_end_date_time\": \"2025-09-30T04:00:00Z\",\n          \"enrollment_status\": \"ELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2025-03-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-05-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-04-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-06-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-06-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-07-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-07-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-08-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-08-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-09-01T04:00:00Z\"\n            }\n          ]\n        },\n        {\n          \"program_identifier\": \"PSEGLI-DLRP\",\n          \"delivery_period\": \"PSEGLI-DLRP_2025_MAY_SEP\",\n          \"delivery_period_start_date_time\": \"2025-05-01T04:00:00Z\",\n          \"delivery_period_end_date_time\": \"2025-09-30T04:00:00Z\",\n          \"enrollment_status\": \"INELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2025-03-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-05-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-04-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-06-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-06-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-07-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-07-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-08-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-08-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-09-01T04:00:00Z\"\n            }\n          ]\n        },\n        {\n          \"program_identifier\": \"NYISO-SCR\",\n          \"delivery_period\": \"NYISO-SCR_2024_MAY_OCT\",\n          \"delivery_period_start_date_time\": \"2024-05-01T04:00:00Z\",\n          \"delivery_period_end_date_time\": \"2024-10-31T04:00:00Z\",\n          \"enrollment_status\": \"INELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2024-04-29T04:00:00Z\",\n              \"activation_date_time\": \"2024-05-01T04:00:00Z\"\n            }\n          ]\n        },\n        {\n          \"program_identifier\": \"NYISO-SCR\",\n          \"delivery_period\": \"NYISO-SCR_2024_NOV_2025_APR\",\n          \"delivery_period_start_date_time\": \"2024-11-01T04:00:00Z\",\n          \"delivery_period_end_date_time\": \"2025-04-30T04:00:00Z\",\n          \"enrollment_status\": \"INELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2024-10-30T04:00:00Z\",\n              \"activation_date_time\": \"2024-11-01T04:00:00Z\"\n            }\n          ]\n        },\n        {\n          \"program_identifier\": \"NYISO-SCR\",\n          \"delivery_period\": \"NYISO-SCR_2025_MAY_OCT\",\n          \"delivery_period_start_date_time\": \"2025-05-01T04:00:00Z\",\n          \"delivery_period_end_date_time\": \"2025-10-31T04:00:00Z\",\n          \"enrollment_status\": \"INELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2025-03-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-05-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-04-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-06-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-06-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-07-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-07-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-08-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-08-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-09-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-09-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-10-01T04:00:00Z\"\n            }\n          ]\n        },\n        {\n          \"program_identifier\": \"CONED-DLRP\",\n          \"delivery_period\": \"CONED-DLRP_2025_MAY_SEP\",\n          \"delivery_period_start_date_time\": \"2025-05-01T04:00:00Z\",\n          \"delivery_period_end_date_time\": \"2025-09-30T04:00:00Z\",\n          \"enrollment_status\": \"ELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2025-03-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-05-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-04-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-06-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-06-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-07-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-07-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-08-01T04:00:00Z\"\n            },\n            {\n              \"enrollment_deadline_date_time\": \"2025-08-15T04:00:00Z\",\n              \"activation_date_time\": \"2025-09-01T04:00:00Z\"\n            }\n          ]\n        }\n      ],\n      \"required_actions\": {\n        \"partner\": [\n          {\n            \"program_identifier\": \"NYISO-SCR\",\n            \"delivery_period\": \"NYISO-SCR_2024_MAY_OCT\",\n            \"enrollment_deadline_date_time\": \"2024-05-01T04:00:00Z\",\n            \"action_type\": \"IS_AUTHORIZED\",\n            \"action_description\": \"End customer must re-authorize meter. Learn more in our partner guide\",\n            \"action_code\": \"AUTH_0001\"\n          },\n          {\n            \"program_identifier\": \"NYISO-SCR\",\n            \"delivery_period\": \"NYISO-SCR_2024_MAY_OCT\",\n            \"enrollment_deadline_date_time\": \"2024-05-01T04:00:00Z\",\n            \"action_type\": \"NO_MISSING_FIELDS\",\n            \"action_description\": \"Partner needs configuration for fields: Voltage Group, CBL Method, Load Zone.\",\n            \"action_code\": \"SERV_0005\"\n          }\n        ],\n        \"leap\": [\n          {\n            \"program_identifier\": \"NYISO-SCR\",\n            \"delivery_period\": \"NYISO-SCR_2024_MAY_OCT\",\n            \"enrollment_deadline_date_time\": \"2024-05-01T04:00:00Z\",\n            \"action_type\": \"HAS_NOMINATIONS\",\n            \"action_description\": \"This meter does not have nominations set\",\n            \"action_code\": \"LEAP_0001\"\n          }\n        ]\n      },\n      \"connection_references\": [\n        \"test_rosalie_2\"\n      ],\n      \"tags\": [],\n      \"partner_reference\": \"test_meter_2\",\n      \"transmission_region\": \"NYISO\",\n      \"customer_classification\": \"RESIDENTIAL\",\n      \"load_types\": [\n        \"HVAC\"\n      ],\n      \"meter_type\": \"UTILITY_METER\",\n      \"audit\": {\n        \"created_by\": \"UTILITY\",\n        \"created_at\": \"2024-04-23T19:09:58.938282Z\",\n        \"updated_at\": \"2024-10-10T12:07:50.108755Z\"\n      }\n    },\n    {\n      \"meter_id\": \"33333333-3333-3333-3333-333333333333\",\n      \"is_archived\": false,\n      \"customer_group\": \"\",\n      \"global_enrollment_status\": \"ELIGIBLE\",\n      \"participation_preferences\": [\n        {\n          \"participation_preference\": \"PARTICIPATE\",\n          \"start_time\": \"2024-03-25T18:06:11Z\",\n          \"end_time\": \"9000-12-31T23:59:59.999999999Z\"\n        }\n      ],\n      \"program_enrollment\": [\n        {\n          \"program_identifier\": \"UNITIL-CS\",\n          \"delivery_period\": \"UNITIL-CS_2025_JUN_SEP\",\n          \"delivery_period_start_date_time\": \"2025-06-01T04:00:00Z\",\n          \"delivery_period_end_date_time\": \"2025-09-30T04:00:00Z\",\n          \"enrollment_status\": \"INELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2025-05-30T04:00:00Z\",\n              \"activation_date_time\": \"2025-06-01T04:00:00Z\"\n            }\n          ]\n        },\n        {\n          \"program_identifier\": \"RIE-CS\",\n          \"delivery_period\": \"RIE-CS_2025_JUN_SEP\",\n          \"delivery_period_start_date_time\": \"2025-06-01T04:00:00Z\",\n          \"delivery_period_end_date_time\": \"2025-09-30T04:00:00Z\",\n          \"enrollment_status\": \"INELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2025-05-30T04:00:00Z\",\n              \"activation_date_time\": \"2025-06-01T04:00:00Z\"\n            }\n          ]\n        },\n        {\n          \"program_identifier\": \"MA_DOER-CPS\",\n          \"delivery_period\": \"MA_DOER-CPS_2024_OCT_NOV\",\n          \"delivery_period_start_date_time\": \"2024-10-01T04:00:00Z\",\n          \"delivery_period_end_date_time\": \"2024-11-30T05:00:00Z\",\n          \"enrollment_status\": \"INELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2024-09-29T04:00:00Z\",\n              \"activation_date_time\": \"2024-10-01T04:00:00Z\"\n            }\n          ]\n        },\n        {\n          \"program_identifier\": \"MA_DOER-CPS\",\n          \"delivery_period\": \"MA_DOER-CPS_2024_DEC_2025_FEB\",\n          \"delivery_period_start_date_time\": \"2024-12-01T05:00:00Z\",\n          \"delivery_period_end_date_time\": \"2025-02-28T05:00:00Z\",\n          \"enrollment_status\": \"INELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2024-11-29T05:00:00Z\",\n              \"activation_date_time\": \"2024-12-01T05:00:00Z\"\n            }\n          ]\n        },\n        {\n          \"program_identifier\": \"MA_DOER-CPS\",\n          \"delivery_period\": \"MA_DOER-CPS_2025_MAR_APR\",\n          \"delivery_period_start_date_time\": \"2025-03-01T05:00:00Z\",\n          \"delivery_period_end_date_time\": \"2025-04-30T04:00:00Z\",\n          \"enrollment_status\": \"INELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2025-02-27T05:00:00Z\",\n              \"activation_date_time\": \"2025-03-01T05:00:00Z\"\n            }\n          ]\n        },\n        {\n          \"program_identifier\": \"EVERSOURCE-CS\",\n          \"delivery_period\": \"EVERSOURCE-CS_2025_JUN_SEP\",\n          \"delivery_period_start_date_time\": \"2025-06-01T04:00:00Z\",\n          \"delivery_period_end_date_time\": \"2025-09-30T04:00:00Z\",\n          \"enrollment_status\": \"INELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2025-05-30T04:00:00Z\",\n              \"activation_date_time\": \"2025-06-01T04:00:00Z\"\n            }\n          ]\n        },\n        {\n          \"program_identifier\": \"NATGRID-CS\",\n          \"delivery_period\": \"NATGRID-CS_2025_JUN_SEP\",\n          \"delivery_period_start_date_time\": \"2025-06-01T04:00:00Z\",\n          \"delivery_period_end_date_time\": \"2025-09-30T04:00:00Z\",\n          \"enrollment_status\": \"INELIGIBLE\",\n          \"enrollment_deadlines\": [\n            {\n              \"enrollment_deadline_date_time\": \"2025-05-30T04:00:00Z\",\n              \"activation_date_time\": \"2025-06-01T04:00:00Z\"\n            }\n          ]\n        }\n      ],\n      \"required_actions\": {\n        \"partner\": [\n          {\n            \"program_identifier\": \"MA_DOER-CPS\",\n            \"delivery_period\": \"NATGRID-CS_2025_JUN_SEP\",\n            \"enrollment_deadline_date_time\": \"2025-06-01T04:00:00Z\",\n            \"action_type\": \"NO_MISSING_FIELDS\",\n            \"action_description\": \"Partner needs configuration for fields: End Customer Company Name.\",\n            \"action_code\": \"SERV_0005\"\n          }\n        ],\n        \"leap\": [\n          {\n            \"program_identifier\": \"MA_DOER-CPS\",\n            \"delivery_period\": \"MA_DOER-CPS_2024_OCT_NOV\",\n            \"enrollment_deadline_date_time\": \"2024-10-01T04:00:00Z\",\n            \"action_type\": \"HAS_NOMINATIONS\",\n            \"action_description\": \"This meter does not have nominations set\",\n            \"action_code\": \"LEAP_0001\"\n          }\n        ]\n      },\n      \"connection_references\": [],\n      \"tags\": [],\n      \"partner_reference\": \"test-isone-device-serial-00002\",\n      \"transmission_region\": \"ISONE\",\n      \"customer_classification\": \"COMMERCIAL\",\n      \"load_types\": [\n        \"BATTERY_STORAGE\"\n      ],\n      \"meter_type\": \"DEVICE\",\n      \"audit\": {\n        \"created_by\": \"PARTNER\",\n        \"created_at\": \"2024-03-25T18:06:11.463842Z\",\n        \"updated_at\": \"2024-03-25T18:06:13.514888Z\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8786b655-d50f-4b91-b1dd-7dc354441550",
+              "name": "The request is not valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "enrollments",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transmission_region\": \"CAISO\",\n  \"customer_classification\": \"RESIDENTIAL\",\n  \"meter_ids\": [\n    \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\n  ],\n  \"partner_references\": [\n    \"a-partner-reference\"\n  ],\n  \"global_enrollment_statuses\": [\n    \"ACTIVE\"\n  ],\n  \"meter_types\": [\n    \"UTILITY_METER\"\n  ],\n  \"load_types\": [\n    \"HVAC\"\n  ],\n  \"customer_groups\": [\n    \"CustomerGroup1\"\n  ],\n  \"tags\": [\n    \"tag1\"\n  ],\n  \"last_modified_date_time\": \"2024-10-21T11:43:05.892Z\",\n  \"created_after_date_time\": \"2024-10-21T11:43:05.892Z\",\n  \"created_before_date_time\": \"2024-10-21T11:43:05.892Z\",\n  \"partner_action_required\": false,\n  \"exclude_archived\": false,\n  \"connection_reference_ids\": [\n    \"connectionReferenceId1\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Meter id is not a UUID\",\n  \"status\": 400,\n  \"details\": {\n    \"meter_id\": \"abcdef\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "715493b2-e453-479a-93ac-fbc1f00bdf1c",
+              "name": "You are not authorized to perform this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "enrollments",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transmission_region\": \"CAISO\",\n  \"customer_classification\": \"RESIDENTIAL\",\n  \"meter_ids\": [\n    \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\n  ],\n  \"partner_references\": [\n    \"a-partner-reference\"\n  ],\n  \"global_enrollment_statuses\": [\n    \"ACTIVE\"\n  ],\n  \"meter_types\": [\n    \"UTILITY_METER\"\n  ],\n  \"load_types\": [\n    \"HVAC\"\n  ],\n  \"customer_groups\": [\n    \"CustomerGroup1\"\n  ],\n  \"tags\": [\n    \"tag1\"\n  ],\n  \"last_modified_date_time\": \"2024-10-21T11:43:05.892Z\",\n  \"created_after_date_time\": \"2024-10-21T11:43:05.892Z\",\n  \"created_before_date_time\": \"2024-10-21T11:43:05.892Z\",\n  \"partner_action_required\": false,\n  \"exclude_archived\": false,\n  \"connection_reference_ids\": [\n    \"connectionReferenceId1\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Unauthorized\",\n  \"status\": 401,\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c1368a3-80cc-43bf-9b08-dd3f624fd4e9",
+              "name": "You do not have the necessary permissions for this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "enrollments",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transmission_region\": \"CAISO\",\n  \"customer_classification\": \"RESIDENTIAL\",\n  \"meter_ids\": [\n    \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\n  ],\n  \"partner_references\": [\n    \"a-partner-reference\"\n  ],\n  \"global_enrollment_statuses\": [\n    \"ACTIVE\"\n  ],\n  \"meter_types\": [\n    \"UTILITY_METER\"\n  ],\n  \"load_types\": [\n    \"HVAC\"\n  ],\n  \"customer_groups\": [\n    \"CustomerGroup1\"\n  ],\n  \"tags\": [\n    \"tag1\"\n  ],\n  \"last_modified_date_time\": \"2024-10-21T11:43:05.892Z\",\n  \"created_after_date_time\": \"2024-10-21T11:43:05.892Z\",\n  \"created_before_date_time\": \"2024-10-21T11:43:05.892Z\",\n  \"partner_action_required\": false,\n  \"exclude_archived\": false,\n  \"connection_reference_ids\": [\n    \"connectionReferenceId1\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"You do not have the necessary permissions for this operation\",\n  \"status\": 403,\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b06bbe3e-fba3-40ce-8a5c-3fec2941bb41",
+              "name": "Meter not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "enrollments",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transmission_region\": \"CAISO\",\n  \"customer_classification\": \"RESIDENTIAL\",\n  \"meter_ids\": [\n    \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\n  ],\n  \"partner_references\": [\n    \"a-partner-reference\"\n  ],\n  \"global_enrollment_statuses\": [\n    \"ACTIVE\"\n  ],\n  \"meter_types\": [\n    \"UTILITY_METER\"\n  ],\n  \"load_types\": [\n    \"HVAC\"\n  ],\n  \"customer_groups\": [\n    \"CustomerGroup1\"\n  ],\n  \"tags\": [\n    \"tag1\"\n  ],\n  \"last_modified_date_time\": \"2024-10-21T11:43:05.892Z\",\n  \"created_after_date_time\": \"2024-10-21T11:43:05.892Z\",\n  \"created_before_date_time\": \"2024-10-21T11:43:05.892Z\",\n  \"partner_action_required\": false,\n  \"exclude_archived\": false,\n  \"connection_reference_ids\": [\n    \"connectionReferenceId1\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"Meter not found\",\n  \"status\": 404,\n  \"details\": {\n    \"meter_id\": \"f5c5e328-e325-4d6d-b357-5015ed5962a7\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "281f57b3-af5b-43df-86a1-252fd3c386ef",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "meters",
+                    "enrollments",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transmission_region\": \"CAISO\",\n  \"customer_classification\": \"RESIDENTIAL\",\n  \"meter_ids\": [\n    \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\n  ],\n  \"partner_references\": [\n    \"a-partner-reference\"\n  ],\n  \"global_enrollment_statuses\": [\n    \"ACTIVE\"\n  ],\n  \"meter_types\": [\n    \"UTILITY_METER\"\n  ],\n  \"load_types\": [\n    \"HVAC\"\n  ],\n  \"customer_groups\": [\n    \"CustomerGroup1\"\n  ],\n  \"tags\": [\n    \"tag1\"\n  ],\n  \"last_modified_date_time\": \"2024-10-21T11:43:05.892Z\",\n  \"created_after_date_time\": \"2024-10-21T11:43:05.892Z\",\n  \"created_before_date_time\": \"2024-10-21T11:43:05.892Z\",\n  \"partner_action_required\": false,\n  \"exclude_archived\": false,\n  \"connection_reference_ids\": [\n    \"connectionReferenceId1\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"An error happened whilst processing your request\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.staging.leap.energy",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "75eb750f-cb96-41a2-beda-3eb9f4e6978d",
+    "name": "Meter Information API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API to retrieve and search information about meters, including enrollment status, participation preferences, and associated programs.",
+      "type": "text/plain"
+    }
+  }
+}
