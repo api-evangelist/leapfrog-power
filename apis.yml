@@ -125,6 +125,8 @@ apis:
   humanURL: https://developer.leap.energy/reference/listwebhooks-2
   baseURL: https://api.leap.energy
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
