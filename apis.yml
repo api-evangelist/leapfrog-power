@@ -20,7 +20,13 @@ description: Leap (Leapfrog Power, Inc.) is a San Francisco based energy softwar
   Leap's documentation never names Green Button, ESPI, OpenADR, IEEE 2030.5, OCPP or CIM. Consumer usage
   and settlement data are reachable through the API but only for a partner's own consented, enrolled meters,
   and Leap publishes no open grid or market data at all.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/groq.png
+imageNote: >-
+  The `image` property was removed on 2026-08-26. It had been copied verbatim out of a
+  bootstrap template and pointed at an icon belonging to groq, not to this company.
+  That asset returns HTTP 200, so the record rendered another company's brand
+  rather than a broken image, which is why it went unreported (roadmap#153).
+  No correct icon has been sourced yet. Shipping the wrong company's mark is worse
+  than shipping none; re-run the icon backfill once a real asset exists.
 tags:
 - Energy
 - United States
