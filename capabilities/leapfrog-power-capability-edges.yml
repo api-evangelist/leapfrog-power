@@ -1,0 +1,27 @@
+slug: leapfrog-power
+provider: Leap
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Automotive & Mobility
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: webhooks
+  spec_file: leapfrog-power-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.7
+  evidence: '"Create webhooks, list existing webhooks, update webhooks, and delete webhooks."; operations
+    "Create a webhook", "Test a webhook"; schemas "WebhookRequest", "MeterCreatedEventV1Wrapped", "MeterEnrollmentGlobalStatusUpdatedV1"'
+  reason: Lifecycle management of outbound webhook subscriptions plus versioned event schemas and a delivery
+    test endpoint — exactly the surface described by BC-4270.80 Webhook & Event Subscription Management.
+    This is developer-platform plumbing, and the candidate list contains an explicit capability for it,
+    so the edge is to the IT/platform capability rather than any energy or mobility business capability.

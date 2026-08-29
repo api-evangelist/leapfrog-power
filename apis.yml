@@ -518,6 +518,9 @@ apis:
   - type: Documentation
     url: https://developer.leap.energy/docs/upload-interval-data-sftp
 common:
+- type: CapabilityMap
+  url: capabilities/leapfrog-power-capability-edges.yml
+  name: Leap Business Capability Map
 - type: AgenticAccess
   url: agentic-access/leapfrog-power-agentic-access.yml
 - type: DomainSecurity
