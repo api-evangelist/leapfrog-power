@@ -61,6 +61,8 @@ apis:
   humanURL: https://developer.leap.energy/reference/createmeterbatchjob
   baseURL: https://api.leap.energy
   tags:
+  - Create Meters
+  tags_raw:
   - create meters
   properties:
   - type: OpenAPI
@@ -103,6 +105,8 @@ apis:
   humanURL: https://developer.leap.energy/reference/createmeterbatchjob
   baseURL: https://api.leap.energy
   tags:
+  - Group Dispatches
+  tags_raw:
   - group-dispatches
   properties:
   - type: OpenAPI
@@ -144,7 +148,8 @@ apis:
   description: The interval_data_upload API from Leap — 6 operation(s) for interval_data_upload.
   humanURL: https://developer.leap.energy/reference/createmeterbatchjob
   baseURL: https://api.leap.energy
-  tags:
+  tags: []
+  tags_raw:
   - interval_data_upload
   properties:
   - type: OpenAPI
@@ -229,6 +234,8 @@ apis:
   humanURL: https://developer.leap.energy/reference/createmeterbatchjob
   baseURL: https://api.leap.energy
   tags:
+  - Meter Dispatches
+  tags_raw:
   - meter-dispatches
   properties:
   - type: OpenAPI
@@ -271,6 +278,8 @@ apis:
   humanURL: https://developer.leap.energy/reference/createmeterbatchjob
   baseURL: https://api.leap.energy
   tags:
+  - Meter Enrollment
+  tags_raw:
   - meter enrollment
   properties:
   - type: OpenAPI
@@ -313,6 +322,8 @@ apis:
   humanURL: https://developer.leap.energy/reference/createmeterbatchjob
   baseURL: https://api.leap.energy
   tags:
+  - Nominations
+  tags_raw:
   - nominations
   properties:
   - type: OpenAPI
@@ -355,6 +366,8 @@ apis:
   humanURL: https://developer.leap.energy/reference/createmeterbatchjob
   baseURL: https://api.leap.energy
   tags:
+  - Performance
+  tags_raw:
   - performance
   properties:
   - type: OpenAPI
@@ -397,6 +410,8 @@ apis:
   humanURL: https://developer.leap.energy/reference/createmeterbatchjob
   baseURL: https://api.leap.energy
   tags:
+  - Provisional Assets
+  tags_raw:
   - provisional assets
   properties:
   - type: OpenAPI
@@ -439,6 +454,8 @@ apis:
   humanURL: https://developer.leap.energy/reference/createmeterbatchjob
   baseURL: https://api.leap.energy
   tags:
+  - Revenue
+  tags_raw:
   - revenue
   properties:
   - type: OpenAPI
@@ -481,6 +498,8 @@ apis:
   humanURL: https://developer.leap.energy/reference/createmeterbatchjob
   baseURL: https://api.leap.energy
   tags:
+  - Webhook
+  tags_raw:
   - webhooks
   properties:
   - type: OpenAPI
